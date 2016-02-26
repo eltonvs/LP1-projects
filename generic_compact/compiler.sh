@@ -1,0 +1,1 @@
+g++ src/* -I include -o bin/generic_compact -std=c++11
