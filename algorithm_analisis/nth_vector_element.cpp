@@ -1,4 +1,7 @@
 /*
+ * Copyright 2016 - Elton Viana
+ *
+ * Question:
  * Escreva uma função para obter o k-ésimo menor elemento de uma
  * lista sequencial L com n elementos (precondição: 1 <= k <= n). Podem
  * haver elementos repetidos em L.
@@ -6,21 +9,10 @@
  * e determine esta complexidade.
  * Por fim, descreva a situação correspondente ao pior caso considerado
  * e forneça um exemplo ilustrativo com, pelo menos, n = 5 elementos.
-
-
- English translation (by google)
-
- Write a function for the kth smallest element of L sequential
- list with n elements (pre-condition: 1 <= k <= n). There may
- be repeated elements in L. Work its function to minimize complexity
- and determine this worst case complexity. Finally, describing the
- situation corresponding to the worst case considered and provides
- an illustrative example of at least n = 5 elements.
-
  */
 
-#include <iostream>
-#include <algorithm>
+#include <iostream>   // Input/Output functions
+#include <algorithm>  // std::sort()
 
 using namespace std;
 
@@ -57,17 +49,3 @@ int nth_element(int *V, int n, int k) {
 
     return *(V+k-1);
 }
-
-// Now, let's analize the algorithm complexity
-// First, let's see the C++ std::sort() complexity
-// The std::sort() complexity is O'(n) = n*log(n) for the better and worst case
-// And our nth_element function?
-// We just have a return (after calling the sort function)
-// So, the nth_element complexity is a constant, the time to return an element
-// O''(n) = k
-// After analyze that (was very simple, right?) We got the algorithm complexity
-// O(n) = O'(n) + O''(n)
-// O(n) = n*log(n) + k
-// By the definition, we can ignore constants
-// So, our complexity is the sort complexity
-// O(n) = n*log(n) <- That's all folks!
