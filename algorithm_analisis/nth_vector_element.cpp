@@ -42,7 +42,7 @@ int main(int argc, const char *argv[]) {
 int nth_element(int *V, int n, int k) {
     /*
      *  - Sort the array.
-     *  - So I just need to return the V[k-1] (or, in pointers notation, *(v+k-1))
+     *  - So I just need to return the V[k-1] (or, in pointers notation, *(V+k-1))
      */
 
     sort(V, V + n);
