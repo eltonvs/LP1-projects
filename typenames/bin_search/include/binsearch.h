@@ -1,11 +1,19 @@
+/*
+ * Copyright 2016 - Elton Viana
+ */
+
 #ifndef _BINSEARCH_H_
 #define _BINSEARCH_H_
 
-#include <iostream>
-
 // Function prototypes.
-template <typename Obj>
-int buscaBin(Obj, Obj &, int, int, int (*)(const Obj&, const Obj&));
+template <typename T>
+int buscaBin(T[], T &, int, int, int (*)(const T &, const T &));
+
+template <typename T>
+void printArray(const T[], int);
+
+template <typename T>
+int compara(const T &, const T &);
 
 #include "binsearch.inl"
 

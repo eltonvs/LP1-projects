@@ -7,49 +7,41 @@
 
 #include "binsearch.h"
 
-using std::cout;
-using std::endl;
-using std::string;
-
-template <typename Obj>
-void printArray(Obj V[], int sz) {
-    cout << ">>> [ ";
-    for (int i(0); i < sz; ++i)
-        cout << V[i] << " ";
-    cout << "]\n";
-}
-
-template <typename T>
-int compara(const T & a, const T & b) {
-    return a == b ? 0 : a > b ? 1 : -1;
-}
-
 int main() {
     // Vetor de inteiros
-    int V1[] = { 2, 4, 6, 8, 10, 12, 14 };
-    int x = 14;  // Elemento a ser procurado.
-    char V2[] = { 'a', 'c', 'e', 'g', 'h', 'j', 'k'};
-    char x2 = 'c';  // Elemento a ser procurado.
-    string V3[] = {"aquaman", "batman", "capitão", "demolidor", "falcão", "hulk", "thor"};
-    string x3 = "hulk";  // Elemento a ser procurado.
-    // Tamanho dos vetores
-    int sz = 7;
+    int V[]          = {2, 4, 6, 8, 10, 12, 14};
+    int x            = 14;  // Elemento a ser procurado.
+    char V2[]        = {'a', 'c', 'e', 'g', 'h', 'j', 'k'};
+    char x2          = 'c';  // Elemento a ser procurado.
+    std::string V3[] = {
+        "aquaman",
+        "batman",
+        "capitão",
+        "demolidor",
+        "falcão",
+        "hulk",
+        "thor"
+    };
+    std::string x3   = "hulk";  // Elemento a ser procurado.
+    int sz           = 7;  // Tamanho dos vetores
 
-    cout << ">>> Vetor original: \n";
-    printArray(V1, sz);
+    std::cout << ">>> Vetor original: \n";
+    printArray(V, sz);
+    std::cout << ">>> Procurar pelo elemento: " << x << std::endl;
+    std::cout << ">>> Resultado da busca: \n"
+              << buscaBin(V, x, 0, sz-1, compara) << std::endl;
 
-    cout << ">>> Procurar pelo elemento: " << x << endl;
-    cout << ">>> Resultado da busca: \n" << buscaBin(V1, x, 0, sz-1, compara) << endl;
-
-    cout << ">>> Vetor original: \n";
+    std::cout << ">>> Vetor original: \n";
     printArray(V2, sz);
-    cout << ">>> Procurar pelo elemento: " << x2 << endl;
-    cout << ">>> Resultado da busca: \n" << buscaBin(V2, x2, 0, sz-1, compara) << endl;
+    std::cout << ">>> Procurar pelo elemento: " << x2 << std::endl;
+    std::cout << ">>> Resultado da busca: \n"
+              << buscaBin(V2, x2, 0, sz-1, compara) << std::endl;
 
-    cout << ">>> Vetor original: \n";
+    std::cout << ">>> Vetor original: \n";
     printArray(V3, sz);
-    cout << ">>> Procurar pelo elemento: " << x3 << endl;
-    cout << ">>> Resultado da busca: \n" << buscaBin(V3, x3, 0, sz-1, compara) << endl;
+    std::cout << ">>> Procurar pelo elemento: " << x3 << std::endl;
+    std::cout << ">>> Resultado da busca: \n"
+              << buscaBin(V3, x3, 0, sz-1, compara) << std::endl;
 
     return EXIT_SUCCESS;
 }
