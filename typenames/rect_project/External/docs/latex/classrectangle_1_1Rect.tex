@@ -1,0 +1,385 @@
+\hypertarget{classrectangle_1_1Rect}{\section{Referência à classe rectangle\-:\-:Rect}
+\label{classrectangle_1_1Rect}\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}}
+}
+
+
+{\ttfamily \#include $<$rect.\-h$>$}
+
+\subsection*{Tipos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classrectangle_1_1Rect_aadf60e07e4109c5fd25992fa057f8f02}{field} \{ \hyperlink{classrectangle_1_1Rect_aadf60e07e4109c5fd25992fa057f8f02abfd646e70d5cb6131897257d881c2d74}{X} =0, 
+\hyperlink{classrectangle_1_1Rect_aadf60e07e4109c5fd25992fa057f8f02a791ad52b314764b48b5591fd780ef01d}{Y} =1, 
+\hyperlink{classrectangle_1_1Rect_aadf60e07e4109c5fd25992fa057f8f02a4391d7047d7c16bf113e2049bd552a0a}{W} =2, 
+\hyperlink{classrectangle_1_1Rect_aadf60e07e4109c5fd25992fa057f8f02ad988b7f76e5e524c2f3914e35c701bc8}{H} =3
+ \}
+\begin{DoxyCompactList}\small\item\em Posi\c{c}\~{o}es dos campos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Membros públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classrectangle_1_1Rect_a106f73f341700ba494effd45577c0507}{Rect} (const int \-\_\-i\-X=0, const int \-\_\-i\-Y=0, const int \-\_\-i\-W=0, const int \-\_\-i\-H=0)
+\begin{DoxyCompactList}\small\item\em Construtor padr\~{a}o. \end{DoxyCompactList}\item 
+\hyperlink{classrectangle_1_1Rect_a88fab37b78184456e5300cf6d8d06d79}{Rect} (const \hyperlink{classrectangle_1_1Rect}{Rect} \&t\-C\-Obj)
+\begin{DoxyCompactList}\small\item\em Construtor c\'{o}pia. \end{DoxyCompactList}\item 
+virtual \hyperlink{classrectangle_1_1Rect_acff62a31b8bafc67508dbf7f719cf932}{$\sim$\-Rect} (void)
+\begin{DoxyCompactList}\small\item\em Destrutor padr\~{a}o\-: faz nada. \end{DoxyCompactList}\item 
+int \hyperlink{classrectangle_1_1Rect_a8db7151039db46d0b853ec7ad5651b82}{get\-X} (void) const 
+\begin{DoxyCompactList}\small\item\em Recupera a coordenada X do v\'{e}rtice do ret\^{a}ngulo. \end{DoxyCompactList}\item 
+int \hyperlink{classrectangle_1_1Rect_a8fe066a16e1d9ce9978da34837f9912a}{get\-Y} (void) const 
+\begin{DoxyCompactList}\small\item\em Recupera a coordenada Y do v\'{e}rtice do ret\^{a}ngulo. \end{DoxyCompactList}\item 
+int \hyperlink{classrectangle_1_1Rect_a474a45df7293c6c5512463bb5a19f60b}{get\-Width} (void) const 
+\begin{DoxyCompactList}\small\item\em Recupera a largura do ret\^{a}ngulo. \end{DoxyCompactList}\item 
+int \hyperlink{classrectangle_1_1Rect_a0529af65f975bf15e9807923ba0ab8e6}{get\-Height} (void) const 
+\begin{DoxyCompactList}\small\item\em Recupera a altura do ret\^{a}ngulo. \end{DoxyCompactList}\item 
+void \hyperlink{classrectangle_1_1Rect_a8e876f3cf8c84f666a27e4ac53002b3e}{get\-Data} (int \&\-\_\-i\-X, int \&\-\_\-i\-Y, int \&\-\_\-i\-W, int \&\-\_\-i\-H) const 
+\begin{DoxyCompactList}\small\item\em Recupera as coordeadas do v\'{e}rtice e dimens\~{o}es (W, H) do ret\^{a}ngulo. \end{DoxyCompactList}\item 
+const int \hyperlink{classrectangle_1_1Rect_ad5766881744587377fe0e9964d928e1d}{area} (void) const 
+\begin{DoxyCompactList}\small\item\em Recupera a \'{a}rea do ret\^{a}ngulo. \end{DoxyCompactList}\item 
+void \hyperlink{classrectangle_1_1Rect_af388209e7f7a5329eb7b906f254a8a9a}{set\-Data} (const int \-\_\-i\-X, const int \-\_\-i\-Y, const int \-\_\-i\-W, const int \-\_\-i\-H)
+\begin{DoxyCompactList}\small\item\em Atribui novos valores aos campos do ret\^{a}ngulo. \end{DoxyCompactList}\item 
+\hyperlink{classrectangle_1_1Rect}{Rect} \& \hyperlink{classrectangle_1_1Rect_a65edca18dfba7e1693568d5f3e819d26}{operator=} (const \hyperlink{classrectangle_1_1Rect}{Rect} \&rhs)
+\begin{DoxyCompactList}\small\item\em Sobrecarga do operador de atribui\c{c}\~{a}o. \end{DoxyCompactList}\item 
+int \& \hyperlink{classrectangle_1_1Rect_ab85de12f892ba96201f4174315b42732}{operator\mbox{[}$\,$\mbox{]}} (const int ti\-Idx)
+\begin{DoxyCompactList}\small\item\em Sobrecarga do operador de indexa\c{c}\~{a}o, com suporte a atribui\c{c}\~{a}o (usado como lhs). \end{DoxyCompactList}\item 
+const int \& \hyperlink{classrectangle_1_1Rect_ae0afe2cc84876c7feea7af546b8ce758}{operator\mbox{[}$\,$\mbox{]}} (const int ti\-Idx) const 
+\begin{DoxyCompactList}\small\item\em Sobrecarga do operador de indexa\c{c}\~{a}o sem suporte a atribuit\c{c}\~{a}o (consuta, ou rhs). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Amigos}
+\begin{DoxyCompactItemize}
+\item 
+const bool \hyperlink{classrectangle_1_1Rect_a59e0c8f322425fc2cc0c48cb403c4d5e}{operator==} (const \hyperlink{classrectangle_1_1Rect}{Rect} \&lhs, const \hyperlink{classrectangle_1_1Rect}{Rect} \&rhs)
+\begin{DoxyCompactList}\small\item\em Sobrecarga do operador relacional de igualdade. \end{DoxyCompactList}\item 
+const bool \hyperlink{classrectangle_1_1Rect_a51e713e2232957a74ffa3cab0f41ab47}{operator!=} (const \hyperlink{classrectangle_1_1Rect}{Rect} \&lhs, const \hyperlink{classrectangle_1_1Rect}{Rect} \&rhs)
+\begin{DoxyCompactList}\small\item\em Sobrecarga do operador relacional de desigualdade. \end{DoxyCompactList}\item 
+std\-::ostream \& \hyperlink{classrectangle_1_1Rect_a2ec7afc82beae7cecb72a829b22e4054}{operator$<$$<$} (std\-::ostream \&\-\_\-os, const \hyperlink{classrectangle_1_1Rect}{Rect} \&\-\_\-\-C\-Rec)
+\begin{DoxyCompactList}\small\item\em Sobrecarga do operador $<$$<$, que faz com que seja impresso o ret\^{a}ngulo na forma\-: \mbox{[} x, y, Width, Height \mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrição detalhada}
+Classe que implementa um ret\^{a}ngulo definido pela coordenada do v\'{e}rtice localizado no canto inferior esquerdo, dimens\~{a}o horizontal e vertical. 
+
+\subsection{Documentação das enumerações}
+\hypertarget{classrectangle_1_1Rect_aadf60e07e4109c5fd25992fa057f8f02}{\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!field@{field}}
+\index{field@{field}!rectangle::Rect@{rectangle\-::\-Rect}}
+\subsubsection[{field}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf rectangle\-::\-Rect\-::field}}}\label{classrectangle_1_1Rect_aadf60e07e4109c5fd25992fa057f8f02}
+
+
+Posi\c{c}\~{o}es dos campos. 
+
+\begin{Desc}
+\item[Valores da enumeração]\par
+\begin{description}
+\index{X@{X}!rectangle\-::\-Rect@{rectangle\-::\-Rect}}\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!X@{X}}\item[{\em 
+\hypertarget{classrectangle_1_1Rect_aadf60e07e4109c5fd25992fa057f8f02abfd646e70d5cb6131897257d881c2d74}{X}\label{classrectangle_1_1Rect_aadf60e07e4109c5fd25992fa057f8f02abfd646e70d5cb6131897257d881c2d74}
+}]\index{Y@{Y}!rectangle\-::\-Rect@{rectangle\-::\-Rect}}\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!Y@{Y}}\item[{\em 
+\hypertarget{classrectangle_1_1Rect_aadf60e07e4109c5fd25992fa057f8f02a791ad52b314764b48b5591fd780ef01d}{Y}\label{classrectangle_1_1Rect_aadf60e07e4109c5fd25992fa057f8f02a791ad52b314764b48b5591fd780ef01d}
+}]\index{W@{W}!rectangle\-::\-Rect@{rectangle\-::\-Rect}}\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!W@{W}}\item[{\em 
+\hypertarget{classrectangle_1_1Rect_aadf60e07e4109c5fd25992fa057f8f02a4391d7047d7c16bf113e2049bd552a0a}{W}\label{classrectangle_1_1Rect_aadf60e07e4109c5fd25992fa057f8f02a4391d7047d7c16bf113e2049bd552a0a}
+}]\index{H@{H}!rectangle\-::\-Rect@{rectangle\-::\-Rect}}\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!H@{H}}\item[{\em 
+\hypertarget{classrectangle_1_1Rect_aadf60e07e4109c5fd25992fa057f8f02ad988b7f76e5e524c2f3914e35c701bc8}{H}\label{classrectangle_1_1Rect_aadf60e07e4109c5fd25992fa057f8f02ad988b7f76e5e524c2f3914e35c701bc8}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Documentação dos Construtores \& Destrutor}
+\hypertarget{classrectangle_1_1Rect_a106f73f341700ba494effd45577c0507}{\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!Rect@{Rect}}
+\index{Rect@{Rect}!rectangle::Rect@{rectangle\-::\-Rect}}
+\subsubsection[{Rect}]{\setlength{\rightskip}{0pt plus 5cm}rectangle\-::\-Rect\-::\-Rect (
+\begin{DoxyParamCaption}
+\item[{const int}]{\-\_\-i\-X = {\ttfamily 0}, }
+\item[{const int}]{\-\_\-i\-Y = {\ttfamily 0}, }
+\item[{const int}]{\-\_\-i\-W = {\ttfamily 0}, }
+\item[{const int}]{\-\_\-i\-H = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{classrectangle_1_1Rect_a106f73f341700ba494effd45577c0507}
+
+
+Construtor padr\~{a}o. 
+
+Esse construtor cria um ret\^{a}ngulo baseado nos 4 valores passado como argumento. O ret\^{a}ngulo \'{e} definito pelas coordenadas do v\'{e}rtice no canto inferior esquerdo, a dimens\~{a}o horizontal e a dimens\~{a}o vertical. 
+\begin{DoxyParams}{Parâmetros}
+{\em \-\_\-i\-X} & Refer\^{e}ncia para a coordenada X do canto inferior do ret\^{a}ngulo. \\
+\hline
+{\em \-\_\-i\-Y} & Refer\^{e}ncia para a coordenada Y do canto inferior do ret\^{a}ngulo. \\
+\hline
+{\em \-\_\-i\-W} & Refer\^{e}ncia para a largura do ret\^{a}ngulo. \\
+\hline
+{\em \-\_\-i\-H} & Refer\^{e}ncia para a altura do ret\^{a}ngulo. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Excepções}
+{\em \hyperlink{classrectangle_1_1NegativeDimensionsException}{Negative\-Dimensions\-Exception}} & Se o cliente informar valor negativo para as dimensões. \\
+\hline
+\end{DoxyExceptions}
+\hypertarget{classrectangle_1_1Rect_a88fab37b78184456e5300cf6d8d06d79}{\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!Rect@{Rect}}
+\index{Rect@{Rect}!rectangle::Rect@{rectangle\-::\-Rect}}
+\subsubsection[{Rect}]{\setlength{\rightskip}{0pt plus 5cm}rectangle\-::\-Rect\-::\-Rect (
+\begin{DoxyParamCaption}
+\item[{const {\bf Rect} \&}]{\-\_\-\-C\-Obj}
+\end{DoxyParamCaption}
+)}}\label{classrectangle_1_1Rect_a88fab37b78184456e5300cf6d8d06d79}
+
+
+Construtor c\'{o}pia. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em \-\_\-\-C\-Obj} & Objeto vetor a ser {\itshape clonado}. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrectangle_1_1Rect_acff62a31b8bafc67508dbf7f719cf932}{\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!$\sim$\-Rect@{$\sim$\-Rect}}
+\index{$\sim$\-Rect@{$\sim$\-Rect}!rectangle::Rect@{rectangle\-::\-Rect}}
+\subsubsection[{$\sim$\-Rect}]{\setlength{\rightskip}{0pt plus 5cm}rectangle\-::\-Rect\-::$\sim$\-Rect (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classrectangle_1_1Rect_acff62a31b8bafc67508dbf7f719cf932}
+
+
+Destrutor padr\~{a}o\-: faz nada. 
+
+
+
+\subsection{Documentação dos métodos}
+\hypertarget{classrectangle_1_1Rect_ad5766881744587377fe0e9964d928e1d}{\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!area@{area}}
+\index{area@{area}!rectangle::Rect@{rectangle\-::\-Rect}}
+\subsubsection[{area}]{\setlength{\rightskip}{0pt plus 5cm}const int rectangle\-::\-Rect\-::area (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{classrectangle_1_1Rect_ad5766881744587377fe0e9964d928e1d}
+
+
+Recupera a \'{a}rea do ret\^{a}ngulo. 
+
+Calcula a \'{a}rea do ret\^{a}ngulo.
+
+\begin{DoxyReturn}{Retorna}
+\'{A}rea do ret\^{a}ngulo.
+
+O valor da \'{a}rea do ret\^{a}ngulo. 
+\end{DoxyReturn}
+\hypertarget{classrectangle_1_1Rect_a8e876f3cf8c84f666a27e4ac53002b3e}{\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!get\-Data@{get\-Data}}
+\index{get\-Data@{get\-Data}!rectangle::Rect@{rectangle\-::\-Rect}}
+\subsubsection[{get\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void rectangle\-::\-Rect\-::get\-Data (
+\begin{DoxyParamCaption}
+\item[{int \&}]{\-\_\-i\-X, }
+\item[{int \&}]{\-\_\-i\-Y, }
+\item[{int \&}]{\-\_\-i\-W, }
+\item[{int \&}]{\-\_\-i\-H}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classrectangle_1_1Rect_a8e876f3cf8c84f666a27e4ac53002b3e}
+
+
+Recupera as coordeadas do v\'{e}rtice e dimens\~{o}es (W, H) do ret\^{a}ngulo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em \-\_\-i\-X} & Referência para coordenada X do canto inferior esquerdo.\\
+\hline
+{\em \-\_\-i\-Y} & Referência para coordenada Y do canto inferior esquerdo.\\
+\hline
+{\em \-\_\-i\-W} & Referência para a largura do ret\^{a}ngulo.\\
+\hline
+{\em \-\_\-i\-H} & Referência para a altura do ret\^{a}ngulo. \\
+\hline
+\end{DoxyParams}
+\hypertarget{classrectangle_1_1Rect_a0529af65f975bf15e9807923ba0ab8e6}{\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!get\-Height@{get\-Height}}
+\index{get\-Height@{get\-Height}!rectangle::Rect@{rectangle\-::\-Rect}}
+\subsubsection[{get\-Height}]{\setlength{\rightskip}{0pt plus 5cm}int rectangle\-::\-Rect\-::get\-Height (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classrectangle_1_1Rect_a0529af65f975bf15e9807923ba0ab8e6}
+
+
+Recupera a altura do ret\^{a}ngulo. 
+
+\begin{DoxyReturn}{Retorna}
+Altura do ret\^{a}ngulo. 
+\end{DoxyReturn}
+\hypertarget{classrectangle_1_1Rect_a474a45df7293c6c5512463bb5a19f60b}{\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!get\-Width@{get\-Width}}
+\index{get\-Width@{get\-Width}!rectangle::Rect@{rectangle\-::\-Rect}}
+\subsubsection[{get\-Width}]{\setlength{\rightskip}{0pt plus 5cm}int rectangle\-::\-Rect\-::get\-Width (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classrectangle_1_1Rect_a474a45df7293c6c5512463bb5a19f60b}
+
+
+Recupera a largura do ret\^{a}ngulo. 
+
+\begin{DoxyReturn}{Retorna}
+Largura do ret\^{a}ngulo. 
+\end{DoxyReturn}
+\hypertarget{classrectangle_1_1Rect_a8db7151039db46d0b853ec7ad5651b82}{\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!get\-X@{get\-X}}
+\index{get\-X@{get\-X}!rectangle::Rect@{rectangle\-::\-Rect}}
+\subsubsection[{get\-X}]{\setlength{\rightskip}{0pt plus 5cm}int rectangle\-::\-Rect\-::get\-X (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classrectangle_1_1Rect_a8db7151039db46d0b853ec7ad5651b82}
+
+
+Recupera a coordenada X do v\'{e}rtice do ret\^{a}ngulo. 
+
+\begin{DoxyReturn}{Retorna}
+Coordenana X do canto inferior do ret\^{a}ngulo. 
+\end{DoxyReturn}
+\hypertarget{classrectangle_1_1Rect_a8fe066a16e1d9ce9978da34837f9912a}{\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!get\-Y@{get\-Y}}
+\index{get\-Y@{get\-Y}!rectangle::Rect@{rectangle\-::\-Rect}}
+\subsubsection[{get\-Y}]{\setlength{\rightskip}{0pt plus 5cm}int rectangle\-::\-Rect\-::get\-Y (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classrectangle_1_1Rect_a8fe066a16e1d9ce9978da34837f9912a}
+
+
+Recupera a coordenada Y do v\'{e}rtice do ret\^{a}ngulo. 
+
+\begin{DoxyReturn}{Retorna}
+Coordenana Y do canto inferior do ret\^{a}ngulo. 
+\end{DoxyReturn}
+\hypertarget{classrectangle_1_1Rect_a65edca18dfba7e1693568d5f3e819d26}{\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!operator=@{operator=}}
+\index{operator=@{operator=}!rectangle::Rect@{rectangle\-::\-Rect}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Rect} \& rectangle\-::\-Rect\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Rect} \&}]{rhs}
+\end{DoxyParamCaption}
+)}}\label{classrectangle_1_1Rect_a65edca18dfba7e1693568d5f3e819d26}
+
+
+Sobrecarga do operador de atribui\c{c}\~{a}o. 
+
+\begin{DoxyReturn}{Retorna}
+O vetor a ser atribuito ao lado esquerdo do operador. 
+\end{DoxyReturn}
+\hypertarget{classrectangle_1_1Rect_ab85de12f892ba96201f4174315b42732}{\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!rectangle::Rect@{rectangle\-::\-Rect}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}int \& rectangle\-::\-Rect\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const int}]{\-\_\-i\-Idx}
+\end{DoxyParamCaption}
+)}}\label{classrectangle_1_1Rect_ab85de12f892ba96201f4174315b42732}
+
+
+Sobrecarga do operador de indexa\c{c}\~{a}o, com suporte a atribui\c{c}\~{a}o (usado como lhs). 
+
+Retorna a coordenada do campo correspondente ao \'{\i}ndice passado como par\^{a}metro. Lembrando que os \'{\i}ndices 0, 1, 2 e 3 correspondem, respectivamente, a X, Y, Width e Height Esse operador em especial suporta atribui\c{c}\~{a}o. 
+\begin{DoxyExceptions}{Excepções}
+{\em \hyperlink{classrectangle_1_1OutOfBoundsException}{Out\-Of\-Bounds\-Exception}} & Se o \'{\i}ndice usado estiver fora do intervalo \mbox{[}0,3\mbox{]}. \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Retorna}
+A coordenada na posi\c{c}\~{a}o requisitada. 
+\end{DoxyReturn}
+\hypertarget{classrectangle_1_1Rect_ae0afe2cc84876c7feea7af546b8ce758}{\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!rectangle::Rect@{rectangle\-::\-Rect}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}const int \& rectangle\-::\-Rect\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const int}]{\-\_\-i\-Idx}
+\end{DoxyParamCaption}
+) const}}\label{classrectangle_1_1Rect_ae0afe2cc84876c7feea7af546b8ce758}
+
+
+Sobrecarga do operador de indexa\c{c}\~{a}o sem suporte a atribuit\c{c}\~{a}o (consuta, ou rhs). 
+
+Retorna a coordenada do vetor correspondente ao \'{\i}ndice passado como par\^{a}metro. Lembrando que os \'{\i}ndices 0, 1, 2 e 3 correspondem, respectivamente, a X, Y, Width e Height 
+\begin{DoxyExceptions}{Excepções}
+{\em \hyperlink{classrectangle_1_1OutOfBoundsException}{Out\-Of\-Bounds\-Exception}} & Se o \'{\i}ndice usado estiver fora do intervalo \mbox{[}0,3\mbox{]}. \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Retorna}
+A coordenada na posi\c{c}\~{a}o requisitada. 
+\end{DoxyReturn}
+\hypertarget{classrectangle_1_1Rect_af388209e7f7a5329eb7b906f254a8a9a}{\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!set\-Data@{set\-Data}}
+\index{set\-Data@{set\-Data}!rectangle::Rect@{rectangle\-::\-Rect}}
+\subsubsection[{set\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void rectangle\-::\-Rect\-::set\-Data (
+\begin{DoxyParamCaption}
+\item[{const int}]{\-\_\-i\-X, }
+\item[{const int}]{\-\_\-i\-Y, }
+\item[{const int}]{\-\_\-i\-W, }
+\item[{const int}]{\-\_\-i\-H}
+\end{DoxyParamCaption}
+)}}\label{classrectangle_1_1Rect_af388209e7f7a5329eb7b906f254a8a9a}
+
+
+Atribui novos valores aos campos do ret\^{a}ngulo. 
+
+Atribui novos valores a cada uma das quatro campos que definem o ret\^{a}ngulo. 
+\begin{DoxyParams}{Parâmetros}
+{\em \-\_\-i\-X} & Novo valor para a coordenada X do canto inferior esquerdo. \\
+\hline
+{\em \-\_\-i\-Y} & Novo valor para a coordenada Y do canto inferior esquerdo. \\
+\hline
+{\em \-\_\-i\-W} & Novo valor para a largura. \\
+\hline
+{\em \-\_\-i\-H} & Novo valor para a altura. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Excepções}
+{\em \hyperlink{classrectangle_1_1NegativeDimensionsException}{Negative\-Dimensions\-Exception}} & Se o cliente informar valor negativo para as dimensões. \\
+\hline
+\end{DoxyExceptions}
+
+
+\subsection{Documentação das classes amigas e funções relacionadas}
+\hypertarget{classrectangle_1_1Rect_a51e713e2232957a74ffa3cab0f41ab47}{\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!operator!=@{operator!=}}
+\index{operator!=@{operator!=}!rectangle::Rect@{rectangle\-::\-Rect}}
+\subsubsection[{operator!=}]{\setlength{\rightskip}{0pt plus 5cm}const bool operator!= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Rect} \&}]{lhs, }
+\item[{const {\bf Rect} \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classrectangle_1_1Rect_a51e713e2232957a74ffa3cab0f41ab47}
+
+
+Sobrecarga do operador relacional de desigualdade. 
+
+\begin{DoxyReturn}{Retorna}
+Verdadeiro se os vetores s\~{a}o diferentes (em pelo menos uma coordenada). 
+\end{DoxyReturn}
+\hypertarget{classrectangle_1_1Rect_a2ec7afc82beae7cecb72a829b22e4054}{\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!rectangle::Rect@{rectangle\-::\-Rect}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{\-\_\-os, }
+\item[{const {\bf Rect} \&}]{\-\_\-\-C\-Rec}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classrectangle_1_1Rect_a2ec7afc82beae7cecb72a829b22e4054}
+
+
+Sobrecarga do operador $<$$<$, que faz com que seja impresso o ret\^{a}ngulo na forma\-: \mbox{[} x, y, Width, Height \mbox{]}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em \-\_\-os} & Output stream, normalmente o {\ttfamily cout}. \\
+\hline
+{\em \-\_\-\-C\-Rec} & O ret\^{a}ngulo a ser impresso na tela. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+A pr\'{o}pria {\ttfamily os} recebida como par\^{a}metros (para permitir encadeamento). 
+\end{DoxyReturn}
+\hypertarget{classrectangle_1_1Rect_a59e0c8f322425fc2cc0c48cb403c4d5e}{\index{rectangle\-::\-Rect@{rectangle\-::\-Rect}!operator==@{operator==}}
+\index{operator==@{operator==}!rectangle::Rect@{rectangle\-::\-Rect}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}const bool operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Rect} \&}]{lhs, }
+\item[{const {\bf Rect} \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classrectangle_1_1Rect_a59e0c8f322425fc2cc0c48cb403c4d5e}
+
+
+Sobrecarga do operador relacional de igualdade. 
+
+\begin{DoxyReturn}{Retorna}
+Verdadeiro se os vetores s\~{a}o iguais. 
+\end{DoxyReturn}
+
+
+A documentação para esta classe foi gerada a partir dos seguintes ficheiros\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{rect_8h}{rect.\-h}\item 
+\hyperlink{rect_8cpp}{rect.\-cpp}\end{DoxyCompactItemize}

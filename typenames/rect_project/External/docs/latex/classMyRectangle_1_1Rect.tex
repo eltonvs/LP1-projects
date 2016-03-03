@@ -1,0 +1,398 @@
+\hypertarget{classMyRectangle_1_1Rect}{}\section{Referência à classe My\+Rectangle\+:\+:Rect}
+\label{classMyRectangle_1_1Rect}\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}
+
+
+{\ttfamily \#include $<$rect.\+h$>$}
+
+\subsection*{Tipos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{classMyRectangle_1_1Rect_a78ae9cb320d9d52d1ec72a2649af0a65}{field} \{ \hyperlink{classMyRectangle_1_1Rect_a78ae9cb320d9d52d1ec72a2649af0a65a80ca8b14f9e879b877ca47838840ae68}{X} =0, 
+\hyperlink{classMyRectangle_1_1Rect_a78ae9cb320d9d52d1ec72a2649af0a65a85ee4fcab8754f655bf212fc8c38b0e0}{Y} =1, 
+\hyperlink{classMyRectangle_1_1Rect_a78ae9cb320d9d52d1ec72a2649af0a65a304b62595682fac960a1ebefa0d5db0b}{W} =2, 
+\hyperlink{classMyRectangle_1_1Rect_a78ae9cb320d9d52d1ec72a2649af0a65af5a8c9c7138109496e3db289ce464717}{H} =3
+ \}\begin{DoxyCompactList}\small\item\em Posi\c{c}\~{o}es dos campos. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Membros públicos}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMyRectangle_1_1Rect_a79919d6c530e7621f74600114a687807}{Rect} (const int \+\_\+iX=0, const int \+\_\+iY=0, const int \+\_\+iW=0, const int \+\_\+iH=0)
+\begin{DoxyCompactList}\small\item\em Construtor padr\~{a}o. \end{DoxyCompactList}\item 
+\hyperlink{classMyRectangle_1_1Rect_a670c36c53f8202760c739427e6c60d15}{Rect} (const \hyperlink{classMyRectangle_1_1Rect}{Rect} \&t\+C\+Obj)
+\begin{DoxyCompactList}\small\item\em Construtor c\'{o}pia. \end{DoxyCompactList}\item 
+virtual \hyperlink{classMyRectangle_1_1Rect_a173ff8091bb779df6789808de840c7ac}{$\sim$\+Rect} (void)
+\begin{DoxyCompactList}\small\item\em Destrutor padr\~{a}o\+: faz nada. \end{DoxyCompactList}\item 
+int \hyperlink{classMyRectangle_1_1Rect_a2140bde0d75740526912a14a13a8e2fb}{getX} (void) const 
+\begin{DoxyCompactList}\small\item\em Recupera a coordenada X do v\'{e}rtice do ret\^{a}ngulo. \end{DoxyCompactList}\item 
+int \hyperlink{classMyRectangle_1_1Rect_ade9a667c5d4848d70d5af4fb0b5aa7c6}{getY} (void) const 
+\begin{DoxyCompactList}\small\item\em Recupera a coordenada Y do v\'{e}rtice do ret\^{a}ngulo. \end{DoxyCompactList}\item 
+int \hyperlink{classMyRectangle_1_1Rect_ac9977b1c0b83ed00ca499e156d1ee600}{get\+Width} (void) const 
+\begin{DoxyCompactList}\small\item\em Recupera a largura do ret\^{a}ngulo. \end{DoxyCompactList}\item 
+int \hyperlink{classMyRectangle_1_1Rect_a03d99cdf45a3b25eac7f6d1f6d7a2db4}{get\+Height} (void) const 
+\begin{DoxyCompactList}\small\item\em Recupera a altura do ret\^{a}ngulo. \end{DoxyCompactList}\item 
+void \hyperlink{classMyRectangle_1_1Rect_a6712fd56b5a4e82b8afb2792b3f6e81e}{get\+Data} (int \&\+\_\+iX, int \&\+\_\+iY, int \&\+\_\+iW, int \&\+\_\+iH) const 
+\begin{DoxyCompactList}\small\item\em Recupera as coordeadas do v\'{e}rtice e dimens\~{o}es (W, H) do ret\^{a}ngulo. \end{DoxyCompactList}\item 
+int \hyperlink{classMyRectangle_1_1Rect_a1487a3c8eff2cdcf06fb2912d3ba3c42}{area} (void) const 
+\begin{DoxyCompactList}\small\item\em Recupera a \'{a}rea do ret\^{a}ngulo. \end{DoxyCompactList}\item 
+void \hyperlink{classMyRectangle_1_1Rect_a14f9747508910ceb840af754c6d7d84c}{set\+Data} (const int \+\_\+iX, const int \+\_\+iY, const int \+\_\+iW, const int \+\_\+iH)
+\begin{DoxyCompactList}\small\item\em Atribui novos valores aos campos do ret\^{a}ngulo. \end{DoxyCompactList}\item 
+\hyperlink{classMyRectangle_1_1Rect}{Rect} \& \hyperlink{classMyRectangle_1_1Rect_aabdb7cc60d4fe8d8984dd299cd27d2a5}{operator=} (const \hyperlink{classMyRectangle_1_1Rect}{Rect} \&rhs)
+\begin{DoxyCompactList}\small\item\em Sobrecarga do operador de atribui\c{c}\~{a}o. \end{DoxyCompactList}\item 
+int \& \hyperlink{classMyRectangle_1_1Rect_ab3cf22290cfe7815a335176124b30f5f}{operator\mbox{[}$\,$\mbox{]}} (const int ti\+Idx)
+\begin{DoxyCompactList}\small\item\em Sobrecarga do operador de indexa\c{c}\~{a}o, com suporte a atribui\c{c}\~{a}o (usado como lhs). \end{DoxyCompactList}\item 
+const int \& \hyperlink{classMyRectangle_1_1Rect_a3530bda1bee8366295b6c85229ec0bd4}{operator\mbox{[}$\,$\mbox{]}} (const int ti\+Idx) const 
+\begin{DoxyCompactList}\small\item\em Sobrecarga do operador de indexa\c{c}\~{a}o sem suporte a atribuit\c{c}\~{a}o (consuta, ou rhs). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Amigos}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classMyRectangle_1_1Rect_a1c50eac413c2c3f791ca83c9470e65d0}{operator==} (const \hyperlink{classMyRectangle_1_1Rect}{Rect} \&lhs, const \hyperlink{classMyRectangle_1_1Rect}{Rect} \&rhs)
+\begin{DoxyCompactList}\small\item\em Sobrecarga do operador relacional de igualdade. \end{DoxyCompactList}\item 
+bool \hyperlink{classMyRectangle_1_1Rect_a83e9a2733ef5bda5b67713c5661489f2}{operator!=} (const \hyperlink{classMyRectangle_1_1Rect}{Rect} \&lhs, const \hyperlink{classMyRectangle_1_1Rect}{Rect} \&rhs)
+\begin{DoxyCompactList}\small\item\em Sobrecarga do operador relacional de desigualdade. \end{DoxyCompactList}\item 
+std\+::ostream \& \hyperlink{classMyRectangle_1_1Rect_a2ec7afc82beae7cecb72a829b22e4054}{operator$<$$<$} (std\+::ostream \&\+\_\+os, const \hyperlink{classMyRectangle_1_1Rect}{Rect} \&\+\_\+\+C\+Rec)
+\begin{DoxyCompactList}\small\item\em Sobrecarga do operador $<$$<$, que faz com que seja impresso o ret\^{a}ngulo na forma\+: \mbox{[} x, y, Width, Height \mbox{]}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrição detalhada}
+Classe que implementa um ret\^{a}ngulo definido pela coordenada do v\'{e}rtice localizado no canto inferior esquerdo, dimens\~{a}o horizontal e vertical. 
+
+\subsection{Documentação das enumerações}
+\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!field@{field}}
+\index{field@{field}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}
+\subsubsection[{\texorpdfstring{field}{field}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf My\+Rectangle\+::\+Rect\+::field}}\hypertarget{classMyRectangle_1_1Rect_a78ae9cb320d9d52d1ec72a2649af0a65}{}\label{classMyRectangle_1_1Rect_a78ae9cb320d9d52d1ec72a2649af0a65}
+
+
+Posi\c{c}\~{o}es dos campos. 
+
+\begin{Desc}
+\item[Valores de enumerações]\par
+\begin{description}
+\index{X@{X}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!X@{X}}\item[{\em 
+X\hypertarget{classMyRectangle_1_1Rect_a78ae9cb320d9d52d1ec72a2649af0a65a80ca8b14f9e879b877ca47838840ae68}{}\label{classMyRectangle_1_1Rect_a78ae9cb320d9d52d1ec72a2649af0a65a80ca8b14f9e879b877ca47838840ae68}
+}]\index{Y@{Y}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!Y@{Y}}\item[{\em 
+Y\hypertarget{classMyRectangle_1_1Rect_a78ae9cb320d9d52d1ec72a2649af0a65a85ee4fcab8754f655bf212fc8c38b0e0}{}\label{classMyRectangle_1_1Rect_a78ae9cb320d9d52d1ec72a2649af0a65a85ee4fcab8754f655bf212fc8c38b0e0}
+}]\index{W@{W}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!W@{W}}\item[{\em 
+W\hypertarget{classMyRectangle_1_1Rect_a78ae9cb320d9d52d1ec72a2649af0a65a304b62595682fac960a1ebefa0d5db0b}{}\label{classMyRectangle_1_1Rect_a78ae9cb320d9d52d1ec72a2649af0a65a304b62595682fac960a1ebefa0d5db0b}
+}]\index{H@{H}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!H@{H}}\item[{\em 
+H\hypertarget{classMyRectangle_1_1Rect_a78ae9cb320d9d52d1ec72a2649af0a65af5a8c9c7138109496e3db289ce464717}{}\label{classMyRectangle_1_1Rect_a78ae9cb320d9d52d1ec72a2649af0a65af5a8c9c7138109496e3db289ce464717}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Documentação dos Construtores \& Destrutor}
+\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!Rect@{Rect}}
+\index{Rect@{Rect}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}
+\subsubsection[{\texorpdfstring{Rect(const int \+\_\+i\+X=0, const int \+\_\+i\+Y=0, const int \+\_\+i\+W=0, const int \+\_\+i\+H=0)}{Rect(const int _iX=0, const int _iY=0, const int _iW=0, const int _iH=0)}}]{\setlength{\rightskip}{0pt plus 5cm}My\+Rectangle\+::\+Rect\+::\+Rect (
+\begin{DoxyParamCaption}
+\item[{const int}]{\+\_\+iX = {\ttfamily 0}, }
+\item[{const int}]{\+\_\+iY = {\ttfamily 0}, }
+\item[{const int}]{\+\_\+iW = {\ttfamily 0}, }
+\item[{const int}]{\+\_\+iH = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\hypertarget{classMyRectangle_1_1Rect_a79919d6c530e7621f74600114a687807}{}\label{classMyRectangle_1_1Rect_a79919d6c530e7621f74600114a687807}
+
+
+Construtor padr\~{a}o. 
+
+Esse construtor cria um ret\^{a}ngulo baseado nos 4 valores passado como argumento. O ret\^{a}ngulo \'{e} definito pelas coordenadas do v\'{e}rtice no canto inferior esquerdo, a dimens\~{a}o horizontal e a dimens\~{a}o vertical. 
+\begin{DoxyParams}{Parâmetros}
+{\em \+\_\+iX} & Refer\^{e}ncia para a coordenada X do canto inferior do ret\^{a}ngulo. \\
+\hline
+{\em \+\_\+iY} & Refer\^{e}ncia para a coordenada Y do canto inferior do ret\^{a}ngulo. \\
+\hline
+{\em \+\_\+iW} & Refer\^{e}ncia para a largura do ret\^{a}ngulo. \\
+\hline
+{\em \+\_\+iH} & Refer\^{e}ncia para a altura do ret\^{a}ngulo. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Excepções}
+{\em Negative\+Dimensions\+Exception} & Se o cliente informar valor negativo para as dimensões. \\
+\hline
+\end{DoxyExceptions}
+\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!Rect@{Rect}}
+\index{Rect@{Rect}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}
+\subsubsection[{\texorpdfstring{Rect(const Rect \&t\+C\+Obj)}{Rect(const Rect &tCObj)}}]{\setlength{\rightskip}{0pt plus 5cm}My\+Rectangle\+::\+Rect\+::\+Rect (
+\begin{DoxyParamCaption}
+\item[{const {\bf Rect} \&}]{\+\_\+\+C\+Obj}
+\end{DoxyParamCaption}
+)}\hypertarget{classMyRectangle_1_1Rect_a670c36c53f8202760c739427e6c60d15}{}\label{classMyRectangle_1_1Rect_a670c36c53f8202760c739427e6c60d15}
+
+
+Construtor c\'{o}pia. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em \+\_\+\+C\+Obj} & Objeto vetor a ser {\itshape clonado}. \\
+\hline
+\end{DoxyParams}
+\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!````~Rect@{$\sim$\+Rect}}
+\index{````~Rect@{$\sim$\+Rect}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}
+\subsubsection[{\texorpdfstring{$\sim$\+Rect(void)}{~Rect(void)}}]{\setlength{\rightskip}{0pt plus 5cm}My\+Rectangle\+::\+Rect\+::$\sim$\+Rect (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\hypertarget{classMyRectangle_1_1Rect_a173ff8091bb779df6789808de840c7ac}{}\label{classMyRectangle_1_1Rect_a173ff8091bb779df6789808de840c7ac}
+
+
+Destrutor padr\~{a}o\+: faz nada. 
+
+
+
+\subsection{Documentação dos métodos}
+\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!area@{area}}
+\index{area@{area}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}
+\subsubsection[{\texorpdfstring{area(void) const }{area(void) const }}]{\setlength{\rightskip}{0pt plus 5cm}int My\+Rectangle\+::\+Rect\+::area (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classMyRectangle_1_1Rect_a1487a3c8eff2cdcf06fb2912d3ba3c42}{}\label{classMyRectangle_1_1Rect_a1487a3c8eff2cdcf06fb2912d3ba3c42}
+
+
+Recupera a \'{a}rea do ret\^{a}ngulo. 
+
+Calcula a \'{a}rea do ret\^{a}ngulo.
+
+\begin{DoxyReturn}{Retorna}
+\'{A}rea do ret\^{a}ngulo.
+
+O valor da \'{a}rea do ret\^{a}ngulo. 
+\end{DoxyReturn}
+\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!get\+Data@{get\+Data}}
+\index{get\+Data@{get\+Data}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}
+\subsubsection[{\texorpdfstring{get\+Data(int \&\+\_\+i\+X, int \&\+\_\+i\+Y, int \&\+\_\+i\+W, int \&\+\_\+i\+H) const }{getData(int &_iX, int &_iY, int &_iW, int &_iH) const }}]{\setlength{\rightskip}{0pt plus 5cm}void My\+Rectangle\+::\+Rect\+::get\+Data (
+\begin{DoxyParamCaption}
+\item[{int \&}]{\+\_\+iX, }
+\item[{int \&}]{\+\_\+iY, }
+\item[{int \&}]{\+\_\+iW, }
+\item[{int \&}]{\+\_\+iH}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classMyRectangle_1_1Rect_a6712fd56b5a4e82b8afb2792b3f6e81e}{}\label{classMyRectangle_1_1Rect_a6712fd56b5a4e82b8afb2792b3f6e81e}
+
+
+Recupera as coordeadas do v\'{e}rtice e dimens\~{o}es (W, H) do ret\^{a}ngulo. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em \+\_\+iX} & Referência para coordenada X do canto inferior esquerdo.\\
+\hline
+{\em \+\_\+iY} & Referência para coordenada Y do canto inferior esquerdo.\\
+\hline
+{\em \+\_\+iW} & Referência para a largura do ret\^{a}ngulo.\\
+\hline
+{\em \+\_\+iH} & Referência para a altura do ret\^{a}ngulo. \\
+\hline
+\end{DoxyParams}
+\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!get\+Height@{get\+Height}}
+\index{get\+Height@{get\+Height}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}
+\subsubsection[{\texorpdfstring{get\+Height(void) const }{getHeight(void) const }}]{\setlength{\rightskip}{0pt plus 5cm}int My\+Rectangle\+::\+Rect\+::get\+Height (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classMyRectangle_1_1Rect_a03d99cdf45a3b25eac7f6d1f6d7a2db4}{}\label{classMyRectangle_1_1Rect_a03d99cdf45a3b25eac7f6d1f6d7a2db4}
+
+
+Recupera a altura do ret\^{a}ngulo. 
+
+\begin{DoxyReturn}{Retorna}
+Altura do ret\^{a}ngulo. 
+\end{DoxyReturn}
+\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!get\+Width@{get\+Width}}
+\index{get\+Width@{get\+Width}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}
+\subsubsection[{\texorpdfstring{get\+Width(void) const }{getWidth(void) const }}]{\setlength{\rightskip}{0pt plus 5cm}int My\+Rectangle\+::\+Rect\+::get\+Width (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classMyRectangle_1_1Rect_ac9977b1c0b83ed00ca499e156d1ee600}{}\label{classMyRectangle_1_1Rect_ac9977b1c0b83ed00ca499e156d1ee600}
+
+
+Recupera a largura do ret\^{a}ngulo. 
+
+\begin{DoxyReturn}{Retorna}
+Largura do ret\^{a}ngulo. 
+\end{DoxyReturn}
+\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!getX@{getX}}
+\index{getX@{getX}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}
+\subsubsection[{\texorpdfstring{get\+X(void) const }{getX(void) const }}]{\setlength{\rightskip}{0pt plus 5cm}int My\+Rectangle\+::\+Rect\+::getX (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classMyRectangle_1_1Rect_a2140bde0d75740526912a14a13a8e2fb}{}\label{classMyRectangle_1_1Rect_a2140bde0d75740526912a14a13a8e2fb}
+
+
+Recupera a coordenada X do v\'{e}rtice do ret\^{a}ngulo. 
+
+\begin{DoxyReturn}{Retorna}
+Coordenana X do canto inferior do ret\^{a}ngulo. 
+\end{DoxyReturn}
+\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!getY@{getY}}
+\index{getY@{getY}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}
+\subsubsection[{\texorpdfstring{get\+Y(void) const }{getY(void) const }}]{\setlength{\rightskip}{0pt plus 5cm}int My\+Rectangle\+::\+Rect\+::getY (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classMyRectangle_1_1Rect_ade9a667c5d4848d70d5af4fb0b5aa7c6}{}\label{classMyRectangle_1_1Rect_ade9a667c5d4848d70d5af4fb0b5aa7c6}
+
+
+Recupera a coordenada Y do v\'{e}rtice do ret\^{a}ngulo. 
+
+\begin{DoxyReturn}{Retorna}
+Coordenana Y do canto inferior do ret\^{a}ngulo. 
+\end{DoxyReturn}
+\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!operator=@{operator=}}
+\index{operator=@{operator=}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}
+\subsubsection[{\texorpdfstring{operator=(const Rect \&rhs)}{operator=(const Rect &rhs)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Rect} \& My\+Rectangle\+::\+Rect\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Rect} \&}]{rhs}
+\end{DoxyParamCaption}
+)}\hypertarget{classMyRectangle_1_1Rect_aabdb7cc60d4fe8d8984dd299cd27d2a5}{}\label{classMyRectangle_1_1Rect_aabdb7cc60d4fe8d8984dd299cd27d2a5}
+
+
+Sobrecarga do operador de atribui\c{c}\~{a}o. 
+
+\begin{DoxyReturn}{Retorna}
+O vetor a ser atribuito ao lado esquerdo do operador. 
+\end{DoxyReturn}
+\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}
+\subsubsection[{\texorpdfstring{operator[](const int ti\+Idx)}{operator[](const int tiIdx)}}]{\setlength{\rightskip}{0pt plus 5cm}int \& My\+Rectangle\+::\+Rect\+::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const int}]{\+\_\+i\+Idx}
+\end{DoxyParamCaption}
+)}\hypertarget{classMyRectangle_1_1Rect_ab3cf22290cfe7815a335176124b30f5f}{}\label{classMyRectangle_1_1Rect_ab3cf22290cfe7815a335176124b30f5f}
+
+
+Sobrecarga do operador de indexa\c{c}\~{a}o, com suporte a atribui\c{c}\~{a}o (usado como lhs). 
+
+Retorna a coordenada do campo correspondente ao \'{\i}ndice passado como par\^{a}metro. Lembrando que os \'{\i}ndices 0, 1, 2 e 3 correspondem, respectivamente, a X, Y, Width e Height Esse operador em especial suporta atribui\c{c}\~{a}o. 
+\begin{DoxyExceptions}{Excepções}
+{\em Out\+Of\+Bounds\+Exception} & Se o \'{\i}ndice usado estiver fora do intervalo \mbox{[}0,3\mbox{]}. \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Retorna}
+A coordenada na posi\c{c}\~{a}o requisitada. 
+\end{DoxyReturn}
+\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}
+\subsubsection[{\texorpdfstring{operator[](const int ti\+Idx) const }{operator[](const int tiIdx) const }}]{\setlength{\rightskip}{0pt plus 5cm}const int \& My\+Rectangle\+::\+Rect\+::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const int}]{\+\_\+i\+Idx}
+\end{DoxyParamCaption}
+) const}\hypertarget{classMyRectangle_1_1Rect_a3530bda1bee8366295b6c85229ec0bd4}{}\label{classMyRectangle_1_1Rect_a3530bda1bee8366295b6c85229ec0bd4}
+
+
+Sobrecarga do operador de indexa\c{c}\~{a}o sem suporte a atribuit\c{c}\~{a}o (consuta, ou rhs). 
+
+Retorna a coordenada do vetor correspondente ao \'{\i}ndice passado como par\^{a}metro. Lembrando que os \'{\i}ndices 0, 1, 2 e 3 correspondem, respectivamente, a X, Y, Width e Height 
+\begin{DoxyExceptions}{Excepções}
+{\em Out\+Of\+Bounds\+Exception} & Se o \'{\i}ndice usado estiver fora do intervalo \mbox{[}0,3\mbox{]}. \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Retorna}
+A coordenada na posi\c{c}\~{a}o requisitada. 
+\end{DoxyReturn}
+\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!set\+Data@{set\+Data}}
+\index{set\+Data@{set\+Data}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}
+\subsubsection[{\texorpdfstring{set\+Data(const int \+\_\+i\+X, const int \+\_\+i\+Y, const int \+\_\+i\+W, const int \+\_\+i\+H)}{setData(const int _iX, const int _iY, const int _iW, const int _iH)}}]{\setlength{\rightskip}{0pt plus 5cm}void My\+Rectangle\+::\+Rect\+::set\+Data (
+\begin{DoxyParamCaption}
+\item[{const int}]{\+\_\+iX, }
+\item[{const int}]{\+\_\+iY, }
+\item[{const int}]{\+\_\+iW, }
+\item[{const int}]{\+\_\+iH}
+\end{DoxyParamCaption}
+)}\hypertarget{classMyRectangle_1_1Rect_a14f9747508910ceb840af754c6d7d84c}{}\label{classMyRectangle_1_1Rect_a14f9747508910ceb840af754c6d7d84c}
+
+
+Atribui novos valores aos campos do ret\^{a}ngulo. 
+
+Atribui novos valores a cada uma das quatro campos que definem o ret\^{a}ngulo. 
+\begin{DoxyParams}{Parâmetros}
+{\em \+\_\+iX} & Novo valor para a coordenada X do canto inferior esquerdo. \\
+\hline
+{\em \+\_\+iY} & Novo valor para a coordenada Y do canto inferior esquerdo. \\
+\hline
+{\em \+\_\+iW} & Novo valor para a largura. \\
+\hline
+{\em \+\_\+iH} & Novo valor para a altura. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Excepções}
+{\em Negative\+Dimensions\+Exception} & Se o cliente informar valor negativo para as dimensões. \\
+\hline
+\end{DoxyExceptions}
+
+
+\subsection{Documentação das classes amigas e funções relacionadas}
+\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}
+\subsubsection[{\texorpdfstring{operator"!=}{operator!=}}]{\setlength{\rightskip}{0pt plus 5cm}bool operator!= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Rect} \&}]{lhs, }
+\item[{const {\bf Rect} \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{classMyRectangle_1_1Rect_a83e9a2733ef5bda5b67713c5661489f2}{}\label{classMyRectangle_1_1Rect_a83e9a2733ef5bda5b67713c5661489f2}
+
+
+Sobrecarga do operador relacional de desigualdade. 
+
+\begin{DoxyReturn}{Retorna}
+Verdadeiro se os vetores s\~{a}o diferentes (em pelo menos uma coordenada). 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parâmetros}
+{\em \+\_\+lhs} & Left hand side term of \textquotesingle{}==\textquotesingle{} expression. \\
+\hline
+{\em \+\_\+rhs} & Right hand side term of \textquotesingle{}==\textquotesingle{} expression. \\
+\hline
+\end{DoxyParams}
+\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}
+\subsubsection[{\texorpdfstring{operator$<$$<$}{operator<<}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{\+\_\+os, }
+\item[{const {\bf Rect} \&}]{\+\_\+\+C\+Rec}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{classMyRectangle_1_1Rect_a2ec7afc82beae7cecb72a829b22e4054}{}\label{classMyRectangle_1_1Rect_a2ec7afc82beae7cecb72a829b22e4054}
+
+
+Sobrecarga do operador $<$$<$, que faz com que seja impresso o ret\^{a}ngulo na forma\+: \mbox{[} x, y, Width, Height \mbox{]}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em \+\_\+os} & Output stream, normalmente o {\ttfamily cout}. \\
+\hline
+{\em \+\_\+\+C\+Rec} & O ret\^{a}ngulo a ser impresso na tela. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+A pr\'{o}pria {\ttfamily os} recebida como par\^{a}metros (para permitir encadeamento). 
+\end{DoxyReturn}
+\index{My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}!operator==@{operator==}}
+\index{operator==@{operator==}!My\+Rectangle\+::\+Rect@{My\+Rectangle\+::\+Rect}}
+\subsubsection[{\texorpdfstring{operator==}{operator==}}]{\setlength{\rightskip}{0pt plus 5cm}bool operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Rect} \&}]{lhs, }
+\item[{const {\bf Rect} \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{classMyRectangle_1_1Rect_a1c50eac413c2c3f791ca83c9470e65d0}{}\label{classMyRectangle_1_1Rect_a1c50eac413c2c3f791ca83c9470e65d0}
+
+
+Sobrecarga do operador relacional de igualdade. 
+
+\begin{DoxyReturn}{Retorna}
+Verdadeiro se os vetores s\~{a}o iguais. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parâmetros}
+{\em \+\_\+lhs} & Left hand side term of \textquotesingle{}==\textquotesingle{} expression. \\
+\hline
+{\em \+\_\+rhs} & Right hand side term of \textquotesingle{}==\textquotesingle{} expression. \\
+\hline
+\end{DoxyParams}
+
+
+A documentação para esta classe foi gerada a partir dos seguintes ficheiros\+:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{rect_8h}{rect.\+h}\item 
+\hyperlink{rect_8cpp}{rect.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,87 @@
+\hypertarget{namespacerectangle}{\section{Referência ao namespace rectangle}
+\label{namespacerectangle}\index{rectangle@{rectangle}}
+}
+
+
+Namespace que engloba as opera\c{c}\~{o}es e exce\c{c}\~{o}es relacionadas com ret\^{a}ngulo.  
+
+
+\subsection*{Componentes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classrectangle_1_1Rect}{Rect}
+\item 
+class \hyperlink{classrectangle_1_1RectDException}{Rect\-D\-Exception}
+\begin{DoxyCompactList}\small\item\em Classe cria a classe de exce\c{c}\~{o}s geradas pela classe \hyperlink{classrectangle_1_1Rect}{Rect}. \end{DoxyCompactList}\item 
+class \hyperlink{classrectangle_1_1OutOfBoundsException}{Out\-Of\-Bounds\-Exception}
+\begin{DoxyCompactList}\small\item\em Classe erro usada para indicar acesso do vetor fora dos \'{\i}ndices permitido \mbox{[}0,3\mbox{]}. \end{DoxyCompactList}\item 
+class \hyperlink{classrectangle_1_1NegativeDimensionsException}{Negative\-Dimensions\-Exception}
+\begin{DoxyCompactList}\small\item\em Classe erro usada para indicar que o cliente forneceu dimensoes negativas ao criar um ret\^{a}ngulo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+const bool \hyperlink{namespacerectangle_ac0f53cc7302582a688e8a78390ef0efe}{operator==} (const \hyperlink{classrectangle_1_1Rect}{Rect} \&lhs, const \hyperlink{classrectangle_1_1Rect}{Rect} \&rhs)
+\begin{DoxyCompactList}\small\item\em Sobrecarga do operador relacional de igualdade. \end{DoxyCompactList}\item 
+const bool \hyperlink{namespacerectangle_a51e2779806c67db6f34c78059f57e755}{operator!=} (const \hyperlink{classrectangle_1_1Rect}{Rect} \&lhs, const \hyperlink{classrectangle_1_1Rect}{Rect} \&rhs)
+\begin{DoxyCompactList}\small\item\em Sobrecarga do operador relacional de desigualdade. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Descrição detalhada}
+Namespace que engloba as opera\c{c}\~{o}es e exce\c{c}\~{o}es relacionadas com ret\^{a}ngulo. 
+\begin{DoxyPre}
+SOURCE FILE : \hyperlink{rect_8h}{rect.h}
+DESCRIPTION.: This class implements a simple Rectangle whose sides are
+              always parallel to the Cartesian axes.
+              The rectangle is defined by a 2D point at the lower left
+              corner and two lengths, one horizontal and other vertical.
+              The data are all integer.
+              This class has been designed as a teching example for some
+              programming concepts in C++, such as templates and function
+              pointer.
+AUTHOR......: Selan R. dos Santos.
+LOCATION....: DIMAp/UFRN.
+SATARTED ON.: February 24th, 2015
+CHANGES.....: No {\itshape bug} found so far.\end{DoxyPre}
+
+
+
+\begin{DoxyPre}TO COMPILE..: g++ -c \hyperlink{rect_8cpp}{rect.cpp}
+OBS.........: Part of the IMD0020/IMD0030.\end{DoxyPre}
+
+
+
+\begin{DoxyPre}LAST UPDATE.: None.
+\end{DoxyPre}
+ 
+
+\subsection{Documentação das funções}
+\hypertarget{namespacerectangle_a51e2779806c67db6f34c78059f57e755}{\index{rectangle@{rectangle}!operator!=@{operator!=}}
+\index{operator!=@{operator!=}!rectangle@{rectangle}}
+\subsubsection[{operator!=}]{\setlength{\rightskip}{0pt plus 5cm}const bool rectangle\-::operator!= (
+\begin{DoxyParamCaption}
+\item[{const Rect \&}]{lhs, }
+\item[{const Rect \&}]{rhs}
+\end{DoxyParamCaption}
+)}}\label{namespacerectangle_a51e2779806c67db6f34c78059f57e755}
+
+
+Sobrecarga do operador relacional de desigualdade. 
+
+\begin{DoxyReturn}{Retorna}
+Verdadeiro se os vetores s\~{a}o diferentes (em pelo menos uma coordenada). 
+\end{DoxyReturn}
+\hypertarget{namespacerectangle_ac0f53cc7302582a688e8a78390ef0efe}{\index{rectangle@{rectangle}!operator==@{operator==}}
+\index{operator==@{operator==}!rectangle@{rectangle}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}const bool rectangle\-::operator== (
+\begin{DoxyParamCaption}
+\item[{const Rect \&}]{lhs, }
+\item[{const Rect \&}]{rhs}
+\end{DoxyParamCaption}
+)}}\label{namespacerectangle_ac0f53cc7302582a688e8a78390ef0efe}
+
+
+Sobrecarga do operador relacional de igualdade. 
+
+\begin{DoxyReturn}{Retorna}
+Verdadeiro se os vetores s\~{a}o iguais. 
+\end{DoxyReturn}

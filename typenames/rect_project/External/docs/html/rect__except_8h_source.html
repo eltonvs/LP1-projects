@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.5"/>
+<title>My Project: Código-Fonte de rect_except.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.5 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Página&#160;principal</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Ficheiros</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Localizar" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Lista&#160;de&#160;ficheiros</span></a></li>
+      <li><a href="globals.html"><span>Ficheiros&#160;membro</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tudo</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Ficheiros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Funções</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerações</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valores da enumeração</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Amigos</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">rect_except.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="rect__except_8h.html">Ir para a documentação deste ficheiro.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef RECT_EXCEPT_H_</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define RECT_EXCEPT_H_</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using</span> std::cout;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>rectangle {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classrectangle_1_1RectDException.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classrectangle_1_1RectDException.html">RectDException</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classrectangle_1_1RectDException.html#aba80bb7ca6416979440cc0aeb8544888">   20</a></span>&#160;    <a class="code" href="classrectangle_1_1RectDException.html#aba80bb7ca6416979440cc0aeb8544888">RectDException</a>( <span class="keyword">const</span> <span class="keywordtype">string</span> &amp; msg = <span class="stringliteral">&quot;&quot;</span> ) : message( msg )</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;      { }</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classrectangle_1_1RectDException.html#a0e7774627aac6686259d373a1b008858">   23</a></span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classrectangle_1_1RectDException.html#a0e7774627aac6686259d373a1b008858">~RectDException</a>( )</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;      { }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classrectangle_1_1RectDException.html#a233f2508115296c2e15e574aad000daf">   30</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">string</span> <a class="code" href="classrectangle_1_1RectDException.html#a233f2508115296c2e15e574aad000daf">toString</a>( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">      </span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;Exception &quot;</span> + string( <span class="stringliteral">&quot;: &quot;</span> ) + what( ); }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classrectangle_1_1RectDException.html#aac989318d66a6548295e37611309eea8">   37</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">string</span> <a class="code" href="classrectangle_1_1RectDException.html#aac989318d66a6548295e37611309eea8">what</a>( )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">      </span>{ <span class="keywordflow">return</span> message; }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">string</span> message;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classrectangle_1_1OutOfBoundsException.html">   47</a></span>&#160;<span class="keyword">class </span><a class="code" href="classrectangle_1_1OutOfBoundsException.html">OutOfBoundsException</a>: <span class="keyword">public</span> <a class="code" href="classrectangle_1_1RectDException.html">RectDException</a> </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classrectangle_1_1OutOfBoundsException.html#a7380515d17520a742472bfc20fccd51f">   51</a></span>&#160;    <a class="code" href="classrectangle_1_1OutOfBoundsException.html#a7380515d17520a742472bfc20fccd51f">OutOfBoundsException</a>( <span class="keyword">const</span> <span class="keywordtype">string</span> &amp; msg = <span class="stringliteral">&quot;Acces to element out of bounds!&quot;</span> ) : <a class="code" href="classrectangle_1_1RectDException.html">RectDException</a>( msg )</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      { }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classrectangle_1_1NegativeDimensionsException.html">   56</a></span>&#160;<span class="keyword">class </span><a class="code" href="classrectangle_1_1NegativeDimensionsException.html">NegativeDimensionsException</a>: <span class="keyword">public</span> <a class="code" href="classrectangle_1_1RectDException.html">RectDException</a> </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classrectangle_1_1NegativeDimensionsException.html#a6192c9c93a330d0b83c0e9f4a4f416bf">   60</a></span>&#160;    <a class="code" href="classrectangle_1_1NegativeDimensionsException.html#a6192c9c93a330d0b83c0e9f4a4f416bf">NegativeDimensionsException</a>( <span class="keyword">const</span> <span class="keywordtype">string</span> &amp; msg = <span class="stringliteral">&quot;Negative dimensions (width or height) are not allowed!&quot;</span> ) : <a class="code" href="classrectangle_1_1RectDException.html">RectDException</a>( msg )</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      { }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} <span class="comment">// namespace rectangle</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classrectangle_1_1NegativeDimensionsException_html_a6192c9c93a330d0b83c0e9f4a4f416bf"><div class="ttname"><a href="classrectangle_1_1NegativeDimensionsException.html#a6192c9c93a330d0b83c0e9f4a4f416bf">rectangle::NegativeDimensionsException::NegativeDimensionsException</a></div><div class="ttdeci">NegativeDimensionsException(const string &amp;msg=&quot;Negative dimensions (width or height) are not allowed!&quot;)</div><div class="ttdoc">Exceção gerada quando é fornecido valores negativos para largura e/ou algura. </div><div class="ttdef"><b>Definition:</b> rect_except.h:60</div></div>
+<div class="ttc" id="classrectangle_1_1RectDException_html_aac989318d66a6548295e37611309eea8"><div class="ttname"><a href="classrectangle_1_1RectDException.html#aac989318d66a6548295e37611309eea8">rectangle::RectDException::what</a></div><div class="ttdeci">virtual string what() const </div><div class="ttdoc">Recupera a mesagem de erro armazenada na classe. </div><div class="ttdef"><b>Definition:</b> rect_except.h:37</div></div>
+<div class="ttc" id="classrectangle_1_1RectDException_html"><div class="ttname"><a href="classrectangle_1_1RectDException.html">rectangle::RectDException</a></div><div class="ttdoc">Classe cria a classe de exceçõs geradas pela classe Rect. </div><div class="ttdef"><b>Definition:</b> rect_except.h:13</div></div>
+<div class="ttc" id="classrectangle_1_1NegativeDimensionsException_html"><div class="ttname"><a href="classrectangle_1_1NegativeDimensionsException.html">rectangle::NegativeDimensionsException</a></div><div class="ttdoc">Classe erro usada para indicar que o cliente forneceu dimensoes negativas ao criar um retângulo...</div><div class="ttdef"><b>Definition:</b> rect_except.h:56</div></div>
+<div class="ttc" id="classrectangle_1_1RectDException_html_aba80bb7ca6416979440cc0aeb8544888"><div class="ttname"><a href="classrectangle_1_1RectDException.html#aba80bb7ca6416979440cc0aeb8544888">rectangle::RectDException::RectDException</a></div><div class="ttdeci">RectDException(const string &amp;msg=&quot;&quot;)</div><div class="ttdoc">Inicializa o membro msg com uma string vazia. </div><div class="ttdef"><b>Definition:</b> rect_except.h:20</div></div>
+<div class="ttc" id="classrectangle_1_1RectDException_html_a0e7774627aac6686259d373a1b008858"><div class="ttname"><a href="classrectangle_1_1RectDException.html#a0e7774627aac6686259d373a1b008858">rectangle::RectDException::~RectDException</a></div><div class="ttdeci">virtual ~RectDException()</div><div class="ttdoc">Destrutor virtual, não faz nada. </div><div class="ttdef"><b>Definition:</b> rect_except.h:23</div></div>
+<div class="ttc" id="classrectangle_1_1OutOfBoundsException_html"><div class="ttname"><a href="classrectangle_1_1OutOfBoundsException.html">rectangle::OutOfBoundsException</a></div><div class="ttdoc">Classe erro usada para indicar acesso do vetor fora dos índices permitido [0,3]. </div><div class="ttdef"><b>Definition:</b> rect_except.h:47</div></div>
+<div class="ttc" id="classrectangle_1_1OutOfBoundsException_html_a7380515d17520a742472bfc20fccd51f"><div class="ttname"><a href="classrectangle_1_1OutOfBoundsException.html#a7380515d17520a742472bfc20fccd51f">rectangle::OutOfBoundsException::OutOfBoundsException</a></div><div class="ttdeci">OutOfBoundsException(const string &amp;msg=&quot;Acces to element out of bounds!&quot;)</div><div class="ttdoc">Exceção gerada quando se tenta acessar elementos fora do limite do retângulo [0,3] usando o operator[...</div><div class="ttdef"><b>Definition:</b> rect_except.h:51</div></div>
+<div class="ttc" id="classrectangle_1_1RectDException_html_a233f2508115296c2e15e574aad000daf"><div class="ttname"><a href="classrectangle_1_1RectDException.html#a233f2508115296c2e15e574aad000daf">rectangle::RectDException::toString</a></div><div class="ttdeci">virtual string toString() const </div><div class="ttdoc">Simplesmente formata a mensagem de erro, indicando que é uma exception. </div><div class="ttdef"><b>Definition:</b> rect_except.h:30</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado em Sexta, 27 de Fevereiro de 2015 19:44:17 para My Project por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.5
+</small></address>
+</body>
+</html>
