@@ -7,6 +7,7 @@
 #include <sstream>
 #include <random>
 #include <vector>
+#include <string>
 #include <chrono>
 #include <algorithm>
 #include <functional>
@@ -27,20 +28,33 @@ void randomFill(std::vector<int> &, const int, const int, const unsigned int);
 
 // *** AQUI EH O CLIENTE!!!
 bool predicateNegatives(int _a) {
-    return ( _a < 0 );
+    return (_a < 0);
 }
 
-bool predicateLess50 (int _a) {
-    return ( _a < 50 );
+bool predicateLess50(int _a) {
+    return (_a < 50);
 }
-// *************
 
+bool vingadores(std::string _hero) {
+    std::vector<std::string> avengers = {
+        "capitão américa",
+        "falcão",
+        "hulk",
+        "thor",
+        "homem de ferro",
+        "visão",
+        "viúva negra"
+    };
 
+    auto result = std::find(avengers.begin(), avengers.end(), _hero);
+
+    return result != avengers.end();
+}
 //
 // Main program.
 //
 int main(int argc, char *argv[]) {
-    auto arrSz(N_DEFAULT); // Initialize vector size.
+    auto arrSz(N_DEFAULT);  // Initialize vector size.
 
     // Process any command line arguments.
     if (argc > 1) {
@@ -53,7 +67,7 @@ int main(int argc, char *argv[]) {
         std::cout << "\n\n>>> Invalid argument provided!\n"
                   << "    Correct sintax: " << argv[0] << " [N > 0 and N <= " << N_MAX << "]\n"
                   << "    Assuming N = " << N_DEFAULT << " for this run.\n";
-        arrSz = N_DEFAULT; // Back to the default value.
+        arrSz = N_DEFAULT;  // Back to the default value.
     }
 
     std::cout << "\n\n>>> Required array size is: " << arrSz << "\n\n";
@@ -64,36 +78,67 @@ int main(int argc, char *argv[]) {
     // Seed with a real random value, if available.
     std::random_device r;
     // Fill it up with random integers.
-    randomFill( V, -100, 100, r() );
+    randomFill(V, -100, 100, r());
 
     // Printing out the array, just to make sure we've got random integers.
     std::cout << ">>> ORIGINAL Vet = [ ";
-    //std::for_each(V.begin(), V.end(), [](const int &i){ std::cout << i << ' '; });
+    // std::for_each(V.begin(), V.end(), [](const int &i){ std::cout << i << ' '; });
     for (auto i : V)
         std::cout << i << ' ';
     std::cout << "], Size = " << arrSz << "\n\n";
 
-    //================================================================================
+    //==========================================================================
     std::cout << ">>> Compacting now...\n\n";
     compact(V, predicateLess50);
-    //compact( V, predicateNegatives);
-    //================================================================================
+    // compact(V, predicateNegatives);
+    //==========================================================================
 
     // Printing compacted array.
     std::cout << ">>> COMPACTED Vet = [ ";
-    for( const auto &e : V ) std::cout << e << " ";
+    for (const auto &e : V) std::cout << e << " ";
     std::cout << "], Size = " << V.size() << "\n\n";
+
+    //==========================================================================
+    //
+    // Second type of array.
+    //
+    //==========================================================================
+    std::vector<std::string> V2 = {
+        "aquamen",
+        "batman",
+        "capitão américa",
+        "demolidor",
+        "falcão",
+        "hulk",
+        "thor",
+        "deadpool"
+    };
+
+    std::cout << ">>> ORIGINAL Vet = [ ";
+    for (const auto &e : V2)
+        std::cout << "'" << e << "' ";
+    std::cout << "], Size = " << V2.size() << "\n\n";
+
+    //==========================================================================
+    std::cout << ">>> Compacting now...\n\n";
+    compact(V2, vingadores);
+    //==========================================================================
+
+    std::cout << ">>> COMPACTED Vet = [ ";
+    for (const auto &e : V2)
+        std::cout << "'" << e << "' ";
+    std::cout << "], Size = " << V2.size() << "\n\n";
 
     return EXIT_SUCCESS;
 }
 
-//Fill a vector with random numbers in the range [l -> lower, u -> upper]
+// Fill a vector with random numbers in the range [l -> lower, u -> upper]
 void randomFill(std::vector<int> &V, const int l, const int u, const unsigned int seed) {
-    //use the default random engine and an uniform distribution
+    // use the default random engine and an uniform distribution
     std::default_random_engine eng(seed);
     std::uniform_real_distribution<double> distr(l, u);
 
     // Fill up vector
-    for(auto &elem : V)
+    for (auto &elem : V)
         elem = distr(eng);
 }
