@@ -4,13 +4,10 @@
 
 #include <iostream>
 
+#include "max.h"
+
 using std::cout;
 using std::endl;
-
-template <typename T>
-T myMax(T x, T y) {
-    return x > y ? x : y;
-}
 
 int main() {
     int x = 5, y = 7;
