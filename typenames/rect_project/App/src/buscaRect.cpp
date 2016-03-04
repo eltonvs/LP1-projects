@@ -1,5 +1,3 @@
-// -------------------------------------------------------------------
-
 #include <cmath>
 #include <iostream>
 using std::cout;
@@ -69,7 +67,7 @@ int main() {
     // the second rectangle: [ 2, 2, 2, 1 ].
     Rect target3(2,  2, 20 , 20);
 
-    for(int i(0); i < iSz; i++) {
+    for (int i(0); i < iSz; i++) {
         // Stores the distance from the rectangle's corner to the origin.
         float fDist2Origin = sqrt(myContainer[i].getX()* myContainer[i].getX() + myContainer[i].getY()* myContainer[i].getY() );
         cout << "\n >> Rect[ " << i << " ] = " << myContainer[i]
