@@ -1,7 +1,3 @@
-/*
- * Copyright 2016 - Elton Viana
- */
-
 #include <iostream>
 using std::cout;
 using std::cin;

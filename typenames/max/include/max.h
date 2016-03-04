@@ -1,7 +1,3 @@
-/*
- * Copyright 2016 - Elton Viana
- */
-
 #ifndef DOUBLE_ARRAY_H
 #define DOUBLE_ARRAY_H
 

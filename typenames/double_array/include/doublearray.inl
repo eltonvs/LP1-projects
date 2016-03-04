@@ -1,7 +1,3 @@
-/*
- * Copyright 2016 - Elton Viana
- */
-
 #include <new>
 #include <stdexcept>
 #include <iostream>

@@ -1,7 +1,3 @@
-/*
- * Copyright 2016 - Elton Viana
- */
-
 #ifndef _BINSEARCH_H_
 #define _BINSEARCH_H_
 
