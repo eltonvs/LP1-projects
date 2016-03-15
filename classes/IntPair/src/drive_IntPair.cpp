@@ -44,8 +44,12 @@ int main(int argc, char const *argv[]) {
     assert(p3.get_second() == p2.get_second());
 
     IntPair p4(0, 0);
+    // Unit test #6: constructor
+    assert(p4.get_first() == 0);
+    assert(p4.get_second() == 0);
+
     p4 = p2 + p3;
-    // Unit test #5: operator
+    // Unit test #7: operator
     assert(p4.get_first() == p2.get_first() + p3.get_first());
     assert(p4.get_second() == p2.get_second() + p3.get_second());
 
