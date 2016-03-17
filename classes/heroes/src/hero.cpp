@@ -67,23 +67,21 @@ int main(int argc, char const *argv[]) {
         Hero("Wolwerine")
     };
 
-    enum heros_t {HULK, BATMAN, SUPERMAN, SPIDERMAN, WOLWERINE};
+    heros[0].setAttack(10000);
+    heros[0].setDefense(10000);
+    heros[0].setHealing(10);
 
-    heros[HULK].setAttack(10000);
-    heros[HULK].setDefense(10000);
-    heros[HULK].setHealing(10);
+    heros[1].setAttack(100);
+    heros[1].setDefense(10);
+    heros[1].setHealing(10);
 
-    heros[BATMAN].setAttack(100);
-    heros[BATMAN].setDefense(10);
-    heros[BATMAN].setHealing(10);
+    heros[2].setAttack(200000);
+    heros[2].setDefense(200000);
+    heros[2].setHealing(2000);
 
-    heros[SUPERMAN].setAttack(200000);
-    heros[SUPERMAN].setDefense(200000);
-    heros[SUPERMAN].setHealing(2000);
-
-    heros[WOLWERINE].setAttack(560);
-    heros[WOLWERINE].setDefense(800);
-    heros[WOLWERINE].setHealing(10000000);
+    heros[4].setAttack(560);
+    heros[4].setDefense(800);
+    heros[4].setHealing(10000000);
 
     std::cout << ">>> Heroes list before sorting: [\n";
     std::copy(heros.begin(), heros.end(),
