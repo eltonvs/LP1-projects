@@ -15,25 +15,13 @@ class Hero {
     }
 
     // Setters
-    void setAttack(int a) {
-        m_points[ATTACK] = a;
-    }
-    void setDefense(int a) {
-        m_points[DEFENSE] = a;
-    }
-    void setHealing(int a) {
-        m_points[HEALING] = a;
+    void setAttribute(attribute_t a, int v) {
+        m_points[a] = v;
     }
 
     // Getters
-    int getAttack(void) const {
-        return m_points[ATTACK];
-    }
-    int getDefense(void) const {
-        return m_points[DEFENSE];
-    }
-    int getHealing(void) const {
-        return m_points[HEALING];
+    int getAttribute(attribute_t a) const {
+        return m_points[a];
     }
     std::string getName(void) const {
         return m_name;
@@ -46,9 +34,9 @@ class Hero {
 
 std::ostream & operator<< (std::ostream &_os, const Hero &_h) {
     _os << "{<" << _h.getName()
-        << ">, A = " << _h.getAttack()
-        << ", D = " << _h.getDefense()
-        << ", H = " << _h.getHealing()
+        << ">, A = " << _h.getAttribute(Hero::ATTACK)
+        << ", D = " << _h.getAttribute(Hero::DEFENSE)
+        << ", H = " << _h.getAttribute(Hero::HEALING)
         << "}";
 
     return _os;
@@ -67,21 +55,23 @@ int main(int argc, char const *argv[]) {
         Hero("Wolwerine")
     };
 
-    heros[0].setAttack(10000);
-    heros[0].setDefense(10000);
-    heros[0].setHealing(10);
+    enum heros_t {HULK, BATMAN, SUPERMAN, SPIDERMAN, WOLWERINE};
 
-    heros[1].setAttack(100);
-    heros[1].setDefense(10);
-    heros[1].setHealing(10);
+    heros[HULK].setAttribute(Hero::ATTACK, 10000);
+    heros[HULK].setAttribute(Hero::DEFENSE, 10000);
+    heros[HULK].setAttribute(Hero::HEALING, 10);
 
-    heros[2].setAttack(200000);
-    heros[2].setDefense(200000);
-    heros[2].setHealing(2000);
+    heros[BATMAN].setAttribute(Hero::ATTACK, 100);
+    heros[BATMAN].setAttribute(Hero::DEFENSE, 10);
+    heros[BATMAN].setAttribute(Hero::HEALING, 10);
 
-    heros[4].setAttack(560);
-    heros[4].setDefense(800);
-    heros[4].setHealing(10000000);
+    heros[SUPERMAN].setAttribute(Hero::ATTACK, 200000);
+    heros[SUPERMAN].setAttribute(Hero::DEFENSE, 200000);
+    heros[SUPERMAN].setAttribute(Hero::HEALING, 2000);
+
+    heros[WOLWERINE].setAttribute(Hero::ATTACK, 560);
+    heros[WOLWERINE].setAttribute(Hero::DEFENSE, 800);
+    heros[WOLWERINE].setAttribute(Hero::HEALING, 10000000);
 
     std::cout << ">>> Heroes list before sorting: [\n";
     std::copy(heros.begin(), heros.end(),
