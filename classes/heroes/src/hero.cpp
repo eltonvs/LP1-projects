@@ -42,9 +42,14 @@ std::ostream & operator<< (std::ostream &_os, const Hero &_h) {
     return _os;
 }
 
-bool compareByName(const Hero &_h1, const Hero &_h2) {
-    return _h1.getName() < _h2.getName();
-}
+struct CompareAttrib {
+    CompareAttrib(Hero::attribute_t at) : m_at(at) {}
+    bool operator()(const Hero &_h1, const Hero &_h2) {
+        return _h1.getAttribute(m_at) < _h2.getAttribute(m_at);
+    }
+
+    Hero::attribute_t m_at;
+};
 
 int main(int argc, char const *argv[]) {
     std::vector<Hero> heros = {
@@ -78,7 +83,12 @@ int main(int argc, char const *argv[]) {
         std::ostream_iterator<Hero> (std::cout, "\n"));
     std::cout << "]\n";
 
-    std::sort(heros.begin(), heros.end(), compareByName);
+    // Functors to compare (and sort)
+    CompareAttrib cmp_at(Hero::ATTACK);
+    CompareAttrib cmp_df(Hero::DEFENSE);
+    CompareAttrib cmp_hl(Hero::HEALING);
+
+    std::sort(heros.begin(), heros.end(), cmp_at);
 
     std::cout << ">>> Heroes list after sorting: [\n";
     std::copy(heros.begin(), heros.end(),
