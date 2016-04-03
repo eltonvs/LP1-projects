@@ -6,7 +6,7 @@ DFLAGS = -g -O0
 
 BIN_DIR = bin
 TARGET = message
-SRC1 = dirver_message
+SRC1 = driver_message
 SRC2 = message
 DEBUG = debug
 SRC_DIR = src
