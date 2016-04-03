@@ -43,7 +43,7 @@ int main() {
     // Aqui eh onde você deve ordenar as mensagens armazenadas em ms.
 
     std::cout << ">>> Sorted messages by Subject: \n";
-    for ( auto const & e : ms )
+    for (auto const & e : ms)
         std::cout << e << "\n";
 
 #ifdef _XXXx

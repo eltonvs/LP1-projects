@@ -46,7 +46,7 @@ class Message {
             << "  Subject: ["     << _Obj.msFields[HeaderField::SUBJECT]     << "]\n"
             << "  Date: ["        << _Obj.msFields[HeaderField::DATE]        << "]\n"
             << "  To: ["          << _Obj.msFields[HeaderField::RECIPIENT]   << "]\n"
-            << "  Reaply: ["      << _Obj.msFields[HeaderField::REPLYTO]     << "]\n"
+            << "  Reply: ["       << _Obj.msFields[HeaderField::REPLYTO]     << "]\n"
             << "  Attachments: [" << _Obj.msFields[HeaderField::ATTACHMENTS] << "]\n"
             << "  Body:\n "       << _Obj.msFields[HeaderField::BODY]        << "\n}";
 

@@ -18,3 +18,11 @@ Message::Message(std::string sender, std::string subject, std::string date,
     this->msFields[HeaderField::ATTACHMENTS] = attachments;
     this->msFields[HeaderField::BODY]        = body;
 }
+
+// Getters
+std::string Message::getHeaderComponent(HeaderField _field) const {
+    return this->msFields[_field];
+}
+std::vector <std::string> Message::getHeader(void) const {
+    return this->msFields;
+}
