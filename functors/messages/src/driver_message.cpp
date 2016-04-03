@@ -25,18 +25,18 @@
 #include "message.hpp"
 
 int main() {
-    Message m1( "selan@dimap.ufrn.br", "LP1", "201509011355", "jack@gmail.com", "jack.boy@hotmail.com", "false", "Aqui começa o corpo da mensagem\n Queremos voce por aqui.\n \n Ate breve!" );
-    Message m2( "andre@gmail.com", "Qualquer coisa", "201509101255" );
-    Message m3( "silvia.mota@hotmail.com", "Pesquisa em conjunto", "201509101055" );
+    Message m1("selan@dimap.ufrn.br", "LP1", "201509011355", "jack@gmail.com", "jack.boy@hotmail.com", "false", "Aqui começa o corpo da mensagem\n Queremos voce por aqui.\n \n Ate breve!");
+    Message m2("andre@gmail.com", "Qualquer coisa", "201509101255");
+    Message m3("silvia.mota@hotmail.com", "Pesquisa em conjunto", "201509101055");
 
-    std::vector< Message > ms;
+    std::vector <Message> ms;
 
-    ms.push_back( m1 );
-    ms.push_back( m2 );
-    ms.push_back( m3 );
+    ms.push_back(m1);
+    ms.push_back(m2);
+    ms.push_back(m3);
 
     std::cout << ">>> Original messages: \n";
-    for ( auto const & e : ms )
+    for (auto const & e : ms)
         std::cout << e << "\n";
 
     // TODO:
