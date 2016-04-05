@@ -46,7 +46,8 @@ int main() {
     for (auto const & e : ms)
         std::cout << e << "\n";
 
-#ifdef _XXXx
+    MessageSorter mySorterDate(Message::HeaderField::DATE);
+    MessageSorter mySorterSender(Message::HeaderField::SENDER);
     std::sort(ms.begin(), ms.end(), mySorterDate);
 
     std::cout << ">>> Sorted messages by Date: \n";
@@ -58,7 +59,6 @@ int main() {
     std::cout << ">>> Sorted messages by Sender: \n";
     for (auto const & e : ms)
         std::cout << e << "\n";
-#endif
 
     std::cout << ">>> Normal exiting....\n";
     return EXIT_SUCCESS;
