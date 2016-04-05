@@ -4,11 +4,11 @@
  * Exercício
  * ---------
  *
- * 1) Implementar message.cpp de acordo com a especificação de message.h.
+ * 1) Implementar message.cpp de acordo com a especificação de message.h. ok
  * 2) Imprimir as mensagens por ordem de
- *    a) Remetente
- *    b) Assunto
- *    c) Data de envio
+ *    a) Remetente           ok
+ *    b) Assunto             ok
+ *    c) Data de envio       ok
  *    utilizando functors.
  *
  * 3) Fazer o programa trabalhar com objetos mensagem criado com alocação
@@ -36,28 +36,30 @@ int main() {
     ms.push_back(m3);
 
     std::cout << ">>> Original messages: \n";
-    for (auto const & e : ms)
+    for (auto const &e : ms)
         std::cout << e << "\n";
 
-    // TODO:
-    // Aqui eh onde você deve ordenar as mensagens armazenadas em ms.
-
     std::cout << ">>> Sorted messages by Subject: \n";
-    for (auto const & e : ms)
+    for (auto const &e : ms)
         std::cout << e << "\n";
 
     MySorter mySorterDate(Message::HeaderField::DATE);
     MySorter mySorterSender(Message::HeaderField::SENDER);
-    std::sort(ms.begin(), ms.end(), mySorterDate);
+    MySorter mySorterSubject(Message::HeaderField::SUBJECT);
 
+    std::sort(ms.begin(), ms.end(), mySorterDate);
     std::cout << ">>> Sorted messages by Date: \n";
-    for (auto const & e : ms)
+    for (auto const &e : ms)
         std::cout << e << "\n";
 
     std::sort(ms.begin(), ms.end(), mySorterSender);
-
     std::cout << ">>> Sorted messages by Sender: \n";
-    for (auto const & e : ms)
+    for (auto const &e : ms)
+        std::cout << e << "\n";
+
+    std::sort(ms.begin(), ms.end(), mySorterSubject);
+    std::cout << ">>> Sorted messages by Subject: \n";
+    for (auto const &e : ms)
         std::cout << e << "\n";
 
     std::cout << ">>> Normal exiting....\n";
