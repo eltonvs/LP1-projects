@@ -46,8 +46,8 @@ int main() {
     for (auto const & e : ms)
         std::cout << e << "\n";
 
-    MessageSorter mySorterDate(Message::HeaderField::DATE);
-    MessageSorter mySorterSender(Message::HeaderField::SENDER);
+    MySorter mySorterDate(Message::HeaderField::DATE);
+    MySorter mySorterSender(Message::HeaderField::SENDER);
     std::sort(ms.begin(), ms.end(), mySorterDate);
 
     std::cout << ">>> Sorted messages by Date: \n";

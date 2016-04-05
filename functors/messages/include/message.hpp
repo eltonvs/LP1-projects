@@ -54,10 +54,10 @@ class Message {
     }
 };
 
-class MessageSorter {
+class MySorter {
  public:
     // take the field to sort by in the constructor
-    MessageSorter(const Message::HeaderField &_field) : m_field(_field) {}
+    MySorter(const Message::HeaderField &_field) : m_field(_field) {}
     bool operator()(const Message &_m1, const Message &_m2) {
         return _m1.getHeaderComponent(m_field) < _m2.getHeaderComponent(m_field);
     }
