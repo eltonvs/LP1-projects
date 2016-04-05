@@ -1,4 +1,6 @@
 /**
+ * Copyright - 2016
+ *
  * Definition of a class that implements a dictionary based on array.
  * This is a template class, where we need to specify the type
  * of key (unique) and the type of information we need to store
@@ -34,14 +36,14 @@ class DAL {
     int mi_Capacity;             // Capacidade maxima de armazenamento.
     NodeAL *mpt_Data;            // Area de armazenamento: vetor regular.
 
-    int _search(Key _x) const; // Metodo de busca auxiliar.
+    int _search(Key _x) const;   // Metodo de busca auxiliar.
 
  public:
     DAL (int _MaxSz = SIZE);
     virtual ~DAL() {delete [] mpt_Data;};
-    bool remove(const Key & _x, Data &);     // Remove da lista.
-    bool search(const Key & _x, Data &) const;         // busca publica.
-    bool insert(const Key & _novaId, const Data & _novaInfo);
+    bool remove(const Key &_x, const Data &);        // Remove da lista.
+    bool search(const Key &_x, const Data &) const;  // busca publica.
+    bool insert(const Key &_novaId, const Data &_novaInfo);
 
     //! Sobrecarga do operador <<, que faz com que seja impresso o conteudo da lista.
     /*! @param _os Output stream, normalmente o <CODE>cout</code>.
