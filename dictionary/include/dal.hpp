@@ -52,11 +52,34 @@ class DAL {
      */
     inline friend std::ostream &operator<<(std::ostream &_os, const DAL &_oList) {
         _os << "[ ";
-        for( int i(0) ; i < _oList.mi_Length ; ++i )
+        for (int i(0); i < _oList.mi_Length; i++)
             _os << "{id: " << _oList.mpt_Data[i].id << ", info: " << _oList.mpt_Data[i].info << "}  ";
         _os << "]";
         return _os;
     }
+};
+
+template <typename Key, typename Data>
+class DSAL : public DAL<Key, Data> {
+// Indicação de herança.
+ public:
+    DSAL(int _MaxSz) : DAL<Key, Data>(_MaxSz) { /* Empty */ };
+
+    virtual ~DSAL() { /* Empty */ };
+
+    // Métodos para sobrescrever.
+    bool remove(const Key &_x, Data &);
+    bool insert(const Key &_novaId, const Data &_novaInfo);
+    Key min() const;  // Recupera a menor chave do dicionário.
+    Key max() const;  // Recupera a maior chave do dicionário.
+
+    // Recupera em _y a chave sucessora a _x, se existir(true).
+    bool sucessor(const Key &_x, Key &_y) const;
+    // Recupera em _y a chave antecessora a _x, se existir(true).
+    bool predecessor(const Key &_x, Key &_y) const;
+
+ private:
+    int _search(const Key &_x) const;  // Método de busca auxiliar.
 };
 
 #include "dal.inl" // This is to get "implementation" from another file.
