@@ -4,6 +4,7 @@
 #define _message_hpp_
 
 #include <iostream>
+#include <memory>
 #include <string>
 #include <vector>
 

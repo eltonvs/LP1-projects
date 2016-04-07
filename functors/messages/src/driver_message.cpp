@@ -59,6 +59,9 @@ int main(int argc, const char *argv[]) {
     for (auto const &e : ms)
         std::cout << *e << "\n";
 
+    for (auto &e : ms)
+        e.reset();
+
     std::cout << ">>> Normal exiting....\n";
     return EXIT_SUCCESS;
 }
