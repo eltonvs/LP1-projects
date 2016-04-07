@@ -39,7 +39,6 @@ class Message {
     void setReplyTo(const std::string &_h)   {msFields[HeaderField::REPLYTO]     = _h;}
     void setAttachment(bool _h)              {msFields[HeaderField::ATTACHMENTS] = _h;}
 
-
     inline friend std::ostream &operator<< (std::ostream &_os, const Message &_Obj) {
         _os << "{\n"
             << "  From: ["        << _Obj.msFields[HeaderField::SENDER]      << "]\n"

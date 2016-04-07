@@ -12,9 +12,9 @@
  *    utilizando functors.
  *
  * 3) Fazer o programa trabalhar com objetos mensagem criado com alocação
- * dinâmica e ponteiros.
+ * dinâmica e ponteiros. ok
  *
- * 4) Converter o programa do passo 2 para trabalhar com std::unique_ptr<>.
+ * 4) Converter o programa do passo 2 para trabalhar com std::unique_ptr<>. ok
  *
  */
 
@@ -25,7 +25,7 @@
 
 #include "message.hpp"
 
-int main() {
+int main(int argc, const char *argv[]) {
     std::unique_ptr<Message> pM1(new Message("selan@dimap.ufrn.br", "LP1", "201509011355", "jack@gmail.com", "jack.boy@hotmail.com", "false", "Aqui começa o corpo da mensagem\n Queremos voce por aqui.\n \n Ate breve!"));
     std::unique_ptr<Message> pM2(new Message("andre@gmail.com", "Qualquer coisa", "201509101255"));
     std::unique_ptr<Message> pM3(new Message("silvia.mota@hotmail.com", "Pesquisa em conjunto", "201509101055"));
