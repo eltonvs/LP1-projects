@@ -10,7 +10,7 @@
 class Message {
  private:
     // HEADER
-    std::string *msFields = nullptr;
+    std::vector<std::string> msFields;
 
  public:
     enum HeaderField {
@@ -30,7 +30,7 @@ class Message {
             std::string = "", std::string = "");
 
     std::string getHeaderComponent(HeaderField _field) const;
-    std::string * getHeader(void) const;
+    std::vector<std::string> getHeader(void) const;
 
     void setSender(const std::string &_h)    {msFields[HeaderField::SENDER]      = _h;}
     void setSubject(const std::string &_h)   {msFields[HeaderField::SUBJECT]     = _h;}
@@ -56,11 +56,13 @@ class Message {
 
 class MySorter {
  public:
-    // take the field to sort by in the constructor
+    // Constructor
     MySorter(const Message::HeaderField &_field) : m_field(_field) {}
-    bool operator()(const Message &_m1, const Message &_m2) {
-        return _m1.getHeaderComponent(m_field) < _m2.getHeaderComponent(m_field);
+    // Operator
+    bool operator()(const std::unique_ptr<Message> &_m1, const std::unique_ptr<Message> &_m2) {
+        return _m1->getHeaderComponent(m_field) < _m2->getHeaderComponent(m_field);
     }
+
  private:
     Message::HeaderField m_field;
 };
