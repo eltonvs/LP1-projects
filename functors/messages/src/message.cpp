@@ -8,8 +8,7 @@
 Message::Message(std::string sender, std::string subject, std::string date,
                  std::string recipient, std::string replyto,
                  std::string attachments, std::string body) {
-    msFields.resize(HeaderField::N_FIELDS);
-
+    msFields = new std::string[HeaderField::N_FIELDS];
     msFields[HeaderField::SENDER]      = sender;
     msFields[HeaderField::SUBJECT]     = subject;
     msFields[HeaderField::DATE]        = date;
@@ -23,6 +22,6 @@ Message::Message(std::string sender, std::string subject, std::string date,
 std::string Message::getHeaderComponent(HeaderField _field) const {
     return msFields[_field];
 }
-std::vector <std::string> Message::getHeader(void) const {
+std::string * Message::getHeader(void) const {
     return msFields;
 }

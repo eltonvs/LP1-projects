@@ -39,10 +39,6 @@ int main() {
     for (auto const &e : ms)
         std::cout << e << "\n";
 
-    std::cout << ">>> Sorted messages by Subject: \n";
-    for (auto const &e : ms)
-        std::cout << e << "\n";
-
     MySorter mySorterDate(Message::HeaderField::DATE);
     MySorter mySorterSender(Message::HeaderField::SENDER);
     MySorter mySorterSubject(Message::HeaderField::SUBJECT);

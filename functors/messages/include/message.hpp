@@ -10,7 +10,7 @@
 class Message {
  private:
     // HEADER
-    std::vector<std::string> msFields;
+    std::string *msFields = nullptr;
 
  public:
     enum HeaderField {
@@ -30,7 +30,7 @@ class Message {
             std::string = "", std::string = "");
 
     std::string getHeaderComponent(HeaderField _field) const;
-    std::vector <std::string> getHeader(void) const;
+    std::string * getHeader(void) const;
 
     void setSender(const std::string &_h)    {msFields[HeaderField::SENDER]      = _h;}
     void setSubject(const std::string &_h)   {msFields[HeaderField::SUBJECT]     = _h;}
