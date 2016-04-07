@@ -11,39 +11,55 @@ Queue<Data>::Queue(const int _SIZE) {
 template <typename Data>
 bool Queue<Data>::enqueue(const Data &_a) {
     if (m_f == -1) {
-        m_f = m_b = 0, m_list[0] = _a;
+        m_f = m_r = 0, m_list[0] = _a;
         return true;
     }
 
-    auto final_b = (m_b + 1)%m_SIZE;
+    auto final_b = (m_r + 1)%m_SIZE;
 
     if (final_b == m_f)  // Vector is full
         return false;
 
-    m_list[final_b] = _a, m_b = final_b;
+    m_list[final_b] = _a, m_r = final_b;
 
     return true;
 }
 
 template <typename Data>
 bool Queue<Data>::dequeue(Data &_a) {
-    auto queue_sz = queue_size();
+    auto queue_sz = size();
     if (queue_sz == 0)  // Lista Vazia
         return false;
 
+    // Copy the front element
+    front(_a);
+
     if (queue_sz == 1)
-        m_b = m_f = -1;
+        m_r = m_f = -1;
     else
-        m_b = (m_b - 1)%m_SIZE;
+        m_f = (m_f + 1)%m_SIZE;
 
     return true;
 }
 
 template <typename Data>
-unsigned Queue<Data>::queue_size(void) {
+bool Queue<Data>::front(Data &_a) const {
+    auto queue_sz = size();
+    if (queue_sz == 0) {
+        // Lista Vazia
+        return false;
+    }
+
+    // Copy the front element
+    _a = m_list[m_f];
+    return true;
+}
+
+template <typename Data>
+unsigned Queue<Data>::size(void) const {
     if (m_f == -1)  // Lista Vazia
         return 0;
-    if (m_f > m_b)
-        return m_SIZE - m_f + m_b + 1;
-    return m_b - m_f + 1;
+    if (m_f > m_r)
+        return m_SIZE - m_f + m_r + 1;
+    return m_r - m_f + 1;
 }

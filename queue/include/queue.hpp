@@ -10,12 +10,12 @@ class Queue {
     bool front(Data &) const;
 
  private:
-    unsigned queue_size(void);
+    unsigned size(void) const;
 
     Data *m_list = nullptr;
     int m_SIZE = 0;
     int m_f = -1;
-    int m_b = -1;
+    int m_r = -1;
 };
 
 #include "queue.inl"
