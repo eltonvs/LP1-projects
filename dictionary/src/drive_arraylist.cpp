@@ -27,8 +27,8 @@ int main() {
     myList.insert(8, "dado 3");
 
     if (myList.search(8, "dado 3"))
-        std::cout << "Founded!\n";
-    else std::cout << "Not Founded!\n";
+        std::cout << "Found!\n";
+    else std::cout << "Not Found!\n";
 
     std::cout << "\n>>> myList [after insertions]: " << myList << std::endl;
 
