@@ -4,16 +4,20 @@
 template <typename Data>
 class Queue {
  public:
-    Queue(const int _SIZE);
-    bool enqueue(const Data);
+    Queue(const int _SIZE = 20);
+    bool enqueue(const Data &);
     bool dequeue(Data &);
     bool front(Data &) const;
 
  private:
+    unsigned queue_size(void);
+
     Data *m_list = nullptr;
     int m_SIZE = 0;
     int m_f = -1;
     int m_b = -1;
 };
+
+#include "queue.inl"
 
 #endif

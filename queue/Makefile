@@ -1,37 +1,50 @@
+### Programas
 CXX = g++
-DEL = /bin/rm
+DELETAR = /bin/rm
 
-CFLAGS = -Wall -std=c++11
-DFLAGS = -g -O0
+### Variáveis
+#DEPURA = -ggdb
+AVISA = -Wall
+#PROFILA = -pg
+#OTIMIZA = -O2
+PADRAO_LINGUAGEM = c++11  #c++0x  # c++98
+BIBLIOTECA_PADRAO = libc++
+#BIBLIOTECAS = -lm
 
-BIN_DIR = bin
-TARGET = queue
-SRC1 = drive_queue
-SRC2 = queue
-DEBUG = debug
-SRC_DIR = src
-INCLUDE_DIR = include
 
-all: $(BIN_DIR)/$(TARGET)
+### Diretórios
+#DIRBIBLIOTECAS = -L/opt/local/lib
+DIREXECUTAVEL = bin
+DIRFONTE = src
+DIRINCLUDE = include
+DIRDECLARACOES = -I. -I $(DIRINCLUDE) -I $(DIRFONTE)
 
-debug: $(BIN_DIR)/$(DEBUG)
+### Flags de compilação
+CFLAGS = $(AVISA) $(DEPURA)$ $(PROFILA) $(OTIMIZA) -std=$(PADRAO_LINGUAGEM)
 
-$(BIN_DIR)/$(TARGET): $(BIN_DIR)/$(SRC1).o $(BIN_DIR)/$(SRC2).o
-	@echo "Creating compiled file"
-	$(CXX) $(CFLAGS) $(BIN_DIR)/$(SRC1).o $(BIN_DIR)/$(SRC2).o -o $(BIN_DIR)/$(TARGET)
+### Flags de linkedição
+LFLAGS = $(AVISA) $(DIRBIBLIOTECAS) $(BIBLIOTECAS) #-stdlib=$(BIBLIOTECA_PADRAO)
 
-$(BIN_DIR)/$(DEBUG): $(BIN_DIR)/$(SRC1).o $(BIN_DIR)/$(SRC2).o
-	@echo "Creating compiled [ready to debug] file"
-	$(CXX) $(CFLAGS) $(DFLAGS) $(BIN_DIR)/$(SRC1).o $(BIN_DIR)/$(SRC2).o -o $(BIN_DIR)/$(DEBUG)
+### Dependências
+OBJS = $(DIREXECUTAVEL)/drive_queue.o # outras ...
 
-$(BIN_DIR)/$(SRC1).o: $(SRC_DIR)/$(SRC1).cpp
-	@echo "Creating object file 1"
-	$(CXX) $(CFLAGS) -c $(SRC_DIR)/$(SRC1).cpp -I $(INCLUDE_DIR) -o $(BIN_DIR)/$(SRC1).o
+### Entradas
+# a primeira entrada eh para o programa alvo
+arraylist: $(OBJS)
+	@echo ">>> Gerando executavel."
+	$(CXX) $(LFLAGS) $(OBJS) -o $(DIREXECUTAVEL)/drive_queue
 
-$(BIN_DIR)/$(SRC2).o: $(SRC_DIR)/$(SRC2).cpp
-	@echo "Creating object file 2"
-	$(CXX) $(CFLAGS) -c $(SRC_DIR)/$(SRC2).cpp -I $(INCLUDE_DIR) -o $(BIN_DIR)/$(SRC2).o
+# essa entrada define como produzir o arquivo
+#Classe_LLSeq.o: Classe_LLSeq.cpp Classe_LLSeq.h
+$(DIREXECUTAVEL)/drive_queue.o: $(DIRFONTE)/drive_queue.cpp $(DIRINCLUDE)/queue.h $(DIRINCLUDE)/queue.inl
+	@echo ">>> Compilando dependencias."
+	$(CXX) $(CFLAGS) $(DIRDECLARACOES) -c $(DIRFONTE)/drive_queue.cpp  \
+	    -o $(DIREXECUTAVEL)/drive_queue.o
 
+$(DIRINCLUDE)/queue.h: $(DIRINCLUDE)/queue.inl
+
+# a entrada seguinte elimina os arquivos inuteis.
 clean:
-	$(DEL) $(BIN_DIR)/$(TARGET) $(BIN_DIR)/$(SRC1).o $(BIN_DIR)/$(SRC2).o
-	$(DEL) $(BIN_DIR)/$(DEBUG)
+	@echo ">>> Limpando projeto."
+	$(DELETAR) $(DIREXECUTAVEL)/*.o $(DIRFONTE)/*~ \
+	   $(DIRINCLUDE)/*~ $(DIREXECUTAVEL)/drive_queue
