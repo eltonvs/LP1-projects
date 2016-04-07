@@ -10,9 +10,10 @@ class Queue {
     bool front(Data &) const;
 
  private:
-    int m_SIZE;
-    int f = -1;
-    int b = -1;
+    Data *m_list = nullptr;
+    int m_SIZE = 0;
+    int m_f = -1;
+    int m_b = -1;
 };
 
 #endif
