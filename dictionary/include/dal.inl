@@ -20,7 +20,7 @@ DAL<Key, Data>::DAL(int _iMaxSz):
     mi_Capacity(_iMaxSz), // Guardar capacidade atual.
     mpt_Data(nullptr)
 {
-    if (_iMaxSz < 0 )          // Nao aceitamos lista com tamanho negativo.
+    if (_iMaxSz < 0)  // Nao aceitamos lista com tamanho negativo.
         throw std::invalid_argument( "[DAL()]: Tamanho de lista invalido!" );
     mpt_Data = new NodeAL[_iMaxSz]; // Tamanho maximo.
 }
@@ -29,6 +29,7 @@ template <typename Key, typename Data>
 int DAL<Key, Data>::_search(Key _x) const {
     int i;
     for (i = 0; mpt_Data[i].id != _x and i < mi_Length; i++);
+
     return i;
 }
 
@@ -47,8 +48,10 @@ bool DAL<Key, Data>::insert(const Key &_novaId, const Data &_novaInfo) {
         mpt_Data[pos].info = _novaInfo;
         if (pos == mi_Length)
             mi_Length++;
+
         return true;
     }
+
     return false;
 }
 
@@ -56,9 +59,8 @@ template <typename Key, typename Data>
 bool DAL<Key, Data>::remove(const Key &_x, Data &_y) {
     int pos = _search(_x);
     if (pos != mi_Length) {
-        mi_Length--;
-        for (int i = pos; i < mi_Length; i++)
-            mpt_Data[i] = mpt_Data[i+1];
+        mpt_Data[pos] = mpt_Data[--mi_Length];
+
         return true;
     }
 
@@ -109,6 +111,7 @@ bool DSAL<Key, Data>::insert(const Key &_novaId, const Data &_novaInfo) {
 
         return true;
     }
+
     return false;
 }
 
@@ -119,10 +122,10 @@ bool DSAL<Key, Data>::remove(const Key &_x, Data &_y) {
 
     int pos = _search(_x);
     if (pos != length) {
-        _y = data[pos].info;
-        length--;
+        _y = data[pos].info, length--;
         for (int i = pos; i < length; i++)
             data[i] = data[i+1];
+
         return true;
     }
 
@@ -146,6 +149,7 @@ bool DSAL<Key, Data>::sucessor(const Key &_x, Key &_y) const {
         return false;
 
     _y = DAL<Key, Data>::mpt_Data[pos+1].id;
+
     return true;
 }
 
@@ -156,5 +160,6 @@ bool DSAL<Key, Data>::predecessor(const Key &_x, Key &_y) const {
         return false;
 
     _y = DAL<Key, Data>::mpt_Data[pos-1].id;
+
     return true;
 }
