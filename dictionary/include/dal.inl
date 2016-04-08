@@ -128,3 +128,33 @@ bool DSAL<Key, Data>::remove(const Key &_x, Data &_y) {
 
     return false;
 }
+
+template <typename Key, typename Data>
+Key DSAL<Key, Data>::min(void) const {
+    return DAL<Key, Data>::mi_Length ? DAL<Key, Data>::mpt_Data[0].id : 0;
+}
+
+template <typename Key, typename Data>
+Key DSAL<Key, Data>::max(void) const {
+    return DAL<Key, Data>::mi_Length ? DAL<Key, Data>::mpt_Data[DAL<Key, Data>::mi_Length].id : 0;
+}
+
+template <typename Key, typename Data>
+bool DSAL<Key, Data>::sucessor(const Key &_x, Key &_y) const {
+    int pos = _search(_x);
+    if (pos >= DAL<Key, Data>::mi_Length - 1)
+        return false;
+
+    _y = DAL<Key, Data>::mpt_Data[pos+1].id;
+    return true;
+}
+
+template <typename Key, typename Data>
+bool DSAL<Key, Data>::predecessor(const Key &_x, Key &_y) const {
+    int pos = _search(_x);
+    if (pos == 0 || pos == DAL<Key, Data>::mi_Length)
+        return false;
+
+    _y = DAL<Key, Data>::mpt_Data[pos-1].id;
+    return true;
+}
