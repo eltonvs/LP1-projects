@@ -53,7 +53,7 @@ bool DAL<Key, Data>::insert(const Key &_novaId, const Data &_novaInfo) {
 }
 
 template <typename Key, typename Data>
-bool DAL<Key, Data>::remove(const Key &_x, const Data &_y) {
+bool DAL<Key, Data>::remove(const Key &_x, Data &_y) {
     int pos = _search(_x);
     if (pos != mi_Length) {
         mi_Length--;

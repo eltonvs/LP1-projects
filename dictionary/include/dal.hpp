@@ -41,9 +41,9 @@ class DAL {
  public:
     DAL (int _MaxSz = SIZE);
     virtual ~DAL() {delete [] mpt_Data;};
-    bool remove(const Key &_x, const Data &);        // Remove da lista.
     bool search(const Key &_x, const Data &) const;  // busca publica.
     bool insert(const Key &_novaId, const Data &_novaInfo);
+    bool remove(const Key &_x, Data &);        // Remove da lista.
 
     //! Sobrecarga do operador <<, que faz com que seja impresso o conteudo da lista.
     /*! @param _os Output stream, normalmente o <CODE>cout</code>.
@@ -65,8 +65,6 @@ class DSAL : public DAL<Key, Data> {
  public:
     DSAL(int _MaxSz) : DAL<Key, Data>(_MaxSz) {}
     virtual ~DSAL() {}
-
-    // Métodos para sobrescrever.
     bool insert(const Key &_novaId, const Data &_novaInfo);
     bool remove(const Key &_x, Data &);
     Key min() const;  // Recupera a menor chave do dicionário.

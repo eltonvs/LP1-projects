@@ -17,6 +17,8 @@
 #include "dal.hpp"
 
 int main() {
+    std::string removed_data;
+
     /*
      * DAL - Dictionary Array List
      */
@@ -38,8 +40,8 @@ int main() {
 
     std::cout << ">>> myList [after insertions]: " << myList << std::endl;
 
-    myList.remove(15, "dado 1");
-    myList.remove(21, "dado 21");
+    myList.remove(15, removed_data);
+    myList.remove(21, removed_data);
 
     std::cout << ">>> myList [after remotions]: " << myList << std::endl;
 
@@ -65,7 +67,6 @@ int main() {
 
     std::cout << ">>> mySortedList [after insertions]: " << mySortedList << std::endl;
 
-    std::string removed_data;
     mySortedList.remove(15, removed_data);
     mySortedList.remove(21, removed_data);
 
