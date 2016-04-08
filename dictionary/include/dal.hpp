@@ -63,9 +63,8 @@ template <typename Key, typename Data>
 class DSAL : public DAL<Key, Data> {
 // Indicação de herança.
  public:
-    DSAL(int _MaxSz) : DAL<Key, Data>(_MaxSz) { /* Empty */ };
-
-    virtual ~DSAL() { /* Empty */ };
+    DSAL(int _MaxSz) : DAL<Key, Data>(_MaxSz) {}
+    virtual ~DSAL() {}
 
     // Métodos para sobrescrever.
     bool remove(const Key &_x, Data &);
@@ -82,6 +81,6 @@ class DSAL : public DAL<Key, Data> {
     int _search(const Key &_x) const;  // Método de busca auxiliar.
 };
 
-#include "dal.inl" // This is to get "implementation" from another file.
+#include "dal.inl"  // This is to get "implementation" from another file.
 
 #endif

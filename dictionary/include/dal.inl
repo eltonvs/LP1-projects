@@ -64,3 +64,50 @@ bool DAL<Key, Data>::remove(const Key &_x, const Data &_y) {
 
     return false;
 }
+
+/**
+ * ---------------------------------------------------------------------------
+ * Methods from DSAL.
+ * ---------------------------------------------------------------------------
+ */
+
+template <typename Key, typename Data>
+int DSAL<Key, Data>::_search(const Key &_x) const {
+    auto sz = DAL<Key, Data>::mi_Length;
+    auto l = 0, r = sz - 1;
+
+    while (l < r) {
+        int m = (l+r)/2;
+        auto at = DAL<Key, Data>::mpt_Data[m].id;
+        if (at == _x)
+            return m;
+        else if (at < _x)
+            l = m+1;
+        else
+            r = m-1;
+    }
+
+    return sz;
+}
+
+template <typename Key, typename Data>
+bool DSAL<Key, Data>::insert(const Key &_novaId, const Data &_novaInfo) {
+    auto &lenght  = DAL<Key, Data>::mi_Length,
+         capacity = DAL<Key, Data>::mi_Capacity,
+         &data    = DAL<Key, Data>::mpt_Data;
+
+    if (lenght < capacity) {
+        auto pos = _search(_novaId);
+
+        // Verify if the the key is already in dict
+        if (pos != lenght) return false;
+
+        auto i = lenght;
+        while (i > 0 and data[i-1].id > _novaId)
+            data[i] = data[i-1], i--;
+        data[i].id = _novaId, data[i].info = _novaInfo, lenght++;
+
+        return true;
+    }
+    return false;
+}
