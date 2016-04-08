@@ -15,16 +15,16 @@ A lista sequencial armazena um elemento formado por um par de
 As operações básicas suportadas são: *inserção*, *busca*, *remoção*.
 
 A motivação para a herança é na forma de organização dos dados no vetor.
-  - A lista original não mantém seus elementos ordenados. 
-    A inserção é \theta(1), bem como a remoção. Já a busca é O(n).
+  - A lista original não mantém seus elementos ordenados.
+    A inserção é θ(1), bem como a remoção. Já a busca é O(n).
   - A lista ordenada armazena os elemento em ordem da chave. Para isso é necessário
     passar no template uma função de comparação para as chaves.
     A operação de busca é O(log n), mas a inserção é O(n), assim como a remoção.
 
 A classe `DAL` implementa a lista sequencial mantendo os elementos sem
 ordenação alguma. Desta forma, temos:
-1. **inserção** é feita em \theta(1) (no final);
-2. **remoção** é feita em \theta(1) (remove e trás último elemento para o lugar do removido); e
+1. **inserção** é feita em θ(1) (no final);
+2. **remoção** é feita em θ(1) (remove e trás último elemento para o lugar do removido); e
 3. **busca** é feita em O(n).
 
 A classe `DSAL` implementa a lista sequencial mantendo os elementos em
