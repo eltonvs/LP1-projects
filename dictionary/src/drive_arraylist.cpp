@@ -64,10 +64,10 @@ int main() {
         std::cout << "Not Found!\n";
 
     std::cout << ">>> mySortedList [after insertions]: " << mySortedList << std::endl;
-/*
-    mySortedList.remove(15, "dado 1");
-    mySortedList.remove(21, "dado 21");
-*/
+
+    std::string removed_data;
+    mySortedList.remove(15, removed_data);
+    mySortedList.remove(21, removed_data);
 
     std::cout << ">>> mySortedList [after remotions]: " << mySortedList << std::endl;
 

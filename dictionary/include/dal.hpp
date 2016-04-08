@@ -53,7 +53,7 @@ class DAL {
     inline friend std::ostream &operator<<(std::ostream &_os, const DAL &_oList) {
         _os << "[ ";
         for (int i(0); i < _oList.mi_Length; i++)
-            _os << "{id: " << _oList.mpt_Data[i].id << ", info: " << _oList.mpt_Data[i].info << "}  ";
+            _os << "{id: " << _oList.mpt_Data[i].id << ", info: " << _oList.mpt_Data[i].info << "} ";
         _os << "]";
         return _os;
     }
@@ -67,8 +67,8 @@ class DSAL : public DAL<Key, Data> {
     virtual ~DSAL() {}
 
     // Métodos para sobrescrever.
-    bool remove(const Key &_x, Data &);
     bool insert(const Key &_novaId, const Data &_novaInfo);
+    bool remove(const Key &_x, Data &);
     Key min() const;  // Recupera a menor chave do dicionário.
     Key max() const;  // Recupera a maior chave do dicionário.
 
