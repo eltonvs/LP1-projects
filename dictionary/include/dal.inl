@@ -145,7 +145,7 @@ Key DSAL<Key, Data, KeyComparator>::min(void) const {
 
 template <typename Key, typename Data, typename KeyComparator>
 Key DSAL<Key, Data, KeyComparator>::max(void) const {
-    return DAL<Key, Data, KeyComparator>::mi_Length ? DAL<Key, Data, KeyComparator>::mpt_Data[DAL<Key, Data, KeyComparator>::mi_Length].id : 0;
+    return DAL<Key, Data, KeyComparator>::mi_Length ? DAL<Key, Data, KeyComparator>::mpt_Data[DAL<Key, Data, KeyComparator>::mi_Length - 1].id : 0;
 }
 
 template <typename Key, typename Data, typename KeyComparator>
