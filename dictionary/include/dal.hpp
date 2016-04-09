@@ -23,7 +23,7 @@ using std::cerr;
 using std::endl;
 using std::string;
 
-template <typename Key, typename Data>
+template <typename Key, typename Data, typename KeyComparator>
 class DAL {
  protected:
     struct NodeAL {  // Estrutura do noh de um lista seq.
@@ -36,7 +36,8 @@ class DAL {
     int mi_Capacity;             // Capacidade maxima de armazenamento.
     NodeAL *mpt_Data;            // Area de armazenamento: vetor regular.
 
-    int _search(Key _x) const;   // Metodo de busca auxiliar.
+    int _search(Key _x) const;          // Metodo de busca auxiliar.
+    int compare(Key _x, Key _y) const;  // Metodo de comparacao.
 
  public:
     DAL (int _MaxSz = SIZE);
@@ -59,11 +60,11 @@ class DAL {
     }
 };
 
-template <typename Key, typename Data>
-class DSAL : public DAL<Key, Data> {
+template <typename Key, typename Data, typename KeyComparator>
+class DSAL : public DAL<Key, Data, KeyComparator> {
 // Indicação de herança.
  public:
-    DSAL(int _MaxSz) : DAL<Key, Data>(_MaxSz) {}
+    DSAL(int _MaxSz) : DAL<Key, Data, KeyComparator>(_MaxSz) {}
     virtual ~DSAL(void) {}
     bool insert(const Key &_novaId, const Data &_novaInfo);
     bool remove(const Key &_x, Data &);

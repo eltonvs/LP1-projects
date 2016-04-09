@@ -16,6 +16,15 @@
 
 #include "dal.hpp"
 
+class MyKeyComparator {
+ public:
+    int operator()(int lhs, int rhs) const {
+        if (lhs < rhs) return -1;
+        else if (lhs == rhs) return 0;
+        else return 1; // lhs > rhs
+    }
+};
+
 int main() {
     std::string removed_data;
 
@@ -25,7 +34,7 @@ int main() {
     std::cout << "\n>>> DAL <<<\n";
 
     // Lista de no máximo 50 elementos.
-    DAL <int, std::string>  myList(50);
+    DAL <int, std::string, MyKeyComparator>  myList(50);
 
     std::cout << ">>> myList: " << myList << std::endl;
 
@@ -52,7 +61,7 @@ int main() {
     std::cout << "\n>>> DSAL <<<\n";
 
     // Lista de no máximo 50 elementos.
-    DSAL <int, std::string>  mySortedList(50);
+    DSAL <int, std::string, MyKeyComparator>  mySortedList(50);
 
     std::cout << ">>> mySortedList: " << mySortedList << std::endl;
 
