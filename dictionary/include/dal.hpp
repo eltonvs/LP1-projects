@@ -41,7 +41,7 @@ class DAL {
 
  public:
     DAL (int _MaxSz = SIZE);
-    virtual ~DAL() {delete [] mpt_Data;};
+    virtual ~DAL() {delete [] mpt_Data;}
     bool search(const Key &_x, const Data &) const;  // busca publica.
     bool insert(const Key &_novaId, const Data &_novaInfo);
     bool remove(const Key &_x, Data &);        // Remove da lista.

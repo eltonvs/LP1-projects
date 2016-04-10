@@ -11,6 +11,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <cassert>
 #include <cmath>
 #include <functional>
 
@@ -68,6 +69,9 @@ int main() {
     mySortedList.insert(15, "dado 1");
     mySortedList.insert(2, "dado 2");
     mySortedList.insert(8, "dado 3");
+
+    assert(2 == mySortedList.min());
+    assert(15 == mySortedList.max());
 
     if (mySortedList.search(8, "dado 3"))
         std::cout << "Found! 8 on dictionary\n";
