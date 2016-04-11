@@ -73,6 +73,22 @@ bool DAL<Key, Data, KeyComparator>::remove(const Key &_x, Data &_y) {
     return false;
 }
 
+template <typename Key, typename Data, typename KeyComparator>
+Key DAL<Key, Data, KeyComparator>::min(void) const {
+    auto min(0);
+    for (auto i(1u); i < mi_Length; i++)
+        if (mpt_Data[i].id < mpt_Data[min].id) min = i;
+    return mi_Length ? mpt_Data[min].id : 0;
+}
+
+template <typename Key, typename Data, typename KeyComparator>
+Key DAL<Key, Data, KeyComparator>::max(void) const {
+    auto max(0);
+    for (auto i(1u); i < mi_Length; i++)
+        if (mpt_Data[i].id > mpt_Data[max].id) max = i;
+    return mi_Length ? mpt_Data[max].id : 0;
+}
+
 /**
  * ---------------------------------------------------------------------------
  * Methods from DSAL.

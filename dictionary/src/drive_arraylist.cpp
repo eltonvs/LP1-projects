@@ -43,6 +43,9 @@ int main() {
     myList.insert(2, "dado 2");
     myList.insert(8, "dado 3");
 
+    assert(2 == myList.min());
+    assert(15 == myList.max());
+
     if (myList.search(8, "dado 3"))
         std::cout << "Found! 8 on dictionary\n";
     else

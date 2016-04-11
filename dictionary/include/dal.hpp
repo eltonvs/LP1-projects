@@ -44,7 +44,9 @@ class DAL {
     virtual ~DAL() {delete [] mpt_Data;}
     bool search(const Key &_x, const Data &) const;  // busca publica.
     bool insert(const Key &_novaId, const Data &_novaInfo);
-    bool remove(const Key &_x, Data &);        // Remove da lista.
+    bool remove(const Key &_x, Data &);  // Remove da lista.
+    Key min(void) const;  // Recupera a menor chave do dicionário.
+    Key max(void) const;  // Recupera a maior chave do dicionário.
 
     //! Sobrecarga do operador <<, que faz com que seja impresso o conteudo da lista.
     /*! @param _os Output stream, normalmente o <CODE>cout</code>.
