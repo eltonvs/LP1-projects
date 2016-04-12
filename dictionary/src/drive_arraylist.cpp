@@ -28,6 +28,7 @@ class MyKeyComparator {
 
 int main() {
     std::string removed_data;
+    int aux;
 
     /*
      * DAL - Dictionary Array List
@@ -43,18 +44,38 @@ int main() {
     myList.insert(2, "dado 2");
     myList.insert(8, "dado 3");
 
+    // Unity Tests #1: max() and min()
     assert(2 == myList.min());
     assert(15 == myList.max());
 
-    if (myList.search(8, "dado 3"))
-        std::cout << "Found! 8 on dictionary\n";
-    else
-        std::cout << "Not Found!\n";
+    // Unity Tests #2: sucessor()
+    assert(true == myList.sucessor(2, aux));
+    assert(8 == aux);
+    assert(true == myList.sucessor(8, aux));
+    assert(15 == aux);
+    assert(false == myList.sucessor(15, aux));
+
+    // Unity Tests #3: predecessor()
+    assert(false == myList.predecessor(2, aux));
+    assert(true == myList.predecessor(8, aux));
+    assert(2 == aux);
+    assert(true == myList.predecessor(15, aux));
+    assert(8 == aux);
+
+    // Unity Tests #4: search()
+    assert(true == myList.search(2, "dado 2"));
+    assert(true == myList.search(8, "dado 3"));
+    assert(true == myList.search(15, "dado 1"));
+    assert(false == myList.search(20, "dado 4"));
 
     std::cout << ">>> myList [after insertions]: " << myList << std::endl;
 
     myList.remove(15, removed_data);
     myList.remove(21, removed_data);
+
+    // Unity Tests #5: remove()
+    assert(false == myList.search(15, "dado 1"));
+    assert(false == myList.search(20, "dado 4"));
 
     std::cout << ">>> myList [after remotions]: " << myList << std::endl;
 
@@ -73,18 +94,38 @@ int main() {
     mySortedList.insert(2, "dado 2");
     mySortedList.insert(8, "dado 3");
 
+    // Unity Tests #1: max() and min()
     assert(2 == mySortedList.min());
     assert(15 == mySortedList.max());
 
-    if (mySortedList.search(8, "dado 3"))
-        std::cout << "Found! 8 on dictionary\n";
-    else
-        std::cout << "Not Found!\n";
+    // Unity Tests #2: sucessor()
+    assert(true == mySortedList.sucessor(2, aux));
+    assert(8 == aux);
+    assert(true == mySortedList.sucessor(8, aux));
+    assert(15 == aux);
+    assert(false == mySortedList.sucessor(15, aux));
+
+    // Unity Tests #3: predecessor()
+    assert(false == mySortedList.predecessor(2, aux));
+    assert(true == mySortedList.predecessor(8, aux));
+    assert(2 == aux);
+    assert(true == mySortedList.predecessor(15, aux));
+    assert(8 == aux);
+
+    // Unity Tests #4: search()
+    assert(true == mySortedList.search(2, "dado 2"));
+    assert(true == mySortedList.search(8, "dado 3"));
+    assert(true == mySortedList.search(15, "dado 1"));
+    assert(false == mySortedList.search(20, "dado 4"));
 
     std::cout << ">>> mySortedList [after insertions]: " << mySortedList << std::endl;
 
     mySortedList.remove(15, removed_data);
     mySortedList.remove(21, removed_data);
+
+    // Unity Tests #5: remove()
+    assert(false == mySortedList.search(15, "dado 1"));
+    assert(false == mySortedList.search(20, "dado 4"));
 
     std::cout << ">>> mySortedList [after remotions]: " << mySortedList << std::endl;
 

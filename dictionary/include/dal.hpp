@@ -47,6 +47,10 @@ class DAL {
     bool remove(const Key &_x, Data &);  // Remove da lista.
     Key min(void) const;  // Recupera a menor chave do dicionário.
     Key max(void) const;  // Recupera a maior chave do dicionário.
+    // Recupera em _y a chave sucessora a _x, se existir(true).
+    bool sucessor(const Key &_x, Key &_y) const;
+    // Recupera em _y a chave antecessora a _x, se existir(true).
+    bool predecessor(const Key &_x, Key &_y) const;
 
     //! Sobrecarga do operador <<, que faz com que seja impresso o conteudo da lista.
     /*! @param _os Output stream, normalmente o <CODE>cout</code>.
@@ -71,8 +75,7 @@ class DSAL : public DAL<Key, Data, KeyComparator> {
     bool insert(const Key &_novaId, const Data &_novaInfo);
     bool remove(const Key &_x, Data &);
     Key min(void) const;  // Recupera a menor chave do dicionário.
-    Key max(void) const;  // Recupera a maior chave do dicionário.
-
+    Key max(void) const;  // Recupera a maior chave do dicionário
     // Recupera em _y a chave sucessora a _x, se existir(true).
     bool sucessor(const Key &_x, Key &_y) const;
     // Recupera em _y a chave antecessora a _x, se existir(true).

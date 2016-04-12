@@ -89,6 +89,40 @@ Key DAL<Key, Data, KeyComparator>::max(void) const {
     return mi_Length ? mpt_Data[max].id : 0;
 }
 
+template <typename Key, typename Data, typename KeyComparator>
+bool DAL<Key, Data, KeyComparator>::sucessor(const Key &_x, Key &_y) const {
+    if (mi_Length > 1) {
+        _y = max();
+        if (_x == _y) return false;
+
+        for (auto i(0u); i < mi_Length; i++)
+            if (compare(mpt_Data[i].id, _x) == 1 && compare(mpt_Data[i].id, _y) == -1)
+                _y = mpt_Data[i].id;
+
+        return true;
+    }
+
+    return false;
+}
+
+template <typename Key, typename Data, typename KeyComparator>
+bool DAL<Key, Data, KeyComparator>::predecessor(const Key &_x, Key &_y) const {
+    if (mi_Length > 1) {
+        _y = min();
+
+        if (_y == _x) return false;
+
+        for (auto i(0u); i < mi_Length; i++)
+            if (compare(mpt_Data[i].id, _x) == -1 && compare(mpt_Data[i].id, _y) == 1)
+                _y = mpt_Data[i].id;
+
+        return true;
+    }
+
+    return false;
+}
+
+
 /**
  * ---------------------------------------------------------------------------
  * Methods from DSAL.
