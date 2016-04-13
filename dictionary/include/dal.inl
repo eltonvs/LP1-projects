@@ -77,7 +77,7 @@ template <typename Key, typename Data, typename KeyComparator>
 Key DAL<Key, Data, KeyComparator>::min(void) const {
     auto min(0);
     for (auto i(1u); i < mi_Length; i++)
-        if (mpt_Data[i].id < mpt_Data[min].id) min = i;
+        if (compare(mpt_Data[i].id, mpt_Data[min].id) == -1) min = i;
     return mi_Length ? mpt_Data[min].id : 0;
 }
 
@@ -85,7 +85,7 @@ template <typename Key, typename Data, typename KeyComparator>
 Key DAL<Key, Data, KeyComparator>::max(void) const {
     auto max(0);
     for (auto i(1u); i < mi_Length; i++)
-        if (mpt_Data[i].id > mpt_Data[max].id) max = i;
+        if (compare(mpt_Data[i].id, mpt_Data[max].id) == 1) max = i;
     return mi_Length ? mpt_Data[max].id : 0;
 }
 
@@ -161,7 +161,7 @@ bool DSAL<Key, Data, KeyComparator>::insert(const Key &_novaId, const Data &_nov
         if (pos != length) return false;
 
         auto i = length;
-        while (i > 0 and data[i-1].id > _novaId)
+        while (i > 0 and DAL<Key, Data, KeyComparator>::compare(data[i-1].id, _novaId) == 1)
             data[i] = data[i-1], i--;
         data[i].id = _novaId, data[i].info = _novaInfo, length++;
 
