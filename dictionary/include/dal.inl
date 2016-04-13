@@ -28,7 +28,8 @@ DAL<Key, Data, KeyComparator>::DAL(int _iMaxSz):
 template <typename Key, typename Data, typename KeyComparator>
 int DAL<Key, Data, KeyComparator>::compare(Key _x, Key _y) const {
     KeyComparator comp;
-    return comp(_x, _y);
+    auto r = comp(_x, _y);
+    return r < 0 ? -1 : r > 0 ? 1 : 0;
 }
 
 template <typename Key, typename Data, typename KeyComparator>
