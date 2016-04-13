@@ -1,6 +1,0 @@
-# Ignore object files
-*.o
-
-# Ignore compiled files
-bin/
-
