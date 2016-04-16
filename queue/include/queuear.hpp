@@ -21,6 +21,7 @@ class QueueAr : public AbsQueue<Object> {
 
  private:
     unsigned size() const;
+    void dblSize();
 
     Object *m_list = nullptr;
     int m_SIZE = 0;

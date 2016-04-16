@@ -6,14 +6,14 @@
 
 template <typename Object>
 QueueAr<Object>::QueueAr(const int _sz) : m_SIZE(_sz) {
-    if (_sz < 0)
+    if (_sz < 1)
         throw std::invalid_argument("[QueueAr()]: Invalid Queue size!");
     m_list = new Object[_sz];
 }
 
 template <typename Object>
 QueueAr<Object>::~QueueAr() {
-    delete m_list;
+    delete[] m_list;
 }
 
 template <typename Object>
@@ -23,8 +23,11 @@ void QueueAr<Object>::enqueue(const Object &_x) {
     } else {
         auto final_b = (m_r + 1)%m_SIZE;
 
-        if (final_b == m_f)  // Vector is full
-            throw std::out_of_range("[enqueue()]: The Queue is already fully!");
+        // Vector is full, so double queue size
+        if (final_b == m_f) {
+            dblSize();
+            final_b = (m_r + 1)%m_SIZE;
+        }
 
         m_list[final_b] = _x, m_r = final_b;
     }
@@ -72,4 +75,16 @@ unsigned QueueAr<Object>::size() const {
     if (m_f > m_r)
         return m_SIZE - m_f + m_r + 1;
     return m_r - m_f + 1;
+}
+
+template <typename Object>
+void QueueAr<Object>::dblSize() {
+    QueueAr<Object> copy(m_SIZE);
+    while (size() > 0)
+        copy.enqueue(dequeue());
+
+    m_SIZE *= 2, m_list = new Object[m_SIZE];
+
+    while (copy.size() > 0)
+        enqueue(copy.dequeue());
 }

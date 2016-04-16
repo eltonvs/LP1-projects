@@ -30,5 +30,12 @@ int main(int argc, char const *argv[]) {
     // Unity Test #6: makeEmpty() method
     assert(my_queue.isEmpty() == true);
 
+    for (int i = 0; i < 50; i++)
+        my_queue.enqueue(i);
+
+    // Unit Test #7: Tests the dynamic queue resize
+    for (int i = 0; i < 50; i++)
+        assert(my_queue.dequeue() == i);
+
     return EXIT_SUCCESS;
 }
