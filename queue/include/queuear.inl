@@ -65,7 +65,8 @@ bool QueueAr<Object>::isEmpty() const {
 
 template <typename Object>
 void QueueAr<Object>::makeEmpty() {
-    m_f = m_r = -1;
+    m_f = m_r = -1, m_SIZE = 1;
+    delete[] m_list;
 }
 
 template <typename Object>
