@@ -94,7 +94,15 @@ bool pushBack(SNPtr &_pAIL, int _newVal) {
 }
 
 bool popFront(SNPtr &_pAIL, int &_retrievedVal) {
-    return true;
+    if (front(_pAIL, _retrievedVal)) {
+        SNPtr aux = _pAIL;
+        delete _pAIL;
+        _pAIL = aux->mpNext;
+
+        return true;
+    }
+
+    return false;
 }
 
 bool popBack(SNPtr &_pAIL, int&_retrievedVal) {

@@ -6,6 +6,7 @@
 
 int main(void) {
     SNPtr pHead = NULL;  // nullptr;
+    int aux;  // Aux variable
 
     // Print to Debug
     print(pHead);
@@ -14,14 +15,15 @@ int main(void) {
     assert(length(pHead) == 0);
     // Unity Test #2: empty()
     assert(empty(pHead) == true);
+    // Unity Test #3: popFront()
+    assert(popFront(pHead, aux) == false);
 
     clear(pHead);
-    // Unity Test #3: length()
+    // Unity Test #4: length()
     assert(length(pHead) == 0);
-    // Unity Test #4: empty()
+    // Unity Test #5: empty()
     assert(empty(pHead) == true);
 
-    int aux;
     if (front(pHead, aux))
         std::cout << aux << std::endl;
     if (back(pHead, aux))
@@ -33,15 +35,15 @@ int main(void) {
     // Print to Debug
     print(pHead);
 
-    // Unity Test #5: length()
+    // Unity Test #6: length()
     assert(length(pHead) == 2);
-    // Unity Test #6: empty()
+    // Unity Test #7: empty()
     assert(empty(pHead) == false);
 
     clear(pHead);
-    // Unity Test #3: length()
+    // Unity Test #8: length()
     assert(length(pHead) == 0);
-    // Unity Test #4: empty()
+    // Unity Test #9: empty()
     assert(empty(pHead) == true);
 
     pushBack(pHead, 1);
@@ -52,10 +54,18 @@ int main(void) {
     // Print to Debug
     print(pHead);
 
-    // Unity Test #5: length()
+    // Unity Test #10: length()
     assert(length(pHead) == 4);
-    // Unity Test #6: empty()
+    // Unity Test #11: empty()
     assert(empty(pHead) == false);
+
+    // Unity Test #12: popFront()
+    assert(popFront(pHead, aux) == true);
+    // Unity Test #13: popFront() return
+    assert(aux == 1);
+
+    // Print to Debug
+    print(pHead);
 
     std::cout << "\n>>> Normal exiting...\n";
     return EXIT_SUCCESS;
