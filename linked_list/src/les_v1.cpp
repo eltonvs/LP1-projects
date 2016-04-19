@@ -62,7 +62,14 @@ bool back(SNPtr _pAIL, int &_retrievedVal) {
 }
 
 bool pushFront(SNPtr &_pAIL, int _newVal) {
-    SNPtr aux = new SLLNode;
+    SNPtr aux = NULL;
+
+    try {
+        aux = new SLLNode;
+    } catch (const std::bad_alloc &e) {
+        return false;
+    }
+
     aux->miData = _newVal;
     aux->mpNext = _pAIL;
     _pAIL = aux;
@@ -77,9 +84,12 @@ bool pushBack(SNPtr &_pAIL, int _newVal) {
         SNPtr aux = _pAIL;
         while (_pAIL->mpNext != NULL)
             _pAIL = _pAIL->mpNext;
-        pushFront(_pAIL->mpNext, _newVal);
-        _pAIL = aux;
+        if (pushFront(_pAIL->mpNext, _newVal))
+            _pAIL = aux;
+        else
+            return false;
     }
+
     return true;
 }
 
