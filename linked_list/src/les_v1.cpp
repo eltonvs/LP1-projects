@@ -62,16 +62,10 @@ bool back(SNPtr _pAIL, int &_retrievedVal) {
 }
 
 bool pushFront(SNPtr &_pAIL, int _newVal) {
-    if (_pAIL == NULL) {
-        _pAIL = new SLLNode;
-        _pAIL->miData = _newVal;
-        _pAIL->mpNext = NULL;
-    } else {
-        SNPtr aux = new SLLNode;
-        aux->miData = _newVal;
-        aux->mpNext = _pAIL;
-        _pAIL = aux;
-    }
+    SNPtr aux = new SLLNode;
+    aux->miData = _newVal;
+    aux->mpNext = _pAIL;
+    _pAIL = aux;
 
     return true;
 }
