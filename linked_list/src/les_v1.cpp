@@ -3,14 +3,17 @@
 #include <iostream>
 #include "les_v1.h"
 
-using namespace std;
-
 //! Prints the list.
 /*! This a debugging function that prints the list content.
  *  @param _pAIL Pointer to the head of the list. It NULL, list is empty.
  */
-void print( SNPtr _pAIL )
-{
+void print(SNPtr _pAIL) {
+    std::cout << "List Content = [ ";
+    while (_pAIL != NULL) {
+        std::cout << _pAIL->miData << " ";
+        _pAIL = _pAIL->mpNext;
+    }
+    std::cout << "]\n";
 }
 
 //! Length of the list.
@@ -18,75 +21,91 @@ void print( SNPtr _pAIL )
  *  @param _pAIL Pointer to the head of the list. It NULL, list is empty.
  *  @return The length.
  */
-int length( SNPtr _pAIL )
-{
-    return 0;
+int length(SNPtr _pAIL) {
+    auto i(0u);
+    while (_pAIL != NULL) _pAIL = _pAIL->mpNext, i++;
+    return i;
 }
 
 
-bool empty( SNPtr _pAIL )
-{
+bool empty(SNPtr _pAIL) {
+    return length(_pAIL) == 0;
+}
+
+
+void clear(SNPtr &_pAIL) {
+    if (_pAIL != NULL) {
+        while (_pAIL->mpNext != NULL)
+            clear(_pAIL->mpNext);
+        delete _pAIL;
+        _pAIL = NULL;
+    }
+}
+
+
+bool front(SNPtr _pAIL, int &_retrievedVal) {
+    if (_pAIL != NULL) {
+        _retrievedVal = _pAIL->miData;
+
+        return true;
+    }
+
+    return false;
+}
+
+
+bool back(SNPtr _pAIL, int &_retrievedVal) {
+    if (_pAIL != NULL) {
+        while(_pAIL->mpNext != NULL)
+            _pAIL = _pAIL->mpNext,
+            _retrievedVal = _pAIL->miData;
+        return true;
+    }
+
+    return false;
+}
+
+
+bool pushFront(SNPtr &_pAIL, int _newVal) {
+    if (_pAIL == NULL) {
+        _pAIL = new SLLNode;
+        _pAIL->miData = _newVal;
+        _pAIL->mpNext = NULL;
+    } else {
+        // Not yet
+    }
+
     return true;
 }
 
 
-void clear( SNPtr & _pAIL )
-{
-}
-
-
-bool front( SNPtr _pAIL, int & _retrievedVal )
-{
+bool pushBack(SNPtr &_pAIL, int _newVal) {
     return true;
 }
 
 
-bool back( SNPtr _pAIL, int & _retrievedVal )
-{
+bool popFront(SNPtr &_pAIL, int &_retrievedVal) {
     return true;
 }
 
 
-bool pushFront( SNPtr & _pAIL, int _newVal )
-{
+bool popBack(SNPtr &_pAIL, int&_retrievedVal) {
     return true;
 }
 
 
-bool pushBack( SNPtr & _pAIL, int _newVal )
-{
-    return true;
-}
-
-
-bool popFront( SNPtr & _pAIL, int & _retrievedVal )
-{
-    return true;
-}
-
-
-bool popBack( SNPtr & _pAIL, int& _retrievedVal )
-{
-    return true;
-}
-
-
-SNPtr find( SNPtr _pAIL, int _targetVal )
-{
+SNPtr find(SNPtr _pAIL, int _targetVal) {
     return NULL;
 }
 
 
-bool insert( SNPtr & _pAIL, SNPtr _pAnte, int _newVal )
-{
+bool insert(SNPtr &_pAIL, SNPtr _pAnte, int _newVal) {
     return true;
 }
 
 
-bool remove( SNPtr & _pAIL, SNPtr _pAnte, int & _retrievedVal )
-{
+bool remove(SNPtr &_pAIL, SNPtr _pAnte, int &_retrievedVal) {
     return true;
 }
-
 
 //**** ===================[ End of les_v1.cpp ]=================== ****//
