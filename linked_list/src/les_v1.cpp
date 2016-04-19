@@ -72,7 +72,10 @@ bool pushFront(SNPtr &_pAIL, int _newVal) {
         _pAIL->miData = _newVal;
         _pAIL->mpNext = NULL;
     } else {
-        // Not yet
+        SNPtr aux = new SLLNode;
+        aux->miData = _newVal;
+        aux->mpNext = _pAIL;
+        _pAIL = aux;
     }
 
     return true;

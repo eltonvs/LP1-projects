@@ -44,6 +44,6 @@ int main(void) {
     // Unity Test #4: empty()
     assert(empty(pHead) == true);
 
-    std::cout << "\n\n>>> Normal exiting...\n";
+    std::cout << "\n>>> Normal exiting...\n";
     return EXIT_SUCCESS;
 }
