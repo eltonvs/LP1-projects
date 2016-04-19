@@ -64,6 +64,11 @@ int main(void) {
     // Unity Test #13: popFront() return
     assert(aux == 1);
 
+    // Unity Test #12: popFront()
+    assert(popBack(pHead, aux) == true);
+    // Unity Test #13: popFront() return
+    assert(aux == 4);
+
     // Print to Debug
     print(pHead);
 

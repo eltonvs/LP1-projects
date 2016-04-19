@@ -105,8 +105,22 @@ bool popFront(SNPtr &_pAIL, int &_retrievedVal) {
     return false;
 }
 
-bool popBack(SNPtr &_pAIL, int&_retrievedVal) {
-    return true;
+bool popBack(SNPtr &_pAIL, int &_retrievedVal) {
+    if (_pAIL != NULL) {
+        SNPtr aux = _pAIL;
+        SNPtr aux2 = NULL;
+        while (_pAIL->mpNext != NULL)
+            aux2  = _pAIL,
+            _pAIL = _pAIL->mpNext;
+        _retrievedVal = _pAIL->miData;
+        delete _pAIL;
+        aux2->mpNext = NULL;
+        _pAIL = aux;
+
+        return true;
+    }
+
+    return false;
 }
 
 SNPtr find(SNPtr _pAIL, int _targetVal) {
