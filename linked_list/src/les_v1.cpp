@@ -27,11 +27,9 @@ int length(SNPtr _pAIL) {
     return i;
 }
 
-
 bool empty(SNPtr _pAIL) {
     return length(_pAIL) == 0;
 }
-
 
 void clear(SNPtr &_pAIL) {
     if (_pAIL != NULL) {
@@ -41,7 +39,6 @@ void clear(SNPtr &_pAIL) {
         _pAIL = NULL;
     }
 }
-
 
 bool front(SNPtr _pAIL, int &_retrievedVal) {
     if (_pAIL != NULL) {
@@ -53,7 +50,6 @@ bool front(SNPtr _pAIL, int &_retrievedVal) {
     return false;
 }
 
-
 bool back(SNPtr _pAIL, int &_retrievedVal) {
     if (_pAIL != NULL) {
         while(_pAIL->mpNext != NULL)
@@ -64,7 +60,6 @@ bool back(SNPtr _pAIL, int &_retrievedVal) {
 
     return false;
 }
-
 
 bool pushFront(SNPtr &_pAIL, int _newVal) {
     if (_pAIL == NULL) {
@@ -81,31 +76,34 @@ bool pushFront(SNPtr &_pAIL, int _newVal) {
     return true;
 }
 
-
 bool pushBack(SNPtr &_pAIL, int _newVal) {
+    if (_pAIL == NULL) {
+        pushFront(_pAIL, _newVal);
+    } else {
+        SNPtr aux = _pAIL;
+        while (_pAIL->mpNext != NULL)
+            _pAIL = _pAIL->mpNext;
+        pushFront(_pAIL->mpNext, _newVal);
+        _pAIL = aux;
+    }
     return true;
 }
-
 
 bool popFront(SNPtr &_pAIL, int &_retrievedVal) {
     return true;
 }
 
-
 bool popBack(SNPtr &_pAIL, int&_retrievedVal) {
     return true;
 }
-
 
 SNPtr find(SNPtr _pAIL, int _targetVal) {
     return NULL;
 }
 
-
 bool insert(SNPtr &_pAIL, SNPtr _pAnte, int _newVal) {
     return true;
 }
-
 
 bool remove(SNPtr &_pAIL, SNPtr _pAnte, int &_retrievedVal) {
     return true;

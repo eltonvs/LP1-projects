@@ -44,6 +44,19 @@ int main(void) {
     // Unity Test #4: empty()
     assert(empty(pHead) == true);
 
+    pushBack(pHead, 1);
+    pushBack(pHead, 2);
+    pushBack(pHead, 3);
+    pushBack(pHead, 4);
+
+    // Print to Debug
+    print(pHead);
+
+    // Unity Test #5: length()
+    assert(length(pHead) == 4);
+    // Unity Test #6: empty()
+    assert(empty(pHead) == false);
+
     std::cout << "\n>>> Normal exiting...\n";
     return EXIT_SUCCESS;
 }
