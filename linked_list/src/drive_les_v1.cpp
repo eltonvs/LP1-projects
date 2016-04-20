@@ -69,6 +69,9 @@ int main(void) {
     // Unity Test #13: popFront() return
     assert(aux == 4);
 
+    // Unity Test #14: find()
+    assert(find(pHead, 3)->mpData == 2);
+
     // Print to Debug
     print(pHead);
 
