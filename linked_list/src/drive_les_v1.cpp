@@ -70,7 +70,16 @@ int main(void) {
     assert(aux == 4);
 
     // Unity Test #14: find()
-    assert(find(pHead, 3)->mpData == 2);
+    assert(find(pHead, 3)->miData == 2);
+
+    // Unity Test #15: insert() return
+    assert(insert(pHead, pHead, 12) == true);
+    // Unity Test #16: insert() return
+    assert(insert(pHead, pHead->mpNext, 123) == true);
+    // Unity Test #17: insert()
+    assert(find(pHead, 12) == NULL);
+    // Unity Test #18: insert()
+    assert(find(pHead, 123) == pHead);
 
     // Print to Debug
     print(pHead);

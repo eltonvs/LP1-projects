@@ -129,11 +129,26 @@ SNPtr find(SNPtr _pAIL, int _targetVal) {
             return _pAIL;
         _pAIL = _pAIL->mpNext;
     }
+
     return NULL;
 }
 
 bool insert(SNPtr &_pAIL, SNPtr _pAnte, int _newVal) {
-    return true;
+    if (_pAnte == NULL || _pAnte == _pAIL)
+        return pushFront(_pAIL, _newVal);
+
+    SNPtr aux1 = _pAnte;
+    if (pushFront(_pAnte, _newVal)) {
+        SNPtr aux2 = _pAIL;
+        while (_pAIL->mpNext != aux1)
+            _pAIL = _pAIL->mpNext;
+        _pAIL->mpNext = _pAnte;
+        _pAIL = aux2;
+
+        return true;
+    }
+
+    return false;
 }
 
 bool remove(SNPtr &_pAIL, SNPtr _pAnte, int &_retrievedVal) {
