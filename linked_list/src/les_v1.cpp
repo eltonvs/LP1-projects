@@ -140,8 +140,14 @@ bool insert(SNPtr &_pAIL, SNPtr _pAnte, int _newVal) {
     SNPtr aux1 = _pAnte;
     if (pushFront(_pAnte, _newVal)) {
         SNPtr aux2 = _pAIL;
-        while (_pAIL->mpNext != aux1)
+        while (_pAIL->mpNext != aux1 and _pAIL != NULL)
             _pAIL = _pAIL->mpNext;
+
+        if (_pAIL == NULL) {
+            _pAIL = aux2;
+            return false;
+        }
+
         _pAIL->mpNext = _pAnte;
         _pAIL = aux2;
 
@@ -152,6 +158,34 @@ bool insert(SNPtr &_pAIL, SNPtr _pAnte, int _newVal) {
 }
 
 bool remove(SNPtr &_pAIL, SNPtr _pAnte, int &_retrievedVal) {
+    if (_pAIL == NULL)
+        return true;
+
+    if (_pAnte == NULL) {
+        _retrievedVal = _pAIL->miData;
+        SNPtr aux = _pAIL->mpNext;
+        delete _pAIL;
+        _pAIL = aux;
+
+        return true;
+    }
+
+    SNPtr aux1 = _pAnte->mpNext->mpNext;
+    SNPtr aux2 = _pAIL;
+
+    while (_pAIL != _pAnte and _pAIL != NULL)
+        _pAIL = _pAIL->mpNext;
+
+    if (_pAIL == NULL) {
+        _pAIL = aux2;
+        return false;
+    }
+
+    _retrievedVal = _pAIL->mpNext->miData;
+    delete _pAIL->mpNext;
+    _pAIL->mpNext = aux1;
+    _pAIL = aux2;
+
     return true;
 }
 

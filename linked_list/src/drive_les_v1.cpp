@@ -84,6 +84,14 @@ int main(void) {
     // Print to Debug
     print(pHead);
 
+    // Unity Test #19: remove()
+    assert(remove(pHead, pHead->mpNext, aux) == true);
+    // Unity Test #20: remove() return
+    assert(aux == 2);
+
+    // Print to Debug
+    print(pHead);
+
     std::cout << "\n>>> Normal exiting...\n";
     return EXIT_SUCCESS;
 }
