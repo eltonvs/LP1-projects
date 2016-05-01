@@ -1,0 +1,6 @@
+# Ignore LaTeX generated/compiled files
+*.aux
+*.dvi
+*.log
+*.pdf
+*.toc
