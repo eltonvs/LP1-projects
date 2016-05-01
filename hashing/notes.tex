@@ -1,6 +1,7 @@
 \documentclass[12pt,openright,oneside,a4paper,english,brazil]{abntex2}
 
 \usepackage[brazil]{babel}
+\usepackage[none]{hyphenat}
 \usepackage[utf8]{inputenc}
 \usepackage{indentfirst}
 \usepackage{listings}
@@ -45,12 +46,19 @@
     Conforme vai sendo utilizada, a tabela hash vai ficando ``bagunçada'', com espaços vazios entre os elementos. Assim, para realizar uma inserção é necessário encontrar um espaço que esteja vazio.
     Portanto, para encontrar a posição em que um elemento deve ser inserido em uma Tabela de Dispersão, foi criada a técnica de \textbf{hashing}.
 
-    Ess técnica consiste na criação de uma função (\textit{Hash Function}) que, dado uma chave \textit{k}, retorne o \textbf{código de espelhamento} (\textit{hash code}) \textit{h} pertencente ao intervalo [0, \textit{n}-1].
+    Essa técnica consiste na criação de uma função (\textit{Hash Function}) que, dado uma chave \textit{k}, retorne o \textbf{código de espelhamento} (\textit{hash code}) \textit{h} pertencente ao intervalo [0,~\textit{n}-1].
     É crucial que essa função retorne sempre o mesmo \textit{hash code} sempre que tiver a mesma chave passada por parâmetro.
-    Uma forma simples de implementar essa função é com aritmética modular, sendo \textit{k} a chave e \textit{n} o tamanho do vetor de registros, \code{$\lambda$ k, n: k mod n}.
+    Uma forma simples de implementar essa função é com a aritmética modular, sendo \textit{k} a chave e \textit{n} o tamanho do vetor de registros, \code{$\lambda$~k,~n:~k~mod~n} (desde que \textit{k} seja um número inteiro).
 
-    Como o tamnho do vetor de registros é limitado, é inevitável que a função retorne o mesmo código de espelhamento para duas entradas diferentes.
+    Como o tamanho do vetor de registros é limitado, é inevitável que a função retorne o mesmo código de espelhamento para duas entradas diferentes.
     Quando isso ocorre, dizemos que houve uma \textit{colisão}.
+    Logo, para encontrar a posição que o elemento pode ser inserido no vetor é necessário percorrê-lo linearmente até que encontre uma posição vazia (aumentando a complexidade e, consequentemente, o tempo de execução).
+
+    Uma função de espalhamento é considerada boa se e possui uma taxa de colisão \textbf{reduzida} e consegue distribuir \textbf{uniformemente} os elementos pelo vetor.
+    Para desenvolver uma função dessa natureza é necessário analisar antes como as chaves são formadas, para então definir qual a função que melhor se comporte com o conjunto de entradas possíveis.
+
+    Dessa forma, dada uma função de espelhamento F e dois conjuntos de entradas (A e B), é possível que F seja considerada boa para A, e ruim para B.
+    Dependendo da função, há também como variar a eficiência da função apenas modificando o tamanho da Tabela Hash.
 
 \section*{Complexidade}
 
