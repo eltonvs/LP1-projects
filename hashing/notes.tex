@@ -5,7 +5,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{indentfirst}
 \usepackage{listings}
-\usepackage{xcolor}
+\usepackage{color}
 
 % Creates \code tag to print inline code
 \definecolor{codegray}{gray}{0.9}
@@ -46,7 +46,7 @@
     Conforme vai sendo utilizada, a tabela hash vai ficando ``bagunçada'', com espaços vazios entre os elementos. Assim, para realizar uma inserção é necessário encontrar um espaço que esteja vazio.
     Portanto, para encontrar a posição em que um elemento deve ser inserido em uma Tabela de Dispersão, foi criada a técnica de \textbf{hashing}.
 
-    Essa técnica consiste na criação de uma função (\textit{Hash Function}) que, dado uma chave \textit{k}, retorne o \textbf{código de espelhamento} (\textit{hash code}) \textit{h} pertencente ao intervalo [0,~\textit{n}-1].
+    Essa técnica consiste na criação de uma função (\textit{Hash Function}) que, dado uma chave \textit{k}, retorne o \textbf{código de espelhamento} (\textit{hash code}) \textit{h} pertencente ao intervalo [0,~\textit{n}~-~1].
     É crucial que essa função retorne sempre o mesmo \textit{hash code} sempre que tiver a mesma chave passada por parâmetro.
     Uma forma simples de implementar essa função é com a aritmética modular, sendo \textit{k} a chave e \textit{n} o tamanho do vetor de registros, \code{$\lambda$~k,~n:~k~mod~n} (desde que \textit{k} seja um número inteiro).
 
@@ -61,6 +61,22 @@
     Dependendo da função, há também como variar a eficiência da função apenas modificando o tamanho da Tabela Hash.
 
 \section*{Complexidade}
+    \begin{itemize}
+        \item Acesso
+        \begin{itemize}[label={}]
+            \item A complexidade para acessar um elemento da Tabela de Dispersão é de $O(n)$ para o pior caso (quando ocorrem colisões) e $\Omega(1)$ para o melhor caso (quando nenhuma colisão ocorre).
+        \end{itemize}
+        \item Inserção
+        \begin{itemize}[label={}]
+            \item A complexidade para a inserção de um elemento na tabela é igual a do acesso, sendo $\Omega(1)$ quando a posição retornada pela função de espelhamento apontar para um local vazio, e $O(n)$ caso contrário.
+        \end{itemize}
+        \item Remoção
+        \begin{itemize}[label={}]
+            \item Para remover um elemento dessa Estrutura de Dados tem-se a mesma complexidade do acesso, sendo $O(n)$ quando houver colisões e $\Omega(1)$ quando não.
+        \end{itemize}
+    \end{itemize}
+
+    Logo, pode-se concluir que a complexidade de uma Tabela de Dispersão está diretamente relacionada à sua função de espelhamento. Isto é, uma boa função de espelhamento (que possua uma taxa pequena de colisões) faz com que a complexidade de Acesso diminua e, consequentemente, a Inserção e Remoção também ficam com uma complexidade menor.
 
 \section*{Relações com outras Estruturas de Dados}
 
