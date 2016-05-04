@@ -78,6 +78,9 @@
     Logo, pode-se concluir que a complexidade de uma Tabela de Dispersão está diretamente relacionada à sua função de espelhamento. Isto é, uma boa função de espelhamento (que possua uma taxa pequena de colisões) faz com que a complexidade de Acesso diminua e, consequentemente, a Inserção e Remoção também ficam com uma complexidade menor.
 
 \section*{Relações com outras Estruturas de Dados}
+    Uma Tabela Hash pode facilmente ser implementada com uma Lista Encadeada (\textit{Linked List}). Dessa forma, tem-se um vetor de listas encadeadas, de forma que cada elemento do vetor aponte para o início (\textit{HEAD}) de sua respectiva lista.
+
+    Com essa implementação, quando ocorrer uma colisão, deve-se procurar o elemento na lista encadeada da posição congruente à hash.
 
 \section*{SHA-1}
 
