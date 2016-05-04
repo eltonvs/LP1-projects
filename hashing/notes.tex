@@ -63,25 +63,30 @@
     \begin{itemize}
         \item \textbf{Acesso:}
         \begin{itemize}[label={}]
-            \item A complexidade para acessar um elemento da Tabela de Dispersão é de $O(n)$ para o pior caso (quando ocorrem colisões) e $\Omega(1)$ para o melhor caso (quando nenhuma colisão ocorre).
+            \item A complexidade para acessar um elemento da Tabela de Dispersão é de $\mathcal{O}(n)$ para o pior caso (quando ocorrem colisões) e $\Omega(1)$ para o melhor caso (quando nenhuma colisão ocorre).
         \end{itemize}
         \item \textbf{Inserção:}
         \begin{itemize}[label={}]
-            \item A complexidade para a inserção de um elemento na tabela é igual a do acesso, sendo $\Omega(1)$ quando a posição retornada pela função de espelhamento apontar para um local vazio, e $O(n)$ caso contrário.
+            \item A complexidade para a inserção de um elemento na tabela é igual a do acesso, sendo $\Omega(1)$ quando a posição retornada pela função de espelhamento apontar para um local vazio, e $\mathcal{O}(n)$ caso contrário.
         \end{itemize}
         \item \textbf{Remoção:}
         \begin{itemize}[label={}]
-            \item Para remover um elemento, tem-se a mesma complexidade do acesso, sendo $O(n)$ quando houver colisões e $\Omega(1)$ quando não.
+            \item Para remover um elemento, tem-se a mesma complexidade do acesso, sendo $\mathcal{O}(n)$ quando houver colisões e $\Omega(1)$ quando não.
         \end{itemize}
     \end{itemize}
 
     Logo, pode-se concluir que a complexidade de uma Tabela de Dispersão está diretamente relacionada à sua função de espelhamento. Isto é, uma boa função de espelhamento (que possua uma taxa pequena de colisões) faz com que a complexidade de Acesso diminua e, consequentemente, a Inserção e Remoção também ficam com uma complexidade menor.
 
 \section*{Relações com outras Estruturas de Dados}
-    Uma Tabela Hash pode facilmente ser implementada com uma Lista Encadeada (\textit{Linked List}). Dessa forma, tem-se um vetor de listas encadeadas, de forma que cada elemento do vetor aponte para o início (\textit{HEAD}) de sua respectiva lista.
+    Uma Tabela de Dispersão pode trabalhar em conjunto com uma Lista Encadeada. Assim, ao invés de se ter um vetor de valores, tem-se um vetor de listas encadeadas, de forma que cada elemento do vetor aponta para o início (\textit{HEAD}) de sua respectiva lista. Essa técnica é conhecida como \textit{Separate Chaining}.
 
-    Com essa implementação, quando ocorrer uma colisão, deve-se procurar o elemento na lista encadeada da posição congruente à hash.
+    Utilizando essa implementação, quando uma colisão ocorre, ao invés de percorrer pelo vetor procurando o próximo elemento (\textit{Linear Probing}), o algoritmo deve percorrer a lista encadeada na posição congruente à chave.
+    Dessa forma, sabe-se que todos os elementos que possuem uma chave congruente estão localizados na mesma lista encaeada. Logo, um elemento nunca ocupará uma posição congruente a outra chave (o que ocorre quando é utilizada a implementação sem a lista encadeada), fazendo com que a probabilidade de ocorrer uma colisão não aumente, mas permaneça constante.
 
 \section*{SHA-1}
+    SHA-1 (\textit{Secure Hash Algorithm 1}), é uma famosa função para geração de \textbf{valores de dispersão}.
+    Foi desenvolvido pela Agência Nacional de Segurança dos Estados Unidos (NSA) em 1995 e é amplamente utilizada até hoje.
+    Esse algoritmo produz um valor hexadecimal de 160 bits (40 dígitos).
+    A sua função em Tabelas de Dispersão está na geração da hash.
 
 \end{document}
