@@ -89,4 +89,8 @@
     Esse algoritmo produz um valor hexadecimal de 160 bits (40 dígitos).
     A sua função em Tabelas de Dispersão está na geração da hash.
 
+    Esse algoritmo é enquadrado nos chamados ``Algoritmos de criptografia \textit{One Way}'', isto é, a partir do valor gerado, é impossível retornar à chave original.
+    Por ser utilizado para a geração de hashs em Tabelas de Dispersão, ele também obedece à condição de retornar sempre o mesmo valor quando a mesma chave for inserida como parâmetro.
+    Por esse motivo, alguns sistemas de versionamento, como o Git e Mercurial o utilizam para identificação das revisões.
+
 \end{document}
