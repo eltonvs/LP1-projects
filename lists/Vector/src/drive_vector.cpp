@@ -12,6 +12,7 @@
  */
 
 #include <iostream>
+#include "vector.hpp"
 
 int main(int argc, char const *argv[]) {
     // Code Here
