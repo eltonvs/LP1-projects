@@ -30,7 +30,7 @@ void Vector<T>::clear() {
 template <typename T>
 void Vector<T>::push_back(const T &_x) {
     if (m_size >= m_capacity)
-        _dbl_capacity();
+        reserve(m_capacity == 0 ? 1 : m_capacity * 2);
     m_list[m_size++] = _x;
 }
 
@@ -59,18 +59,38 @@ void Vector<T>::assign(const T &_x) {
         m_list[i] = _x;
 }
 
-// Double Capacity
+// Gets the capacity size
 template <typename T>
-void Vector<T>::_dbl_capacity() {
-    // Creates a new unique_ptr with a bigger size
-    std::unique_ptr<T[]> cpy_list(new T[m_capacity * 2]);
-    // Copy vector content to cpy_list and calls your destructor
-    for (auto i(0u); i < m_size; i++) {
-        cpy_list[i] = m_list[i];
-        (&m_list[i])->~T();
+size_type Vector<T>::capacity() const {
+    return m_capacity;
+}
+
+template <typename T>
+void Vector<T>::reserve(size_type _new_capacity) {
+    if (_new_capacity > m_capacity) {
+        // Creates a new unique_ptr with a bigger size
+        std::unique_ptr<T[]> cpy_list(new T[_new_capacity]);
+        // Copy vector content to cpy_list and calls your destructor
+        for (auto i(0u); i < m_size; i++) {
+            cpy_list[i] = m_list[i];
+            (&m_list[i])->~T();
+        }
+        // Moves the cpy_list to m_list
+        m_list = std::move(cpy_list);
+        // Sets the new capacity value
+        m_capacity = _new_capacity;
     }
-    // Moves the cpy_list to m_list
-    m_list = std::move(cpy_list);
-    // Sets the new capacity value
-    m_capacity *= 2;
+}
+
+// Gets the element at some position
+template <typename T>
+T &Vector<T>::at(size_type _idx) {
+    if (_idx >= m_size || _idx < 0)
+        throw std::out_of_range("Index out of range!");
+    return m_list[_idx];
+}
+
+template <typename T>
+T &Vector<T>::operator[](size_type idx) {
+    return m_list[idx];
 }

@@ -73,12 +73,33 @@ class Vector {
      */
     void assign(const T &_x);
 
- private:
     /**
-     * @brief Double the Vector capacity
+     * @brief Returns the Vector capacity
+     * @return The Vector capacity
      */
-    void _dbl_capacity();
+    size_type capacity() const;
 
+    /**
+     * @brief Sets the new Vector capacity
+     * @param _new_capacity The new capacity size
+     */
+    void reserve(size_type _new_capacity);
+
+    /**
+     * @brief Returns the element at some position
+     * @param _idx The position to be returned
+     * @return The element on position
+     */
+    T &at(size_type _idx);
+
+    /**
+     * @brief Overload the [] operator
+     * @param idx The position to be accessed
+     * @return The element on informed position
+     */
+    T &operator[](size_type idx);
+
+ private:
     size_type m_size = 0;         //!< The Vector size
     size_type m_capacity = 1;     //!< The Vector capacity
     std::unique_ptr<T[]> m_list;  //!< The Vector list
