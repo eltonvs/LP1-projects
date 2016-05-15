@@ -40,6 +40,25 @@ void Vector<T>::pop_back() {
     (&m_list[--m_size])->~T();
 }
 
+// Get the Back element
+template <typename T>
+const T &Vector<T>::back() const {
+    return m_list[m_size - 1];
+}
+
+// Get the Front element
+template <typename T>
+const T &Vector<T>::front() const {
+    return m_list[0];
+}
+
+// Assign a value to Vector
+template <typename T>
+void Vector<T>::assign(const T &_x) {
+    for (auto i(0u); i < m_size; i++)
+        m_list[i] = _x;
+}
+
 // Double Capacity
 template <typename T>
 void Vector<T>::_dbl_capacity() {
