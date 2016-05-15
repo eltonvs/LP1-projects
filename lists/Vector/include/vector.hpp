@@ -74,9 +74,14 @@ class Vector {
     void assign(const T &_x);
 
  private:
-    size_type m_size = 0;
-    size_type m_capacity = 1;
-    std::unique_ptr<T[]> m_list;
+    /**
+     * @brief Double the Vector capacity
+     */
+    void _dbl_capacity();
+
+    size_type m_size = 0;         //!< The Vector size
+    size_type m_capacity = 1;     //!< The Vector capacity
+    std::unique_ptr<T[]> m_list;  //!< The Vector list
 };
 
 #include "vector.inl"
