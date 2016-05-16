@@ -99,10 +99,99 @@ class Vector {
      */
     T &operator[](size_type idx);
 
+    /**
+     * @brief Returns a pointer with the Vector data
+     * @return A pointer to the beggining of the array
+     */
+    T* data();
+
+    /**
+     * @brief The nested const_iterator class
+     */
+    class const_iterator;
+
+    /**
+     * @brief The nested iterator class
+     */
+    class iterator;
+
+    iterator begin();
+    iterator end();
+    const_iterator cbegin() const;
+    const_iterator cend() const;
+
  private:
     size_type m_size = 0;         //!< The Vector size
     size_type m_capacity = 1;     //!< The Vector capacity
     std::unique_ptr<T[]> m_list;  //!< The Vector list
+};
+
+template <typename T>
+class Vector<T>::const_iterator {
+friend class Vector<T>;  //!< Declares const_iterator as a friend of Vector
+ public:
+    /**
+     * @brief const_iterator Constructor
+     * @param _ptr The initial pointer value
+     */
+    explicit const_iterator(T *_ptr = nullptr) : m_ptr(_ptr) {}
+
+    /**
+     * @brief Overload the prefix ++ operator
+     * @param _it The const_iterator to be modified
+     * @return The modified const_iterator
+     */
+    inline friend
+    const_iterator &operator++(Vector<T>::const_iterator &_it) {
+        _it.m_ptr++;
+        return _it;
+    }
+
+    /**
+     * @brief Overload the postfix ++ operator
+     * @param _it The const_iterator to be modified
+     * @return The modified const_iterator
+     */
+    inline friend
+    Vector<T>::const_iterator operator++(Vector<T>::const_iterator &_it, int) {
+        Vector<T>::const_iterator cpy(_it.m_ptr++);
+        return cpy;
+    }
+
+    /**
+     * @brief Overload the * operator
+     * @param _it The const_iterator to be accessed
+     * @return The element value
+     */
+    inline friend
+    T operator*(const Vector<T>::const_iterator &_it) {
+        return *(_it.m_ptr);
+    }
+
+    /**
+     * @brief Overload the == operator
+     * @param _lhs The const_iterator from right side
+     * @param _rhs The const_iterator from left side
+     * @return True if both are equals, False otherwise
+     */
+    inline friend
+    bool operator==(const const_iterator &_lhs, const const_iterator &_rhs) {
+        return _lhs.m_ptr == _rhs.m_ptr;
+    }
+
+    /**
+     * @brief Overload the == operator
+     * @param _lhs The const_iterator from right side
+     * @param _rhs The const_iterator from left side
+     * @return True if both aren't equals, False otherwise
+     */
+    inline friend
+    bool operator!=(const const_iterator &_lhs, const const_iterator &_rhs) {
+        return !(_lhs == _rhs);
+    }
+
+ protected:
+    T *m_ptr; //!< The internal pointer to a Vector element
 };
 
 #include "vector.inl"

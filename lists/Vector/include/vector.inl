@@ -94,3 +94,18 @@ template <typename T>
 T &Vector<T>::operator[](size_type idx) {
     return m_list[idx];
 }
+
+template <typename T>
+T* Vector<T>::data() {
+    return m_list.get();
+}
+
+template <typename T>
+typename Vector<T>::const_iterator Vector<T>::cbegin() const {
+    return typename Vector<T>::const_iterator(m_list.get());
+}
+
+template <typename T>
+typename Vector<T>::const_iterator Vector<T>::cend() const {
+    return typename Vector<T>::const_iterator(m_list.get() + m_size);
+}
