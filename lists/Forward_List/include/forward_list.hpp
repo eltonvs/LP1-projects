@@ -55,12 +55,22 @@ class Forward_list {
 
     /**
      * @brief Gets the front element
-     * @return The first element from list
+     * @return A reference to the first element from list
      */
     T &front();
 
+    /**
+     * @brief Gets the front element
+     * @return A const reference to the first element from list
+     */
     const T &front() const;
+
+    /**
+     * @brief Gets the last element
+     * @return A reference to the last element from list
+     */
     T &back();
+
     const T &back() const;
     void push_front(const T &x);
     void push_back(const T &x);

@@ -70,15 +70,46 @@ void Forward_list<T>::clear() {
     m_head->next = m_tail;
 }
 
-// Empty list content
+// Gets the first element from List
 template <typename T>
 T &Forward_list<T>::front() {
     return m_head->next->data;
 }
 
+// Gets the first element from List (with const modifier)
+template <typename T>
+const T &Forward_list<T>::front() const {
+    return m_head->next->data;
+}
+
+// Gets the last element from List
+template <typename T>
+T &Forward_list<T>::back() {
+    Node *temp = m_head;
+    while (temp->next != m_tail)
+        temp = temp->next;
+    return temp->data;
+}
+
+// Inserts a element on the front of the List
 template <typename T>
 void Forward_list<T>::push_front(const T &x) {
     Node *_new = new Node(x, m_head->next);
     m_head->next = _new;
+    m_size++;
+}
+
+// Inserts a element on the end of the List
+template <typename T>
+void Forward_list<T>::push_back(const T &x) {
+    // Search for the last element
+    Node *temp = m_head;
+    while (temp->next != m_tail)
+        temp = temp->next;
+    // Creates a new element
+    Node *_new = new Node(x, temp->next);
+    // Makes the last element point to _new
+    temp->next = _new;
+    // Increase List size
     m_size++;
 }
