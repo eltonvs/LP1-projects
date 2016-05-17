@@ -71,14 +71,40 @@ class Forward_list {
      */
     T &back();
 
+    /**
+     * @brief Gets the last element
+     * @return A const reference to the last element from list
+     */
     const T &back() const;
-    void push_front(const T &x);
-    void push_back(const T &x);
+
+    /**
+     * @brief Inserts a element at the front of the list
+     * @param _x The element to be inserted
+     */
+    void push_front(const T &_x);
+
+    /**
+     * @brief Inserts a element at the end of the list
+     * @param _x The element to be inserted
+     */
+    void push_back(const T &_x);
+
+    /**
+     * @brief Removes the first element of the list
+     */
     void pop_front();
+
+    /**
+     * @brief Removes the last element of the list
+     */
     void pop_back();
-    void assign(const T &value);
-    template <class InItr>
-    void assing(InItr first, InItr last);
+
+    /**
+     * @brief Assign a value to all elements from list
+     * @param _val Value to be assigned
+     */
+    void assign(const T &_val);
+
     void assign(std::initializer_list <T> ilist);
     class const_iterator;
     class iterator;
@@ -92,6 +118,8 @@ class Forward_list {
     iterator insert_after(const_iterator pos, std::initializer_list <T> ilist);
     iterator erase_after(const_iterator itr);
     iterator erase_after(const_iterator first, const_iterator last);
+    template <class InItr>
+    void assign(InItr first, InItr last);
     const_iterator find(const T &x) const;
 
     /**

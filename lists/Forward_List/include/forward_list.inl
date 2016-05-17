@@ -91,25 +91,69 @@ T &Forward_list<T>::back() {
     return temp->data;
 }
 
+// Gets the last element from List (with const modifier)
+template <typename T>
+const T &Forward_list<T>::back() const {
+    Node *temp = m_head;
+    while (temp->next != m_tail)
+        temp = temp->next;
+    return temp->data;
+}
+
 // Inserts a element on the front of the List
 template <typename T>
-void Forward_list<T>::push_front(const T &x) {
-    Node *_new = new Node(x, m_head->next);
+void Forward_list<T>::push_front(const T &_x) {
+    Node *_new = new Node(_x, m_head->next);
     m_head->next = _new;
     m_size++;
 }
 
 // Inserts a element on the end of the List
 template <typename T>
-void Forward_list<T>::push_back(const T &x) {
+void Forward_list<T>::push_back(const T &_x) {
     // Search for the last element
     Node *temp = m_head;
     while (temp->next != m_tail)
         temp = temp->next;
     // Creates a new element
-    Node *_new = new Node(x, temp->next);
+    Node *_new = new Node(_x, temp->next);
     // Makes the last element point to _new
     temp->next = _new;
     // Increase List size
     m_size++;
+}
+
+// Removes the first element from list
+template <typename T>
+void Forward_list<T>::pop_front() {
+    if (m_size > 0) {
+        Node *temp = m_head->next;
+        m_head->next = temp->next;
+        m_size--;
+        delete temp;
+    }
+}
+
+// Removes the last element from list
+template <typename T>
+void Forward_list<T>::pop_back() {
+    if (m_size > 0) {
+        Node *aux1 = m_head;
+        while (aux1->next->next != m_tail)
+            aux1 = aux1->next;
+        Node *aux2 = aux1->next;  // Element to be dropped
+        aux1->next = aux2->next;
+        m_size--;
+        delete aux2;
+    }
+}
+
+// Assign a value to all elements from list
+template <typename T>
+void Forward_list<T>::assign(const T &_val) {
+    Node *temp = m_head;
+    while (temp->next != m_tail) {
+        temp = temp->next;
+        temp->data = _val;
+    }
 }

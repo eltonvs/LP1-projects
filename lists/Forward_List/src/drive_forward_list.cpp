@@ -29,7 +29,7 @@ int main(int argc, char const *argv[]) {
     assert(fl1.size() == 1);       // size()
     assert(fl1.empty() == false);  // empty()
     assert(fl1.front() == 3);      // front()
-    assert(fl1.back() == 3);      // back()
+    assert(fl1.back() == 3);       // back()
 
     // Unity test #4: push_back() consequences
     fl1.push_back(10);
@@ -38,10 +38,47 @@ int main(int argc, char const *argv[]) {
     assert(fl1.front() == 3);      // front()
     assert(fl1.back() == 10);      // back()
 
-    // Unity test #5: clear() consequences
+    // Unity test #5: pop_front() consequences
+    fl1.pop_front();
+    assert(fl1.size() == 1);       // size()
+    assert(fl1.empty() == false);  // empty()
+    assert(fl1.front() == 10);     // front()
+    assert(fl1.back() == 10);      // back()
+
+    fl1.push_front(3);
+
+    // Unity test #6: pop_back() consequences
+    fl1.pop_back();
+    assert(fl1.size() == 1);       // size()
+    assert(fl1.empty() == false);  // empty()
+    assert(fl1.front() == 3);      // front()
+    assert(fl1.back() == 3);       // back()
+
+    // Unity test #7: clear() consequences
     fl1.clear();
     assert(fl1.size() == 0);      // size()
     assert(fl1.empty() == true);  // empty()
+
+    // Unity test #8: push_back() and back()
+    for (int i = 0; i < 10; i++) {
+        fl1.push_back(i);
+        assert(fl1.back() == i);
+    }
+
+    // Unity test #9: assign(), front() and pop_front();
+    fl1.assign(100);
+    for (int i = 0; i < 10; i++) {
+        assert(fl1.front() == 100);
+        fl1.pop_front();
+    }
+
+    // Unity test #10: size() and empty() (after pop_front)
+    assert(fl1.size() == 0);
+    assert(fl1.empty() == true);
+
+    // Put elements on list to test memory leak
+    for (int i = 0; i < 10; i++)
+        fl1.push_back(i);
 
     std::cout << ">>> Exiting with success...\n";
 
