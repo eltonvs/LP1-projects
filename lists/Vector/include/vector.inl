@@ -101,6 +101,16 @@ T* Vector<T>::data() {
 }
 
 template <typename T>
+typename Vector<T>::iterator Vector<T>::begin() {
+    return typename Vector<T>::iterator(m_list.get());
+}
+
+template <typename T>
+typename Vector<T>::iterator Vector<T>::end() {
+    return typename Vector<T>::iterator(m_list.get() + m_size);
+}
+
+template <typename T>
 typename Vector<T>::const_iterator Vector<T>::cbegin() const {
     return typename Vector<T>::const_iterator(m_list.get());
 }

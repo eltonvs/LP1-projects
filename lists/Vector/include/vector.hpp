@@ -115,9 +115,28 @@ class Vector {
      */
     class iterator;
 
+    /**
+     * @brief Returns a iterator to the first Vector element
+     * @return An iterator pointing to the first Vector element
+     */
     iterator begin();
+
+    /**
+     * @brief Returns a iterator to the end mark in the list
+     * @return An iterator pointing to the end mark in the list
+     */
     iterator end();
+
+    /**
+     * @brief Returns a const_iterator to the first Vector element
+     * @return A const_iterator pointing to the first Vector element
+     */
     const_iterator cbegin() const;
+
+    /**
+     * @brief Returns a const_iterator to the end mark in the list
+     * @return A const_iterator pointing to the end mark in the list
+     */
     const_iterator cend() const;
 
  private:
@@ -128,7 +147,6 @@ class Vector {
 
 template <typename T>
 class Vector<T>::const_iterator {
-friend class Vector<T>;  //!< Declares const_iterator as a friend of Vector
  public:
     /**
      * @brief const_iterator Constructor
@@ -164,7 +182,7 @@ friend class Vector<T>;  //!< Declares const_iterator as a friend of Vector
      * @return The element value
      */
     inline friend
-    T operator*(const Vector<T>::const_iterator &_it) {
+    const T operator*(const Vector<T>::const_iterator &_it) {
         return *(_it.m_ptr);
     }
 
@@ -191,7 +209,27 @@ friend class Vector<T>;  //!< Declares const_iterator as a friend of Vector
     }
 
  protected:
-    T *m_ptr; //!< The internal pointer to a Vector element
+    T *m_ptr;  //!< The internal pointer to a Vector element
+};
+
+template <typename T>
+class Vector<T>::iterator : public Vector<T>::const_iterator {
+ public:
+    /**
+     * @brief const_iterator Constructor
+     * @param _ptr The initial pointer value
+     */
+    explicit iterator(T *_ptr = nullptr) : Vector<T>::const_iterator(_ptr) {}
+
+    /**
+     * @brief Overload the * operator
+     * @param _it The const_iterator to be accessed
+     * @return The element value
+     */
+    inline friend
+    T operator*(const Vector<T>::iterator &_it) {
+        return *(_it.m_ptr);
+    }
 };
 
 #include "vector.inl"

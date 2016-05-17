@@ -39,35 +39,53 @@ int main(int argc, char const *argv[]) {
     for (i = 0; i < 10; i++)
         assert(*(ptr+i) == i);
 
-    // Unity test #4: const_iterator (operators ++ and *), cbegin(), cend()
+    // Unity test #4: const_iterator (postfix ++ and *), cbegin(), cend()
     i = 0;
     for (auto it = v1.cbegin(); it != v1.cend(); it++, i++)
         assert(*it == i);
     assert(i == 10);
 
-    // Unity test #5: back()
+    // Unity test #5: const_iterator (infix ++ and *), cbegin(), cend()
+    i = 0;
+    for (auto it = v1.cbegin(); it != v1.cend(); ++it, i++)
+        assert(*it == i);
+    assert(i == 10);
+
+    // Unity test #6: iterator (postfix ++ and *), begin(), end()
+    i = 0;
+    for (auto it = v1.begin(); it != v1.end(); it++, i++)
+        assert(*it == i);
+    assert(i == 10);
+
+    // Unity test #7: iterator (infix ++ and *), begin(), end()
+    i = 0;
+    for (auto it = v1.begin(); it != v1.end(); ++it, i++)
+        assert(*it == i);
+    assert(i == 10);
+
+    // Unity test #8: back()
     assert(v1.back() == 9);
     assert(v2.back() == 9);
 
-    // Unity test #6: front()
+    // Unity test #9: front()
     assert(v1.front() == 0);
     assert(v2.front() == 0);
 
-    // Unity test #7: size() after inserctions
+    // Unity test #10: size() after inserctions
     assert(v1.size() == 10);
     assert(v2.size() == 10);
 
     v1.pop_back();
     v2.pop_back();
 
-    // Unity test #8: size() after remotion
+    // Unity test #11: size() after remotion
     assert(v1.size() == 9);
     assert(v2.size() == 9);
 
     v1.assign(10);
     v2.assign(20);
 
-    // Unity test #9: assign(), at() and the [] operator
+    // Unity test #12: assign(), at() and the [] operator
     for (i = 0; i < 9; i++) {
         assert(v1.at(i) == 10);
         assert(v1[i] == 10);
@@ -79,7 +97,7 @@ int main(int argc, char const *argv[]) {
     v1.clear();
     v2.clear();
 
-    // Unity test #10: size() after clear
+    // Unity test #13: size() after clear
     assert(v1.size() == 0);
     assert(v2.size() == 0);
 
