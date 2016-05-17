@@ -105,7 +105,7 @@ class Forward_list {
      */
     void assign(const T &_val);
 
-    void assign(std::initializer_list <T> ilist);
+    void assign(std::initializer_list<T> _il);
     class const_iterator;
     class iterator;
     iterator begin();

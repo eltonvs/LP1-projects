@@ -157,3 +157,9 @@ void Forward_list<T>::assign(const T &_val) {
         temp->data = _val;
     }
 }
+template <typename T>
+void Forward_list<T>::assign(std::initializer_list<T> _il) {
+    clear();
+    for (auto i = _il.begin(); i != _il.end(); i++)
+        push_back(*i);
+}

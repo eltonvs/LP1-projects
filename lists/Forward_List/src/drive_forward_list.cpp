@@ -76,6 +76,13 @@ int main(int argc, char const *argv[]) {
     assert(fl1.size() == 0);
     assert(fl1.empty() == true);
 
+    // Unity test #11: assign() with initializer list
+    fl1.assign({1, 2, 3, 4});
+    for (int i = 1; i < 5; i++) {
+        assert(fl1.front() == i);
+        fl1.pop_front();
+    }
+
     // Put elements on list to test memory leak
     for (int i = 0; i < 10; i++)
         fl1.push_back(i);
