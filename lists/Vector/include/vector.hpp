@@ -182,7 +182,7 @@ class Vector<T>::const_iterator {
      * @return The element value
      */
     inline friend
-    const T operator*(const Vector<T>::const_iterator &_it) {
+    const T &operator*(const Vector<T>::const_iterator &_it) {
         return *(_it.m_ptr);
     }
 
@@ -227,7 +227,7 @@ class Vector<T>::iterator : public Vector<T>::const_iterator {
      * @return The element value
      */
     inline friend
-    T operator*(const Vector<T>::iterator &_it) {
+    T &operator*(const Vector<T>::iterator &_it) {
         return *(_it.m_ptr);
     }
 };
