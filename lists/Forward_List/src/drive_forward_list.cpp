@@ -223,27 +223,27 @@ int main(int argc, char const *argv[]) {
     //fl3 }
     //fl3 assert(i == 7);
 
-    // Unit test #15: erase_after() with the starting iterator
+    // Unit test #15: erase_after() with only one iterator and cbefore_begin()
     // Fill List
     for (i = 0; i < 10; i++) {
         fl1.push_back(i);
         fl2.push_back(i);
         //fl3 fl3.push_back(i);
     }
-    it = fl1.erase_after(fl1.cbegin());
-    it = fl2.erase_after(fl2.cbegin());
-    //fl3 it = fl3.erase_after(fl3.cbegin());
-    assert(fl1.size() == 1);       // Test for fl1
-    assert(fl2.size() == 1);       // Test for fl2
+    it = fl1.erase_after(fl1.cbefore_begin());
+    it = fl2.erase_after(fl2.cbefore_begin());
+    //fl3 it = fl3.erase_after(fl3.cbefore_begin());
+    assert(fl1.size() == 9);       // Test for fl1
+    assert(fl2.size() == 9);       // Test for fl2
     //fl3 assert(fl3.size() == 1);       // Test for fl3
     assert(fl1.empty() == false);  // Test for fl1
     assert(fl2.empty() == false);  // Test for fl2
     //fl3 assert(fl3.empty() == false);  // Test for fl3
-    assert(fl1.front() == 0);      // Test for fl1
-    assert(fl2.front() == 0);      // Test for fl2
+    assert(fl1.front() == 1);      // Test for fl1
+    assert(fl2.front() == 1);      // Test for fl2
     //fl3 assert(fl3.front() == 0);      // Test for fl3
-    assert(fl1.back() == 0);       // Test for fl1
-    assert(fl2.back() == 0);       // Test for fl2
+    assert(fl1.back() == 9);       // Test for fl1
+    assert(fl2.back() == 9);       // Test for fl2
     //fl3 assert(fl3.back() == 0);       // Test for fl3
 
     // Clear List content

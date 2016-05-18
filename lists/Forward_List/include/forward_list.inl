@@ -228,15 +228,11 @@ typename Forward_list<T>::iterator Forward_list<T>::insert_after(const_iterator 
 // Removes all elements after an iterator
 template <typename T>
 typename Forward_list<T>::iterator Forward_list<T>::erase_after(const_iterator _it) {
-    if (_it.m_node != m_tail) {
+    if (_it.m_node != m_tail && _it.m_node->next != m_tail) {
         Node *cpy = _it.m_node->next;
-        _it.m_node->next = m_tail;
-        while (cpy != m_tail) {
-            Node *aux = cpy;
-            cpy = cpy->next;
-            m_size--;
-            delete aux;
-        }
+        _it.m_node->next = cpy->next;
+        m_size--;
+        delete cpy;
         return Forward_list<T>::iterator(m_tail);
     }
     return Forward_list<T>::iterator(_it.m_node);

@@ -174,9 +174,9 @@ class Forward_list {
     iterator insert_after(const_iterator _pos, std::initializer_list <T> _il);
 
     /**
-     * @brief Removes all elements after a position
-     * @param _it The iterator at the initial position
-     * @return An iterator to the last removed element
+     * @brief Removes the element following a position
+     * @param _it The iterator at the position
+     * @return The position of the removed element
      */
     iterator erase_after(const_iterator _it);
 
@@ -188,9 +188,20 @@ class Forward_list {
      */
     iterator erase_after(const_iterator _ini, const_iterator _end);
 
-    template <class InItr>
-    void assign(InItr first, InItr last);
-    const_iterator find(const T &x) const;
+    /**
+     * @brief Assign a value for all elements between two iterators
+     * @param _ini The iterator at the initial position
+     * @param _end The iterator at the final position
+     */
+    template <class IT>
+    void assign(IT _ini, IT _end);
+
+    /**
+     * @brief Find an element on List
+     * @param _x The element to bo looked for
+     * @return An iterator to the last removed element
+     */
+    const_iterator find(const T &_x) const;
 
     /**
      * @brief Overload copy assignment
@@ -201,9 +212,12 @@ class Forward_list {
         delete m_head;
         delete m_tail;
 
-        m_head = new Node(_fl.m_head->data, _fl.m_head->next);
-        m_tail = new Node(_fl.m_tail->data, _fl.m_tail->next);
-        m_size = _fl.m_size;
+        m_head = new Node;
+        m_tail = new Node;
+        m_head->next = m_tail;
+        m_size = 0;
+        for (auto it = _fl.cbegin(); it != _fl.cend(); it++)
+            push_back(*it);
 
         return (*this);
     }
