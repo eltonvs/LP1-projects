@@ -17,14 +17,17 @@ Forward_list<T>::Forward_list() {
     m_head->next = m_tail;
 }
 
-/*
 template <typename T>
 Forward_list<T>::Forward_list(const Forward_list<T> &_fl) {
-    m_head = _fl.m_head;
-    m_tail = _fl.m_tail;
-    m_size = _fl.m_size;
+    m_head = new Node;
+    m_tail = new Node;
+    m_head->next = m_tail;
+    m_size = 0;
+    for (auto it = _fl.cbegin(); it != _fl.cend(); it++)
+        push_back(*it);
 }
 
+/*
 template <typename T>
 Forward_list<T>::Forward_list(Forward_list<T> &&_fl) {
     m_head = _fl.m_head;
