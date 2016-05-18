@@ -16,7 +16,9 @@
 #include "forward_list.hpp"
 
 int main(int argc, char const *argv[]) {
+    int i;
     Forward_list<int> fl1;
+    Forward_list<int>::iterator it;
 
     // Unity test #1: size()
     assert(fl1.size() == 0);
@@ -79,6 +81,19 @@ int main(int argc, char const *argv[]) {
     // Unity test #11: assign() with initializer list
     fl1.assign({1, 2, 3, 4});
     for (int i = 1; i < 5; i++) {
+        assert(fl1.front() == i);
+        fl1.pop_front();
+    }
+
+    // Unity test #12: size() and empty() (after pop_front) [2]
+    assert(fl1.size() == 0);
+    assert(fl1.empty() == true);
+
+    // Unity test #13: assign() with initialization_list, before_begin()
+    // --------------- begin(), end(), prefix ++, front() and pop_front()
+    fl1.assign({1, 2, 3, 4, 5, 6});
+    it = fl1.insert_after(fl1.before_begin(), 0);
+    for (it = fl1.begin(), i = 0; it != fl1.end(); ++it, i++) {
         assert(fl1.front() == i);
         fl1.pop_front();
     }

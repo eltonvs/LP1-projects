@@ -157,9 +157,56 @@ void Forward_list<T>::assign(const T &_val) {
         temp->data = _val;
     }
 }
+
+// Assign a value to all elements from list with an initializer_list
 template <typename T>
 void Forward_list<T>::assign(std::initializer_list<T> _il) {
     clear();
     for (auto i = _il.begin(); i != _il.end(); i++)
         push_back(*i);
+}
+
+// Returns a iterator pointing to the first element of the list
+template <typename T>
+typename Forward_list<T>::iterator Forward_list<T>::begin() {
+    return typename Forward_list<T>::iterator(m_head->next);
+}
+
+// Returns a iterator pointing to the beginning of the list
+template <typename T>
+typename Forward_list<T>::iterator Forward_list<T>::before_begin() {
+    return typename Forward_list<T>::iterator(m_head);
+}
+
+// Returns a iterator pointing to the end of the list
+template <typename T>
+typename Forward_list<T>::iterator Forward_list<T>::end() {
+    return typename Forward_list<T>::iterator(m_tail);
+}
+
+// Returns a iterator pointing to the first element of the list
+template <typename T>
+typename Forward_list<T>::const_iterator Forward_list<T>::cbegin() const {
+    return typename Forward_list<T>::const_iterator(m_head->next);
+}
+
+// Returns a iterator pointing to the beginning of the list
+template <typename T>
+typename Forward_list<T>::const_iterator Forward_list<T>::cbefore_begin() const {
+    return typename Forward_list<T>::const_iterator(m_head);
+}
+
+// Returns a iterator pointing to the end of the list
+template <typename T>
+typename Forward_list<T>::const_iterator Forward_list<T>::cend() const {
+    return typename Forward_list<T>::const_iterator(m_tail);
+}
+
+// Insert a element after a const_iterator
+template <typename T>
+typename Forward_list<T>::iterator Forward_list<T>::insert_after(const_iterator _it, const T &_x) {
+    Node *_new = new Node(_x, _it.m_node->next);
+    _it.m_node->next = _new;
+    m_size++;
+    return Forward_list<T>::iterator(_it.m_node->next);
 }

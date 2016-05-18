@@ -100,24 +100,67 @@ class Forward_list {
     void pop_back();
 
     /**
-     * @brief Assign a value to all elements from list
+     * @brief Assign a value to all elements of the list
      * @param _val Value to be assigned
      */
     void assign(const T &_val);
 
+    /**
+     * @brief Assign the list value from a initializer_list
+     * @param _val Initializer List with the new List value
+     */
     void assign(std::initializer_list<T> _il);
+
+    /**
+     * @brief The nested const_iterator class
+     */
     class const_iterator;
+
+    /**
+     * @brief The nested iterator class
+     */
     class iterator;
+
+    /**
+     * @brief Gets an iterator pointing to the first element of the list
+     * @return An iterator to the first element of the list
+     */
     iterator begin();
+
+    /**
+     * @brief Gets an iterator pointing to the beginning of the list
+     * @return An iterator to the beginning of the list
+     */
     iterator before_begin();
+
+    /**
+     * @brief Gets an iterator pointing to the end of the list
+     * @return An iterator to the end of the list
+     */
     iterator end();
+
+    /**
+     * @brief Gets a const_iterator pointing to the first element of the list
+     * @return A const_iterator to the first element of the list
+     */
     const_iterator cbegin() const;
+
+    /**
+     * @brief Gets a const_iterator pointing to the beginning of the list
+     * @return A const_iterator to the beginning of the list
+     */
     const_iterator cbefore_begin() const;
+
+    /**
+     * @brief Gets a const_iterator pointing to the end of the list
+     * @return A const_iterator to the end of the list
+     */
     const_iterator cend() const;
-    iterator insert_after(const_iterator itr, const T &x);
-    iterator insert_after(const_iterator pos, std::initializer_list <T> ilist);
-    iterator erase_after(const_iterator itr);
-    iterator erase_after(const_iterator first, const_iterator last);
+
+    iterator insert_after(const_iterator _it, const T &_x);
+    iterator insert_after(const_iterator pos, std::initializer_list <T> _il);
+    iterator erase_after(const_iterator _it);
+    iterator erase_after(const_iterator _ini, const_iterator _end);
     template <class InItr>
     void assign(InItr first, InItr last);
     const_iterator find(const T &x) const;
@@ -164,9 +207,78 @@ class Forward_list {
         Node *next;  //!< Pointer to the next node in the list.
         Node(const T &_d = T(), Node *_nxt = nullptr) : data(_d), next(_nxt) {}
     };
-    Node *m_head;  //!< A pointer to the List head
-    Node *m_tail;  //!< A pointer to the List tail
-    size_type m_size;    //!< The List size
+    Node *m_head;      //!< A pointer to the List head
+    Node *m_tail;      //!< A pointer to the List tail
+    size_type m_size;  //!< The List size
+};
+
+template <typename T>
+class Forward_list<T>::const_iterator {
+ public:
+    const_iterator() {}
+    const T &operator*() const {
+        return m_node->data;
+    }
+    // ++it;
+    const_iterator &operator++() {
+        m_node = m_node->next;
+        return (*this);
+    }
+    // it++;
+    const_iterator operator++(int) {
+        const_iterator cpy(m_node);
+        m_node = m_node->next;
+        return cpy;
+    }
+    // --it;
+    const_iterator &operator--();
+    // it--
+    const_iterator operator--(int);
+    bool operator==(const const_iterator &_rhs) const {
+        return (m_node->data == _rhs.m_node->data) && (m_node->next == _rhs.m_node->next);
+    }
+    bool operator!=(const const_iterator &_rhs) const {
+        return !(*this == _rhs);
+    }
+
+ protected:
+    friend class Forward_list<T>;
+    Node *m_node;
+    const_iterator(Node *_p) : m_node(_p) {}
+};
+
+template <typename T>
+class Forward_list<T>::iterator : public Forward_list<T>::const_iterator {
+ public:
+    iterator() : const_iterator() {}
+    T &operator*() {
+        return const_iterator::m_node->data;
+    }
+    // ++it;
+    iterator &operator++() {
+        const_iterator::m_node = const_iterator::m_node->next;
+        return (*this);
+    }
+    // it++;
+    iterator operator++(int) {
+        iterator cpy(const_iterator::m_node);
+        const_iterator::m_node = const_iterator::m_node->next;
+        return cpy;
+    }
+    // --it;
+    iterator &operator--();
+    // it--
+    iterator operator--(int);
+    bool operator==(const iterator &_rhs) const {
+        return (const_iterator::m_node->data == _rhs.m_node->data) && (const_iterator::m_node->next == _rhs.m_node->next);
+    }
+    bool operator!=(const iterator &_rhs) const {
+        return !(*this == _rhs);
+    }
+
+ protected:
+    iterator(Node *_p) : const_iterator(_p) {}
+    friend class Forward_list<T>;
 };
 
 #include "forward_list.inl"
