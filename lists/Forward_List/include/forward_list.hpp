@@ -231,13 +231,14 @@ class Forward_list {
         delete m_head;
         delete m_tail;
 
-        m_head = new Node(_fl.m_head->data, _fl.m_head->next);
-        m_tail = new Node(_fl.m_tail->data, _fl.m_tail->next);
+        m_head = new Node;
+        m_tail = _fl.m_tail;
+        m_head->next = _fl.m_head->next;
         m_size = _fl.m_size;
 
+        _fl.m_tail = new Node;
         _fl.m_head->next = _fl.m_tail;
-        _fl.m_tail->next = nullptr;
-        _fl.size = 0;
+        _fl.m_size = 0;
 
         return (*this);
     }
@@ -271,10 +272,6 @@ class Forward_list<T>::const_iterator {
         m_node = m_node->next;
         return cpy;
     }
-    // --it;
-    const_iterator &operator--();
-    // it--
-    const_iterator operator--(int);
     bool operator==(const const_iterator &_rhs) const {
         return (m_node == _rhs.m_node);
     }

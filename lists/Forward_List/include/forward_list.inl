@@ -27,18 +27,18 @@ Forward_list<T>::Forward_list(const Forward_list<T> &_fl) {
         push_back(*it);
 }
 
-/*
 template <typename T>
 Forward_list<T>::Forward_list(Forward_list<T> &&_fl) {
-    m_head = _fl.m_head;
+    // "Stole" _fl data
+    m_head = new Node;
     m_tail = _fl.m_tail;
+    m_head->next = _fl.m_head->next;
     m_size = _fl.m_size;
-
-    _fl.m_head->next = m_tail;
-    _fl.m_tail->next = nullptr;
+    // Change _fl
+    _fl.m_tail = new Node;
+    _fl.m_head->next = _fl.m_tail;
     _fl.m_size = 0;
 }
-*/
 
 // Destructor
 template <typename T>
@@ -258,13 +258,11 @@ typename Forward_list<T>::iterator Forward_list<T>::erase_after(const_iterator _
 // Find an element on list
 template <typename T>
 typename Forward_list<T>::const_iterator Forward_list<T>::find(const T &_x) const {
-    // oi, irena
     auto it = cbegin();
     while (it != cend()) {
         if (*it == _x)
             break;
         it++;
     }
-
     return it;
 }
