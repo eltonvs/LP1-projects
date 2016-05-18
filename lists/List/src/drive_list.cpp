@@ -1,6 +1,6 @@
 /*!
  *  @mainpage List
- *  @author Elton de Souza Vieira
+ *  @authors Elton de Souza Vieira, Claudio Lima Bezerra
  *  @date May, 2016
  *  @copyright Copyright &copy; 2016. All rights reserved.
  *  @version 1.0
@@ -12,6 +12,7 @@
  */
 
 #include <iostream>
+#include <cassert>
 #include "list.hpp"
 
 int main(int argc, char const *argv[]) {
