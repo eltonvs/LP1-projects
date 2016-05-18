@@ -19,6 +19,7 @@ int main(int argc, char const *argv[]) {
     int i;
     Forward_list<int> fl1;
     Forward_list<int>::iterator it;
+    Forward_list<int>::const_iterator cit;
 
     // Unity test #1: size()
     assert(fl1.size() == 0);
@@ -62,14 +63,14 @@ int main(int argc, char const *argv[]) {
     assert(fl1.empty() == true);  // empty()
 
     // Unity test #8: push_back() and back()
-    for (int i = 0; i < 10; i++) {
+    for (i = 0; i < 10; i++) {
         fl1.push_back(i);
         assert(fl1.back() == i);
     }
 
     // Unity test #9: assign(), front() and pop_front();
     fl1.assign(100);
-    for (int i = 0; i < 10; i++) {
+    for (i = 0; i < 10; i++) {
         assert(fl1.front() == 100);
         fl1.pop_front();
     }
@@ -80,7 +81,7 @@ int main(int argc, char const *argv[]) {
 
     // Unity test #11: assign() with initializer list
     fl1.assign({1, 2, 3, 4});
-    for (int i = 1; i < 5; i++) {
+    for (i = 1; i < 5; i++) {
         assert(fl1.front() == i);
         fl1.pop_front();
     }
@@ -89,17 +90,30 @@ int main(int argc, char const *argv[]) {
     assert(fl1.size() == 0);
     assert(fl1.empty() == true);
 
-    // Unity test #13: assign() with initialization_list, before_begin()
-    // --------------- begin(), end(), prefix ++, front() and pop_front()
+    // Unity test #13: assign() w/ initializer_list, insert_after(),
+    // --------------- before_begin(), begin(), operators (prefix ++ and !=),
+    // --------------- end(), front() and pop_front()
     fl1.assign({1, 2, 3, 4, 5, 6});
     it = fl1.insert_after(fl1.before_begin(), 0);
     for (it = fl1.begin(), i = 0; it != fl1.end(); ++it, i++) {
         assert(fl1.front() == i);
         fl1.pop_front();
     }
+    assert(i == 7);
+
+    // Unity test #14: assign() w/ initializer_list, insert_after(),
+    // --------------- before_begin(), cbegin(), operators (postfix ++ and !=),
+    // --------------- cend(), front() and pop_front()
+    fl1.assign({1, 2, 3, 4, 5, 6});
+    it = fl1.insert_after(fl1.before_begin(), 0);
+    for (cit = fl1.cbegin(), i = 0; cit != fl1.cend(); cit++, i++) {
+        assert(fl1.front() == i);
+        fl1.pop_front();
+    }
+    assert(i == 7);
 
     // Put elements on list to test memory leak
-    for (int i = 0; i < 10; i++)
+    for (i = 0; i < 10; i++)
         fl1.push_back(i);
 
     std::cout << ">>> Exiting with success...\n";

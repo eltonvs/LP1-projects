@@ -254,27 +254,6 @@ class Forward_list<T>::iterator : public Forward_list<T>::const_iterator {
     T &operator*() {
         return const_iterator::m_node->data;
     }
-    // ++it;
-    iterator &operator++() {
-        const_iterator::m_node = const_iterator::m_node->next;
-        return (*this);
-    }
-    // it++;
-    iterator operator++(int) {
-        iterator cpy(const_iterator::m_node);
-        const_iterator::m_node = const_iterator::m_node->next;
-        return cpy;
-    }
-    // --it;
-    iterator &operator--();
-    // it--
-    iterator operator--(int);
-    bool operator==(const iterator &_rhs) const {
-        return (const_iterator::m_node->data == _rhs.m_node->data) && (const_iterator::m_node->next == _rhs.m_node->next);
-    }
-    bool operator!=(const iterator &_rhs) const {
-        return !(*this == _rhs);
-    }
 
  protected:
     iterator(Node *_p) : const_iterator(_p) {}
