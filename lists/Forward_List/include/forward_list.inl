@@ -233,7 +233,7 @@ typename Forward_list<T>::iterator Forward_list<T>::erase_after(const_iterator _
         _it.m_node->next = cpy->next;
         m_size--;
         delete cpy;
-        return Forward_list<T>::iterator(m_tail);
+        return Forward_list<T>::iterator(_it.m_node->next);
     }
     return Forward_list<T>::iterator(_it.m_node);
 }
