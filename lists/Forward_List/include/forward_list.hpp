@@ -157,10 +157,37 @@ class Forward_list {
      */
     const_iterator cend() const;
 
+    /**
+     * @brief Inserts a element after a position
+     * @param _it The iterator at position to be inserted (after)
+     * @param _x The element to be inserted
+     * @return An iterator to the inserted element
+     */
     iterator insert_after(const_iterator _it, const T &_x);
+
+    /**
+     * @brief Inserts a initializer_list after a position
+     * @param _it The iterator at position to be inserted (after)
+     * @param _il The initializer_list to be inserted
+     * @return An iterator to the last inserted element
+     */
     iterator insert_after(const_iterator _pos, std::initializer_list <T> _il);
+
+    /**
+     * @brief Removes all elements after a position
+     * @param _it The iterator at the initial position
+     * @return An iterator to the last removed element
+     */
     iterator erase_after(const_iterator _it);
+
+    /**
+     * @brief Removes all elements between two iterators
+     * @param _ini The iterator at the initial position
+     * @param _end The iterator at the final position
+     * @return An iterator to the last removed element
+     */
     iterator erase_after(const_iterator _ini, const_iterator _end);
+
     template <class InItr>
     void assign(InItr first, InItr last);
     const_iterator find(const T &x) const;

@@ -214,6 +214,7 @@ typename Forward_list<T>::iterator Forward_list<T>::insert_after(const_iterator 
     return Forward_list<T>::iterator(_it.m_node->next);
 }
 
+// Insert an initializer_list after a const_iterator
 template <typename T>
 typename Forward_list<T>::iterator Forward_list<T>::insert_after(const_iterator _pos, std::initializer_list <T> _il) {
     for (auto it = _il.begin(); it != _il.end(); it++) {
@@ -222,4 +223,38 @@ typename Forward_list<T>::iterator Forward_list<T>::insert_after(const_iterator 
         m_size++;
     }
     return Forward_list<T>::iterator(_pos.m_node->next);
+}
+
+// Removes all elements after an iterator
+template <typename T>
+typename Forward_list<T>::iterator Forward_list<T>::erase_after(const_iterator _it) {
+    if (_it.m_node != m_tail) {
+        Node *cpy = _it.m_node->next;
+        _it.m_node->next = m_tail;
+        while (cpy != m_tail) {
+            Node *aux = cpy;
+            cpy = cpy->next;
+            m_size--;
+            delete aux;
+        }
+        return Forward_list<T>::iterator(m_tail);
+    }
+    return Forward_list<T>::iterator(_it.m_node);
+}
+
+// Removes all elements between two iterators
+template <typename T>
+typename Forward_list<T>::iterator Forward_list<T>::erase_after(const_iterator _ini, const_iterator _end) {
+    if (_ini.m_node != _end.m_node) {
+        Node *cpy = _ini.m_node->next;
+        _ini.m_node->next = _end.m_node;
+        while (cpy != _end.m_node) {
+            Node *aux = cpy;
+            cpy = cpy->next;
+            m_size--;
+            delete aux;
+        }
+        return Forward_list<T>::iterator(_end.m_node);
+    }
+    return Forward_list<T>::iterator(_ini.m_node);
 }
