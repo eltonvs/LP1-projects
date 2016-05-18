@@ -274,6 +274,27 @@ int main(int argc, char const *argv[]) {
     assert(fl2.back() == 0);       // Test for fl2
     //fl3 assert(fl3.back() == 0);       // Test for fl3
 
+    // Clear List content
+    fl1.clear();
+    fl2.clear();
+
+    // Unit test #17: find()
+    // Fill List
+    for (i = 0; i < 10; i++) {
+        fl1.push_back(i);
+        fl2.push_back(i);
+        //fl3 fl3.push_back(i);
+    }
+    for (i = 0; i < 10; i++) {
+        assert(*fl1.find(i) == i);
+        assert(*fl2.find(i) == i);
+        //fl3 assert(*fl3.find(i) == i);
+    }
+
+    // Clear List content
+    fl1.clear();
+    fl2.clear();
+
     // Put elements on list to test memory leak
     for (i = 0; i < 10; i++) {
         fl1.push_back(i);

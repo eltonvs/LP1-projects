@@ -254,3 +254,17 @@ typename Forward_list<T>::iterator Forward_list<T>::erase_after(const_iterator _
     }
     return Forward_list<T>::iterator(_ini.m_node);
 }
+
+// Find an element on list
+template <typename T>
+typename Forward_list<T>::const_iterator Forward_list<T>::find(const T &_x) const {
+    // oi, irena
+    auto it = cbegin();
+    while (it != cend()) {
+        if (*it == _x)
+            break;
+        it++;
+    }
+
+    return it;
+}

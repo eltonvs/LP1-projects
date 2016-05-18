@@ -189,7 +189,7 @@ class Forward_list {
     iterator erase_after(const_iterator _ini, const_iterator _end);
 
     /**
-     * @brief Assign a value for all elements between two iterators
+     * @brief Replaces the list content with copies of the content on iterators
      * @param _ini The iterator at the initial position
      * @param _end The iterator at the final position
      */
