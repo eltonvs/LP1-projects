@@ -210,3 +210,13 @@ typename Forward_list<T>::iterator Forward_list<T>::insert_after(const_iterator 
     m_size++;
     return Forward_list<T>::iterator(_it.m_node->next);
 }
+
+template <typename T>
+typename Forward_list<T>::iterator Forward_list<T>::insert_after(const_iterator _pos, std::initializer_list <T> _il) {
+    for (auto it = _il.begin(); it != _il.end(); it++) {
+        Node *_new = new Node(*it, _pos.m_node->next);
+        _pos.m_node->next = _new;
+        m_size++;
+    }
+    return Forward_list<T>::iterator(_pos.m_node->next);
+}

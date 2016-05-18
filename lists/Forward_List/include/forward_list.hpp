@@ -158,7 +158,7 @@ class Forward_list {
     const_iterator cend() const;
 
     iterator insert_after(const_iterator _it, const T &_x);
-    iterator insert_after(const_iterator pos, std::initializer_list <T> _il);
+    iterator insert_after(const_iterator _pos, std::initializer_list <T> _il);
     iterator erase_after(const_iterator _it);
     iterator erase_after(const_iterator _ini, const_iterator _end);
     template <class InItr>
@@ -235,7 +235,7 @@ class Forward_list<T>::const_iterator {
     // it--
     const_iterator operator--(int);
     bool operator==(const const_iterator &_rhs) const {
-        return (m_node->data == _rhs.m_node->data) && (m_node->next == _rhs.m_node->next);
+        return (m_node == _rhs.m_node);
     }
     bool operator!=(const const_iterator &_rhs) const {
         return !(*this == _rhs);
