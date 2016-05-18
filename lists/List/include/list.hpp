@@ -15,35 +15,35 @@ template <typename T>
 class List {
  public:
     /**
-     * @brief Forward List Constructor
+     * @brief List Constructor
      */
     List();
 
     /**
-     * @brief Forward List Copy Constructor
+     * @brief List Copy Constructor
      * @param _fl The list to be copied
      */
     explicit List(const List &_fl);
 
     /**
-     * @brief Forward List Move Constructor
+     * @brief List Move Constructor
      * @param _fl The list to be moved
      */
     explicit List(List &&_fl);
 
     /**
-     * @brief Forward List Constructor
+     * @brief List Constructor
      */
     ~List();
 
     /**
-     * @brief Gets the Forward List size
-     * @return The Forward List size
+     * @brief Gets the List size
+     * @return The List size
      */
     int size() const;
 
     /**
-     * @brief Verify if the Forward List is empty
+     * @brief Verify if the List is empty
      * @return True if is empty, False otherwise
      */
     bool empty() const;
@@ -215,6 +215,7 @@ class List {
         m_head = new Node;
         m_tail = new Node;
         m_head->next = m_tail;
+        m_tail->prev = m_head;
         m_size = 0;
         for (auto it = _fl.cbegin(); it != _fl.cend(); it++)
             push_back(*it);
@@ -238,6 +239,7 @@ class List {
 
         _fl.m_tail = new Node;
         _fl.m_head->next = _fl.m_tail;
+        _fl.m_tail->prev = _fl.m_head;
         _fl.m_size = 0;
 
         return (*this);
@@ -259,56 +261,148 @@ class List {
 template <typename T>
 class List<T>::const_iterator {
  public:
+    /**
+     * @brief Public constructor
+     */
     const_iterator() {}
+
+    /**
+     * @brief Overloads the * operator (w/ const modifier)
+     * @return The element value (const)
+     */
     const T &operator*() const {
         return m_node->data;
     }
-    // ++it;
+
+    /**
+     * @brief Overloads the infix ++ operator
+     * @return The increased const_iterator
+     */
     const_iterator &operator++() {
         m_node = m_node->next;
         return (*this);
     }
-    // it++;
+
+    /**
+     * @brief Overloads the postfix ++ operator
+     * @return A const_iterator
+     */
     const_iterator operator++(int) {
         const_iterator cpy(m_node);
         m_node = m_node->next;
         return cpy;
     }
-    // ++it;
+
+    /**
+     * @brief Overloads the infix -- operator
+     * @return The decreased const_iterator
+     */
     const_iterator &operator--() {
         m_node = m_node->prev;
         return (*this);
     }
-    // it++;
+
+    /**
+     * @brief Overloads the postfix -- operator
+     * @return A const_iterator
+     */
     const_iterator operator--(int) {
         const_iterator cpy(m_node);
         m_node = m_node->prev;
         return cpy;
     }
+
+    /**
+     * @brief Overloads the == operator
+     * @param _rhs The element from right side
+     * @return True if both are equals, False otherwise
+     */
     bool operator==(const const_iterator &_rhs) const {
         return (m_node == _rhs.m_node);
     }
+
+    /**
+     * @brief Overloads the != operator
+     * @param _rhs The element from right side
+     * @return True if both aren't equals, False otherwise
+     */
     bool operator!=(const const_iterator &_rhs) const {
         return !(*this == _rhs);
     }
 
  protected:
-    friend class List<T>;
-    Node *m_node;
+    //! @brief The Protected constructor
     const_iterator(Node *_p) : m_node(_p) {}
+    Node *m_node;          //!< The internal pointer to a List node
+    friend class List<T>;  //!< Makes a friendship with the List class
 };
 
 template <typename T>
 class List<T>::iterator : public List<T>::const_iterator {
  public:
+    /**
+     * @brief Public constructor
+     */
     iterator() : const_iterator() {}
+
+    /**
+     * @brief Overloads the * operator (w/ const modifier)
+     * @return The element value (const)
+     */
+    const T &operator*() const {
+        return const_iterator::m_node->data;
+    }
+
+    /**
+     * @brief Overloads the * operator
+     * @return The element value
+     */
     T &operator*() {
         return const_iterator::m_node->data;
     }
 
+    /**
+     * @brief Overloads the infix ++ operator
+     * @return The increased iterator
+     */
+    iterator &operator++() {
+        const_iterator::m_node = const_iterator::m_node->next;
+        return (*this);
+    }
+
+    /**
+     * @brief Overloads the postfix ++ operator
+     * @return A iterator
+     */
+    iterator operator++(int) {
+        iterator cpy(const_iterator::m_node);
+        const_iterator::m_node = const_iterator::m_node->next;
+        return cpy;
+    }
+
+    /**
+     * @brief Overloads the infix -- operator
+     * @return The decreased iterator
+     */
+    iterator &operator--() {
+        const_iterator::m_node = const_iterator::m_node->prev;
+        return (*this);
+    }
+
+    /**
+     * @brief Overloads the postfix -- operator
+     * @return A iterator
+     */
+    iterator operator--(int) {
+        const_iterator cpy(const_iterator::m_node);
+        const_iterator::m_node = const_iterator::m_node->prev;
+        return cpy;
+    }
+
  protected:
+    //! @brief The Protected constructor
     iterator(Node *_p) : const_iterator(_p) {}
-    friend class List<T>;
+    friend class List<T>;  //!< Makes a friendship with the List class
 };
 
 #include "list.inl"

@@ -257,45 +257,110 @@ class Forward_list {
 template <typename T>
 class Forward_list<T>::const_iterator {
  public:
+    /**
+     * @brief Public constructor
+     */
     const_iterator() {}
+
+    /**
+     * @brief Overloads the * operator (w/ const modifier)
+     * @return The element value (const)
+     */
     const T &operator*() const {
         return m_node->data;
     }
-    // ++it;
+
+    /**
+     * @brief Overloads the infix ++ operator
+     * @return The increased const_iterator
+     */
     const_iterator &operator++() {
         m_node = m_node->next;
         return (*this);
     }
-    // it++;
+
+    /**
+     * @brief Overloads the postfix ++ operator
+     * @return A const_iterator
+     */
     const_iterator operator++(int) {
         const_iterator cpy(m_node);
         m_node = m_node->next;
         return cpy;
     }
+
+    /**
+     * @brief Overloads the == operator
+     * @param _rhs The element from right side
+     * @return True if both are equals, False otherwise
+     */
     bool operator==(const const_iterator &_rhs) const {
         return (m_node == _rhs.m_node);
     }
+
+    /**
+     * @brief Overloads the != operator
+     * @param _rhs The element from right side
+     * @return True if both aren't equals, False otherwise
+     */
     bool operator!=(const const_iterator &_rhs) const {
         return !(*this == _rhs);
     }
 
  protected:
-    friend class Forward_list<T>;
-    Node *m_node;
+    //! @brief The Protected constructor
     const_iterator(Node *_p) : m_node(_p) {}
+    Node *m_node;                  //!< The internal pointer to a Forward_list node
+    friend class Forward_list<T>;  //!< Makes a friendship with the Forward_list class
 };
 
 template <typename T>
 class Forward_list<T>::iterator : public Forward_list<T>::const_iterator {
  public:
+    /**
+     * @brief Public constructor
+     */
     iterator() : const_iterator() {}
+
+    /**
+     * @brief Overloads the * operator (w/ const modifier)
+     * @return The element value (const)
+     */
+    const T &operator*() const {
+        return const_iterator::m_node->data;
+    }
+
+    /**
+     * @brief Overloads the * operator
+     * @return The element value
+     */
     T &operator*() {
         return const_iterator::m_node->data;
     }
 
+    /**
+     * @brief Overloads the infix ++ operator
+     * @return The increased iterator
+     */
+    iterator &operator++() {
+        const_iterator::m_node = const_iterator::m_node->next;
+        return (*this);
+    }
+
+    /**
+     * @brief Overloads the postfix ++ operator
+     * @return A iterator
+     */
+    iterator operator++(int) {
+        iterator cpy(const_iterator::m_node);
+        const_iterator::m_node = const_iterator::m_node->next;
+        return cpy;
+    }
+
  protected:
+    //! @brief The Protected constructor
     iterator(Node *_p) : const_iterator(_p) {}
-    friend class Forward_list<T>;
+    friend class Forward_list<T>;  //!< Makes a friendship with the Forward_list class
 };
 
 #include "forward_list.inl"

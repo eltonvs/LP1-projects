@@ -149,87 +149,147 @@ template <typename T>
 class Vector<T>::const_iterator {
  public:
     /**
-     * @brief const_iterator Constructor
-     * @param _ptr The initial pointer value
+     * @brief Public constructor
      */
-    explicit const_iterator(T *_ptr = nullptr) : m_ptr(_ptr) {}
+    const_iterator() {}
 
     /**
-     * @brief Overload the prefix ++ operator
-     * @param _it The const_iterator to be modified
-     * @return The modified const_iterator
+     * @brief Overloads the * operator (w/ const modifier)
+     * @return The element value (const)
      */
-    inline friend
-    const_iterator &operator++(Vector<T>::const_iterator &_it) {
-        _it.m_ptr++;
-        return _it;
+    const T &operator*() const {
+        return *m_ptr;
     }
 
     /**
-     * @brief Overload the postfix ++ operator
-     * @param _it The const_iterator to be modified
-     * @return The modified const_iterator
+     * @brief Overloads the infix ++ operator
+     * @return The increased const_iterator
      */
-    inline friend
-    Vector<T>::const_iterator operator++(Vector<T>::const_iterator &_it, int) {
-        Vector<T>::const_iterator cpy(_it.m_ptr++);
+    const_iterator &operator++() {
+        m_ptr++;
+        return (*this);
+    }
+
+    /**
+     * @brief Overloads the postfix ++ operator
+     * @return A const_iterator
+     */
+    const_iterator operator++(int) {
+        const_iterator cpy(m_ptr);
+        m_ptr++;
         return cpy;
     }
 
     /**
-     * @brief Overload the * operator
-     * @param _it The const_iterator to be accessed
-     * @return The element value
+     * @brief Overloads the infix -- operator
+     * @return The decreased const_iterator
      */
-    inline friend
-    const T &operator*(const Vector<T>::const_iterator &_it) {
-        return *(_it.m_ptr);
+    const_iterator &operator--() {
+        m_ptr--;
+        return (*this);
     }
 
     /**
-     * @brief Overload the == operator
-     * @param _lhs The const_iterator from right side
-     * @param _rhs The const_iterator from left side
+     * @brief Overloads the postfix -- operator
+     * @return A const_iterator
+     */
+    const_iterator operator--(int) {
+        const_iterator cpy(m_ptr);
+        m_ptr--;
+        return cpy;
+    }
+
+    /**
+     * @brief Overloads the == operator
+     * @param _rhs The element from right side
      * @return True if both are equals, False otherwise
      */
-    inline friend
-    bool operator==(const const_iterator &_lhs, const const_iterator &_rhs) {
-        return _lhs.m_ptr == _rhs.m_ptr;
+    bool operator==(const const_iterator &_rhs) const {
+        return (m_ptr == _rhs.m_ptr);
     }
 
     /**
-     * @brief Overload the == operator
-     * @param _lhs The const_iterator from right side
-     * @param _rhs The const_iterator from left side
+     * @brief Overloads the != operator
+     * @param _rhs The element from right side
      * @return True if both aren't equals, False otherwise
      */
-    inline friend
-    bool operator!=(const const_iterator &_lhs, const const_iterator &_rhs) {
-        return !(_lhs == _rhs);
+    bool operator!=(const const_iterator &_rhs) const {
+        return !(*this == _rhs);
     }
 
  protected:
-    T *m_ptr;  //!< The internal pointer to a Vector element
+    //! @brief The Protected constructor
+    const_iterator(T *_p) : m_ptr(_p) {}
+    T *m_ptr;                //!< The Vector element internal pointer
+    friend class Vector<T>;  //!< Makes a friendship with the Vector class
 };
 
 template <typename T>
 class Vector<T>::iterator : public Vector<T>::const_iterator {
  public:
     /**
-     * @brief const_iterator Constructor
-     * @param _ptr The initial pointer value
+     * @brief Public constructor
      */
-    explicit iterator(T *_ptr = nullptr) : Vector<T>::const_iterator(_ptr) {}
+    iterator() : const_iterator() {}
 
     /**
-     * @brief Overload the * operator
-     * @param _it The const_iterator to be accessed
+     * @brief Overloads the * operator (w/ const modifier)
+     * @return The element value (const)
+     */
+    const T &operator*() const {
+        return *(const_iterator::m_ptr);
+    }
+
+    /**
+     * @brief Overloads the * operator
      * @return The element value
      */
-    inline friend
-    T &operator*(const Vector<T>::iterator &_it) {
-        return *(_it.m_ptr);
+    T &operator*() {
+        return *(const_iterator::m_ptr);
     }
+
+    /**
+     * @brief Overloads the infix ++ operator
+     * @return The increased iterator
+     */
+    iterator &operator++() {
+        const_iterator::m_ptr++;
+        return (*this);
+    }
+
+    /**
+     * @brief Overloads the postfix ++ operator
+     * @return A iterator
+     */
+    iterator operator++(int) {
+        iterator cpy(const_iterator::m_ptr);
+        const_iterator::m_ptr++;
+        return cpy;
+    }
+
+    /**
+     * @brief Overloads the infix -- operator
+     * @return The decreased iterator
+     */
+    iterator &operator--() {
+        const_iterator::m_ptr--;
+        return (*this);
+    }
+
+    /**
+     * @brief Overloads the postfix -- operator
+     * @return A iterator
+     */
+    iterator operator--(int) {
+        const_iterator cpy(const_iterator::m_ptr);
+        const_iterator::m_ptr--;
+        return cpy;
+    }
+
+ protected:
+    //! @brief The Protected constructor
+    iterator(T *_p) : const_iterator(_p) {}
+    friend class Vector<T>;  //!< Makes a friendship with the Vector class
 };
 
 #include "vector.inl"
