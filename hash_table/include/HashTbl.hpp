@@ -28,7 +28,7 @@ class HashEntry {
     /*! \param _key Entry key.
      *  \param _data Data item.
      */
-    HashEntry(KeyType _key = KeyType(), DataType _data = DataType()) : mKey(_key), mData(_data) {}
+    HashEntry(KeyType _key, DataType _data) : mKey(_key), mData(_data) {}
     KeyType mKey;    //!< Stores the key for an entry.
     DataType mData;  //!< Stores the data for an entry.
 };
@@ -75,8 +75,8 @@ class HashTbl {
     unsigned int mSize;
     //! Number of element currently stored in the table.
     unsigned int mCount;
-    //! Actual data strucure, corresponding to a table of collision list for elements.
     // std::list<Entry> *mpDataTable;
+    //! Actual data strucure, corresponding to a table of collision list for elements.
     std::unique_ptr<std::forward_list<Entry>[]> mpDataTable;
 
     //! Hash table's default size: 10 table entries.

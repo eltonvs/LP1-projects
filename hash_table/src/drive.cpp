@@ -57,11 +57,11 @@ struct Account {
     // TODO friend para imprimir
     inline friend
     std::ostream &operator<<(std::ostream &_os, const Account &_acc) {
-        _os << "[ Client: <"  << _acc.mClientName <<
+        _os << "[Client: <"  << _acc.mClientName <<
                "> Bank: <"    << _acc.mBankCode <<
                "> Branch: <"  << _acc.mBranchCode <<
                "> Number: <"  << _acc.mNumber <<
-               "> Balance: <" << _acc.mBalance << "> ]";
+               "> Balance: <" << _acc.mBalance << ">]";
         return _os;
     }
 };

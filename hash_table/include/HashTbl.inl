@@ -40,6 +40,7 @@ namespace MyHashTable {
             mSize = find_next_prime(_initSize);
             std::unique_ptr<std::forward_list<Entry>[]> aux(new std::forward_list<Entry>[mSize]);
             mpDataTable = std::move(aux);
+            std::cout << mSize << std::endl;
     }
 
     //----------------------------------------------------------------------------------------
@@ -61,9 +62,18 @@ namespace MyHashTable {
     */
     template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
     bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::insert(const KeyType &_newKey, const DataType &_newDataItem) throw (std::bad_alloc) {
-        // Flag used to indicate whether the data has been found or not.
-        auto bDataFound(false);
-        return bDataFound;
+        auto pos = _newKey % mSize;
+        auto bef_end = mpDataTable[pos].before_begin();
+        for (auto it = mpDataTable[pos].begin(); it != mpDataTable[pos].end(); it++) {
+            if ((*it).mKey == _newKey) {
+                (*it).mData = _newDataItem;
+                return false;
+            }
+            bef_end++;
+        }
+
+        mpDataTable[pos].emplace_after(bef_end, _newKey, _newDataItem);
+        return true;
     }
 
 
@@ -130,7 +140,7 @@ namespace MyHashTable {
         for (auto i(0u); i < mSize; ++i) {
             std::cout << i << ": {key = ";
             for (auto &e : mpDataTable[i]) {
-                std::cout << hashFn(e.mKey) << "; " << e.mData << " ";
+                std::cout << hashFn(e.mKey) << "; " << e.mData;
             }
             std::cout << "}\n";
         }
