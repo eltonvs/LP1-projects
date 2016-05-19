@@ -6,7 +6,7 @@ BUILDDIR = build
 LIBDIR = lib
 # LIB OPTIONS
 # TARGET
-TARGET = $(BINDIR)/hashtable
+TARGET = $(BINDIR)/hash_table
 # EXTENSIONS
 SRCEXT = cpp
 HEADEREXT = hpp
