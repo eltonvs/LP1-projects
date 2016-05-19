@@ -26,142 +26,142 @@ int find_next_prime(int _n) {
 //! MyHashTable namespace encapsulates all class related to a simple hash function definition.
 namespace MyHashTable {
 
-    //----------------------------------------------------------------------------------------
-    //! Default construtor.
-    /*! Creates a hash table of the required capacity, which uses an external hash function
-     *  that maps keys to unsigned long integers.
-     *  If no external hash function is provided, an \r UndefinedHashFunctionException is generated.
-     *  \param _initSize Required hash table capacity.
-     *  \param _pfHF Pointer to an external hash function that does the first hashing and returns an unsigned long int.
-     *  \throw UndefinedHashFunctionException if no external hash function is provided.
-    */
-    template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
-    HashTbl<KeyType, DataType, KeyHash, KeyEqual>::HashTbl(int _initSize)
-        : mSize(_initSize), mCount(0u) {
-            mSize = find_next_prime(_initSize);
-            std::unique_ptr<std::forward_list<Entry>[]> aux(new std::forward_list<Entry>[mSize]);
-            mpDataTable = std::move(aux);
-            std::cout << mSize << std::endl;
-    }
+//----------------------------------------------------------------------------------------
+//! Default construtor.
+/*! Creates a hash table of the required capacity, which uses an external hash function
+ *  that maps keys to unsigned long integers.
+ *  If no external hash function is provided, an \r UndefinedHashFunctionException is generated.
+ *  \param _initSize Required hash table capacity.
+ *  \param _pfHF Pointer to an external hash function that does the first hashing and returns an unsigned long int.
+ *  \throw UndefinedHashFunctionException if no external hash function is provided.
+*/
+template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
+HashTbl<KeyType, DataType, KeyHash, KeyEqual>::HashTbl(int _initSize)
+    : mSize(_initSize), mCount(0u) {
+        mSize = find_next_prime(_initSize);
+        std::unique_ptr<std::forward_list<Entry>[]> aux(new std::forward_list<Entry>[mSize]);
+        mpDataTable = std::move(aux);
+        std::cout << mSize << std::endl;
+}
 
-    //----------------------------------------------------------------------------------------
-    //! Destrutor that just frees the table memory, clearing all collision lists.
-    template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
-    HashTbl<KeyType, DataType, KeyHash, KeyEqual>::~HashTbl() {
-        clear();
-    }
+//----------------------------------------------------------------------------------------
+//! Destrutor that just frees the table memory, clearing all collision lists.
+template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
+HashTbl<KeyType, DataType, KeyHash, KeyEqual>::~HashTbl() {
+    clear();
+}
 
-    //----------------------------------------------------------------------------------------
-    //! Inserts data into the hash table.
-    /*! For an insertion to occur, the client code should provide a key and the data itself
-     *  If the data is already stored in the table, the function updates the data with the
-     *  new information provided.
-     *  \param _newKey Key associated with the data, used to get to the stored information.
-     *  \param _newDataItem Data to be stored or updated, in case the information is already stored in the hash table.
-     *  \return true if the data is already stored in the table and it is updated; false, otherwise.
-     *  \throw std::bad_alloc In case no memory is available for dynamic allocation required in the insertion procedure.
-    */
-    template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
-    bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::insert(const KeyType &_newKey, const DataType &_newDataItem) throw (std::bad_alloc) {
-        auto pos = _newKey % mSize;
-        auto bef_end = mpDataTable[pos].before_begin();
-        KeyEqual eq;
-        for (auto it = mpDataTable[pos].begin(); it != mpDataTable[pos].end(); it++) {
-            if (eq((*it).mKey, _newKey)) {
-                (*it).mData = _newDataItem;
-                return false;
-            }
-            bef_end++;
+//----------------------------------------------------------------------------------------
+//! Inserts data into the hash table.
+/*! For an insertion to occur, the client code should provide a key and the data itself
+ *  If the data is already stored in the table, the function updates the data with the
+ *  new information provided.
+ *  \param _newKey Key associated with the data, used to get to the stored information.
+ *  \param _newDataItem Data to be stored or updated, in case the information is already stored in the hash table.
+ *  \return true if the data is already stored in the table and it is updated; false, otherwise.
+ *  \throw std::bad_alloc In case no memory is available for dynamic allocation required in the insertion procedure.
+*/
+template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
+bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::insert(const KeyType &_newKey, const DataType &_newDataItem) throw (std::bad_alloc) {
+    auto pos = _newKey % mSize;
+    auto bef_end = mpDataTable[pos].before_begin();
+    KeyEqual eq;
+    for (auto it = mpDataTable[pos].begin(); it != mpDataTable[pos].end(); it++) {
+        if (eq((*it).mKey, _newKey)) {
+            (*it).mData = _newDataItem;
+            return false;
         }
-
-        mpDataTable[pos].emplace_after(bef_end, _newKey, _newDataItem);
-        return true;
+        bef_end++;
     }
 
+    mpDataTable[pos].emplace_after(bef_end, _newKey, _newDataItem);
+    return true;
+}
 
-    //----------------------------------------------------------------------------------------
-    //! Removes data from the hash table.
-    /*! Removse a data item from the table, based on the key associated with the data.
-     *  If the data cannot be found, false is returned; otherwise, true is returned instead.
-     *  \param _searchKey Data key to search for in the table.
-     *  \return true if the data item is found; false, otherwise.
-    */
-    template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
-    bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::remove(const KeyType &_searchKey) {
-        auto pos = _searchKey % mSize;
-        auto it_aft_pos = mpDataTable[pos].begin();
-        auto it_bef_pos = mpDataTable[pos].before_begin();
-        KeyEqual eq;
-        for (; it_aft_pos != mpDataTable[pos].end(); it_aft_pos++) {
-            if (eq((*it_aft_pos).mKey, _searchKey)) {
-                it_aft_pos++;
-                mpDataTable[pos].erase_after(it_bef_pos, it_aft_pos);
-                return true;
-            }
-            it_bef_pos++;
+
+//----------------------------------------------------------------------------------------
+//! Removes data from the hash table.
+/*! Removse a data item from the table, based on the key associated with the data.
+ *  If the data cannot be found, false is returned; otherwise, true is returned instead.
+ *  \param _searchKey Data key to search for in the table.
+ *  \return true if the data item is found; false, otherwise.
+*/
+template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
+bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::remove(const KeyType &_searchKey) {
+    auto pos = _searchKey % mSize;
+    auto it_aft_pos = mpDataTable[pos].begin();
+    auto it_bef_pos = mpDataTable[pos].before_begin();
+    KeyEqual eq;
+    for (; it_aft_pos != mpDataTable[pos].end(); it_aft_pos++) {
+        if (eq((*it_aft_pos).mKey, _searchKey)) {
+            it_aft_pos++;
+            mpDataTable[pos].erase_after(it_bef_pos, it_aft_pos);
+            return true;
         }
-        return false;
+        it_bef_pos++;
     }
+    return false;
+}
 
-    //----------------------------------------------------------------------------------------
-    //! Retrieves data from the table.
-    /*! Retrieves a data item from the table, based on the key associated with the data.
-     *  If the data cannot be found, false is returned; otherwise, true is returned instead.
-     *  \param _searchKey Data key to search for in the table.
-     *  \param _dataItem Data record to be filled in when data item is found.
-     *  \return true if the data item is found; false, otherwise.
-    */
-    template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
-    bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::retrieve(const KeyType &_searchKey, DataType &_dataItem) const {
-        auto pos = _searchKey % mSize;
-        KeyEqual eq;
-        for (auto it = mpDataTable[pos].begin(); it != mpDataTable[pos].end(); it++) {
-            if (eq((*it).mKey, _searchKey)) {
-                _dataItem = (*it).mData;
-                return true;
-            }
-        }
-        return false;
-    }
-
-    //! Clears the data table.
-    template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
-    void HashTbl<KeyType, DataType, KeyHash, KeyEqual>::clear() {
-        while (mCount > 0)
-            (&mpDataTable[--mCount])->~forward_list();
-    }
-
-    //! Tests whether the table is empty.
-    /*!
-     * \return true is table is empty, false otherwise.
-     */
-    template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
-    bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::isEmpty() const {
-        return (mCount == 0);
-    }
-
-    //! Counts the number of elements currently stored in the table.
-    /*!
-     * \return The current number of elements in the table.
-     */
-    template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
-    unsigned long int HashTbl<KeyType, DataType, KeyHash, KeyEqual>::count() const {
-        return mCount;
-    }
-
-    //! Prints out the hash table content.
-    template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
-    void HashTbl<KeyType, DataType, KeyHash, KeyEqual>::showStructure() const {
-        KeyHash hashFn;
-
-        // Traverse the list associated with the based address (idx), calculated before.
-        for (auto i(0u); i < mSize; ++i) {
-            std::cout << i << ": {key = ";
-            for (auto &e : mpDataTable[i]) {
-                std::cout << hashFn(e.mKey) << "; " << e.mData;
-            }
-            std::cout << "}\n";
+//----------------------------------------------------------------------------------------
+//! Retrieves data from the table.
+/*! Retrieves a data item from the table, based on the key associated with the data.
+ *  If the data cannot be found, false is returned; otherwise, true is returned instead.
+ *  \param _searchKey Data key to search for in the table.
+ *  \param _dataItem Data record to be filled in when data item is found.
+ *  \return true if the data item is found; false, otherwise.
+*/
+template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
+bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::retrieve(const KeyType &_searchKey, DataType &_dataItem) const {
+    auto pos = _searchKey % mSize;
+    KeyEqual eq;
+    for (auto it = mpDataTable[pos].begin(); it != mpDataTable[pos].end(); it++) {
+        if (eq((*it).mKey, _searchKey)) {
+            _dataItem = (*it).mData;
+            return true;
         }
     }
+    return false;
+}
+
+//! Clears the data table.
+template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
+void HashTbl<KeyType, DataType, KeyHash, KeyEqual>::clear() {
+    while (mCount > 0)
+        (&mpDataTable[--mCount])->~forward_list();
+}
+
+//! Tests whether the table is empty.
+/*!
+ * \return true is table is empty, false otherwise.
+ */
+template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
+bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::isEmpty() const {
+    return (mCount == 0);
+}
+
+//! Counts the number of elements currently stored in the table.
+/*!
+ * \return The current number of elements in the table.
+ */
+template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
+unsigned long int HashTbl<KeyType, DataType, KeyHash, KeyEqual>::count() const {
+    return mCount;
+}
+
+//! Prints out the hash table content.
+template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
+void HashTbl<KeyType, DataType, KeyHash, KeyEqual>::showStructure() const {
+    KeyHash hashFn;
+
+    // Traverse the list associated with the based address (idx), calculated before.
+    for (auto i(0u); i < mSize; ++i) {
+        std::cout << i << ": {key = ";
+        for (auto &e : mpDataTable[i]) {
+            std::cout << hashFn(e.mKey) << "; " << e.mData;
+        }
+        std::cout << "}\n";
+    }
+}
 
 }  // namespace MyHashTable
