@@ -11,7 +11,7 @@
 #include "HashTbl.hpp"
 
 bool is_prime(int _n) {
-    if (_n == 1) return false;
+    if (_n < 2) return false;
     for (int i = 2; i <= std::sqrt(_n); i++)
         if (_n % i == 0)
             return false;
@@ -25,6 +25,7 @@ int find_next_prime(int _n) {
 
 //! MyHashTable namespace encapsulates all class related to a simple hash function definition.
 namespace MyHashTable {
+
     //----------------------------------------------------------------------------------------
     //! Default construtor.
     /*! Creates a hash table of the required capacity, which uses an external hash function
@@ -64,8 +65,9 @@ namespace MyHashTable {
     bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::insert(const KeyType &_newKey, const DataType &_newDataItem) throw (std::bad_alloc) {
         auto pos = _newKey % mSize;
         auto bef_end = mpDataTable[pos].before_begin();
+        KeyEqual eq;
         for (auto it = mpDataTable[pos].begin(); it != mpDataTable[pos].end(); it++) {
-            if ((*it).mKey == _newKey) {
+            if (eq((*it).mKey, _newKey)) {
                 (*it).mData = _newDataItem;
                 return false;
             }
@@ -86,9 +88,19 @@ namespace MyHashTable {
     */
     template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
     bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::remove(const KeyType &_searchKey) {
-        // TODO
-        auto bRemoved(false);
-        return bRemoved;
+        auto pos = _searchKey % mSize;
+        auto it_aft_pos = mpDataTable[pos].begin();
+        auto it_bef_pos = mpDataTable[pos].before_begin();
+        KeyEqual eq;
+        for (; it_aft_pos != mpDataTable[pos].end(); it_aft_pos++) {
+            if (eq((*it_aft_pos).mKey, _searchKey)) {
+                it_aft_pos++;
+                mpDataTable[pos].erase_after(it_bef_pos, it_aft_pos);
+                return true;
+            }
+            it_bef_pos++;
+        }
+        return false;
     }
 
     //----------------------------------------------------------------------------------------
@@ -101,9 +113,15 @@ namespace MyHashTable {
     */
     template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
     bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::retrieve(const KeyType &_searchKey, DataType &_dataItem) const {
-        // TODO
-        auto bFound(false);
-        return bFound;
+        auto pos = _searchKey % mSize;
+        KeyEqual eq;
+        for (auto it = mpDataTable[pos].begin(); it != mpDataTable[pos].end(); it++) {
+            if (eq((*it).mKey, _searchKey)) {
+                _dataItem = (*it).mData;
+                return true;
+            }
+        }
+        return false;
     }
 
     //! Clears the data table.

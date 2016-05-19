@@ -54,7 +54,6 @@ struct Account {
         return *this;
     }
 
-    // TODO friend para imprimir
     inline friend
     std::ostream &operator<<(std::ostream &_os, const Account &_acc) {
         _os << "[Client: <"  << _acc.mClientName <<
@@ -97,11 +96,11 @@ int main(void) {
 
     accounts.showStructure();
 
-#ifdef _NOT_NOW
     // Checks for accounts and prints records if found
     std::cout << std::endl;
     std::cout << "Enter account number (CTRL+D to exit program): ";
     while (std::cin >> searchKey) {
+        Account acct;
         if (accounts.retrieve(searchKey, acct)) {
             std::cout << acct.mNumber << " " << acct.mBalance << std::endl;
             std::cout << "Removing this account....\n";
@@ -111,7 +110,6 @@ int main(void) {
         }
         std::cout << "Enter account number (CTRL+D to exit program): ";
     }
-#endif
 
     std::cout << "\n>>> Normal exiting...\n";
 
