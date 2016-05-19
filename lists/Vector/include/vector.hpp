@@ -17,10 +17,22 @@ template <typename T>
 class Vector {
  public:
     /**
-     * @brief Vector Constructor
+     * @brief Vector Default Constructor
      * @param _sz The Vector size (default = 1)
      */
     explicit Vector(size_type _sz = 1);
+
+    /**
+     * @brief Vector Copy Constructor
+     * @param _sz The another Vector to be copied
+     */
+    Vector(const Vector &_v);
+
+    /**
+     * @brief Vector Move Constructor
+     * @param _v The anotehr Vector to be moved
+     */
+    Vector(Vector &&_v);
 
     /**
      * @brief Vector Destructor
@@ -42,7 +54,7 @@ class Vector {
      * @brief Verify if the Vector is empty
      * @return True if is empty, False otherwise
      */
-    bool empty();
+    bool empty() const;
 
     /**
      * @brief Add an element to the end of Vector
@@ -97,7 +109,40 @@ class Vector {
      * @param idx The position to be accessed
      * @return The element on informed position
      */
-    T &operator[](size_type idx);
+    T &operator[](size_type idx) const {
+        return m_list[idx];
+    }
+
+    /**
+     * @brief Overload copy assignment
+     * @param _v The element to be copied
+     * @return The new (pasted) element
+     */
+    Vector &operator=(const Vector &_v) {
+        clear();
+
+        for (auto i(0u); i < _v.m_size; i++)
+            push_back(_v[i]);
+
+        return (*this);
+    }
+
+    /**
+     * @brief Overload move assignment
+     * @param _v The element to be moved
+     * @return The new element
+     */
+    Vector &operator=(Vector &&_v) {
+        clear();
+
+        m_list = std::move(_v.m_list);
+        m_capacity = _v.m_capacity;
+        m_size = _v.m_size;
+        _v.m_size = 0;
+        _v.m_capacity = 0;
+
+        return (*this);
+    }
 
     /**
      * @brief Returns a pointer with the Vector data

@@ -35,9 +35,12 @@ int main(int argc, char const *argv[]) {
     }
 
     // Unity test #3: data()
-    int *ptr = v1.data();
-    for (i = 0; i < 10; i++)
-        assert(*(ptr+i) == i);
+    int *ptr1 = v1.data();
+    int *ptr2 = v2.data();
+    for (i = 0; i < 10; i++) {
+        assert(*(ptr1+i) == i);
+        assert(*(ptr2+i) == i);
+    }
 
     // Unity test #4: const_iterator (postfix ++ and *), cbegin(), cend()
     i = 0;

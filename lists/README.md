@@ -38,7 +38,7 @@ Inserts elements from the initializer list `_il` before `_it`.
 template <typename InItr>
 void assign(InItr _ini, InItr _end)
 ```
-Replaces the contenst of the list with copies of the elements in the range `[_ini, _end)`.
+Replaces the content of the list with copies of the elements in the range `[_ini, _end)`.
 
 
 ## Authors

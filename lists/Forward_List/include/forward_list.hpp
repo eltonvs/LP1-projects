@@ -32,7 +32,7 @@ class Forward_list {
     explicit Forward_list(Forward_list &&_fl);
 
     /**
-     * @brief Forward List Constructor
+     * @brief Forward List Destructor
      */
     ~Forward_list();
 

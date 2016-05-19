@@ -32,7 +32,7 @@ class List {
     explicit List(List &&_fl);
 
     /**
-     * @brief List Constructor
+     * @brief List Destructor
      */
     ~List();
 

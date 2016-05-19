@@ -9,9 +9,24 @@
 #include <memory>
 #include "vector.hpp"
 
-// Constructor
+// Default Constructor
 template <typename T>
 Vector<T>::Vector(size_type _sz) : m_capacity(_sz), m_list(new T[_sz]) {}
+
+// Copy Constructor
+template <typename T>
+Vector<T>::Vector(const Vector &_v) : m_capacity(_v.m_capacity), m_list(new T[_v.m_capacity]) {
+    for (auto i(0u); i < _v.m_size; i++)
+        push_back(_v[i]);
+}
+
+// Move Constructor
+template <typename T>
+Vector<T>::Vector(Vector &&_v) : m_capacity(_v.m_capacity), m_list(std::move(_v.m_list)) {
+    m_size = _v.m_size;
+    _v.m_size = 0;
+    _v.m_capacity = 0;
+}
 
 // Get the Vector size
 template <typename T>
@@ -24,6 +39,12 @@ template <typename T>
 void Vector<T>::clear() {
     while (m_size > 0)
         (&m_list[--m_size])->~T();
+}
+
+// Verify if the Vector is empty
+template <typename T>
+bool Vector<T>::empty() const {
+    return m_size == 0;
 }
 
 // Push Back
@@ -88,11 +109,6 @@ T &Vector<T>::at(size_type _idx) {
     if (_idx >= m_size || _idx < 0)
         throw std::out_of_range("Index out of range!");
     return m_list[_idx];
-}
-
-template <typename T>
-T &Vector<T>::operator[](size_type idx) {
-    return m_list[idx];
 }
 
 template <typename T>
