@@ -27,8 +27,9 @@ LIBOPTS = -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio
 LIBFLAG = -L $(LIBDIR) $(LIBOPTS)
 INCFLAG = -I $(INCDIR)
 LFLAGS = $(DEBUG) $(WARN) $(INCFLAG) # $(LIBFLAG)
+V = 1
 # COMPILATION FLAGS
-CFLAGS = $(DEBUG) -c $(WARN) -std=c++11
+CFLAGS = $(DEBUG) -c $(WARN) -D_VERSION_=$(V) -std=c++11
 
 # ----------------------
 # ENTRIES

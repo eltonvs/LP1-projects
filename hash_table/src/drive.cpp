@@ -14,7 +14,8 @@
 #include <iostream>
 #include <functional>
 #include <string>
-#include <tuple>
+#include <utility>  // std::pair
+#include <tuple>    // std::tuple
 
 #include "HashTbl.hpp"
 
@@ -25,7 +26,17 @@ struct Account {
     int mNumber;              // (key) Account number.
     float mBalance;           // Account balance.
 
+#if (_VERSION_ == 1)
     using AcctKey = int;
+#endif
+
+#if (_VERSION_ == 2)
+    using AcctKey = std::pair<std::string, int>;
+#endif
+
+#if (_VERSION_ == 3)
+    using AcctKey = std::tuple<std::string, int, int, int>;
+#endif
 
     Account(std::string _Name = "<empty>",
             int _BankCode = 1,       // Banco do Brasil.
@@ -34,12 +45,7 @@ struct Account {
         : mClientName(_Name), mBankCode(_BankCode), mBranchCode(_BranchCode),
           mNumber(_Number), mBalance(_Balance) {}
 
-    /*!
-     * \brief Gera a chave (versão 1) que eh igual a conta corrente.
-     */
-    AcctKey getKey() const {
-        return mNumber;
-    }
+    AcctKey getKey() const;
 
     const Account &operator=(const Account &rhs) {
         // Avoid assigning to itself.
@@ -65,6 +71,14 @@ struct Account {
     }
 };
 
+#if (_VERSION_ == 1)
+/*!
+ * \brief Gera a chave (versão 1) que eh igual a conta corrente.
+ */
+Account::AcctKey Account::getKey() const {
+    return mNumber;
+}
+
 struct KeyHash {
     std::size_t operator()(const Account::AcctKey &k) const {
         return std::hash<int>()(k);
@@ -76,10 +90,59 @@ struct KeyEqual {
         return lhs == rhs;
     }
 };
+#endif
+
+#if (_VERSION_ == 2)
+/*!
+ * \brief Gera a chave (versão 2) que eh igual ao nome do cliente e o número da conta.
+ */
+Account::AcctKey Account::getKey() const {
+    return std::pair<std::string, int>(mClientName, mNumber);
+}
+
+struct KeyHash {
+    std::size_t operator()(const Account::AcctKey &k) const {
+        return std::hash<std::string>()(k.first) xor std::hash<int>()(k.second);
+    }
+};
+
+struct KeyEqual {
+    bool operator()(const Account::AcctKey &lhs, const Account::AcctKey &rhs) const {
+        return lhs.first == rhs.first and lhs.second == rhs.second;
+    }
+};
+#endif
+
+#if (_VERSION_ == 3)
+/*!
+ * \brief Gera a chave (versão 3) que contém o nome do cliente, o código do banco, o número da agência e o número da conta.
+ */
+Account::AcctKey Account::getKey() const {
+    return std::tuple<std::string, int, int, int>(mClientName, mBankCode, mBranchCode, mNumber);
+}
+
+struct KeyHash {
+    std::size_t operator()(const Account::AcctKey &k) const {
+        return std::hash<std::string>()(std::get<0>(k)) xor
+               std::hash<int>()(std::get<1>(k)) xor
+               std::hash<int>()(std::get<2>(k)) xor
+               std::hash<int>()(std::get<3>(k));
+    }
+};
+
+struct KeyEqual {
+    bool operator()(const Account::AcctKey &lhs, const Account::AcctKey &rhs) const {
+        return std::get<0>(lhs) == std::get<0>(rhs) and
+               std::get<1>(lhs) == std::get<1>(rhs) and
+               std::get<2>(lhs) == std::get<2>(rhs) and
+               std::get<3>(lhs) == std::get<3>(rhs);
+    }
+};
+#endif
 
 int main(void) {
     // Hash table shall have size 23.
-    MyHashTable::HashTbl<Account::AcctKey, Account> accounts(20);
+    MyHashTable::HashTbl<Account::AcctKey, Account, KeyHash, KeyEqual> accounts(20);
     Account MyAccts[] = {
         {"Jose Silva",    1, 1668, 20123, 1500.f},
         {"Carlos Prado",  1, 1668, 35091, 1250.f},
@@ -96,6 +159,7 @@ int main(void) {
 
     accounts.showStructure();
 
+#if (_VERSION_ == 1)
     // Checks for accounts and prints records if found
     std::cout << std::endl;
     std::cout << "Enter account number (CTRL+D to exit program): ";
@@ -110,6 +174,7 @@ int main(void) {
         }
         std::cout << "Enter account number (CTRL+D to exit program): ";
     }
+#endif
 
     std::cout << "\n>>> Normal exiting...\n";
 
