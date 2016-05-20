@@ -41,7 +41,6 @@ HashTbl<KeyType, DataType, KeyHash, KeyEqual>::HashTbl(int _initSize)
         mSize = find_next_prime(_initSize);
         std::unique_ptr<std::forward_list<Entry>[]> aux(new std::forward_list<Entry>[mSize]);
         mpDataTable = std::move(aux);
-        std::cout << mSize << std::endl;
 }
 
 //----------------------------------------------------------------------------------------
@@ -63,6 +62,8 @@ HashTbl<KeyType, DataType, KeyHash, KeyEqual>::~HashTbl() {
 */
 template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
 bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::insert(const KeyType &_newKey, const DataType &_newDataItem) throw (std::bad_alloc) {
+    if ((mCount+1)/mSize > 1.0)
+        rehash();
     auto pos = _newKey % mSize;
     auto bef_end = mpDataTable[pos].before_begin();
     KeyEqual eq;
@@ -75,6 +76,7 @@ bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::insert(const KeyType &_newKe
     }
 
     mpDataTable[pos].emplace_after(bef_end, _newKey, _newDataItem);
+    mCount++;
     return true;
 }
 
@@ -96,6 +98,7 @@ bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::remove(const KeyType &_searc
         if (eq((*it_aft_pos).mKey, _searchKey)) {
             it_aft_pos++;
             mpDataTable[pos].erase_after(it_bef_pos, it_aft_pos);
+            mCount--;
             return true;
         }
         it_bef_pos++;
@@ -162,6 +165,24 @@ void HashTbl<KeyType, DataType, KeyHash, KeyEqual>::showStructure() const {
         }
         std::cout << "}\n";
     }
+}
+
+template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
+void HashTbl<KeyType, DataType, KeyHash, KeyEqual>::rehash(void) {
+    auto newSize = find_next_prime(mSize);
+    std::unique_ptr<std::forward_list<Entry>[]> aux(new std::forward_list<Entry>[newSize]);
+
+    for (auto i(0u); i < mSize; i++) {
+        for (auto &e : mpDataTable[i]) {
+            auto pos = e.mKey % newSize;
+            auto bef_end = aux[pos].before_begin();
+            for (auto it = aux[pos].begin(); it != aux[pos].end(); it++)
+                bef_end++;
+            aux[pos].emplace_after(bef_end, e.mKey, e.mData);
+        }
+    }
+    clear();
+    mpDataTable = std::move(aux);
 }
 
 }  // namespace MyHashTable
