@@ -62,11 +62,12 @@ HashTbl<KeyType, DataType, KeyHash, KeyEqual>::~HashTbl() {
 */
 template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
 bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::insert(const KeyType &_newKey, const DataType &_newDataItem) throw (std::bad_alloc) {
-    if ((mCount+1)/mSize > 1.0)
-        rehash();
-    auto pos = _newKey % mSize;
-    auto bef_end = mpDataTable[pos].before_begin();
+    KeyHash hashFn;
     KeyEqual eq;
+    if (mCount + 1 > mSize) rehash();
+
+    auto pos = hashFn(_newKey) % mSize;
+    auto bef_end = mpDataTable[pos].before_begin();
     for (auto it = mpDataTable[pos].begin(); it != mpDataTable[pos].end(); it++) {
         if (eq((*it).mKey, _newKey)) {
             (*it).mData = _newDataItem;
@@ -90,10 +91,11 @@ bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::insert(const KeyType &_newKe
 */
 template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
 bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::remove(const KeyType &_searchKey) {
-    auto pos = _searchKey % mSize;
+    KeyHash hashFn;
+    KeyEqual eq;
+    auto pos = hashFn(_searchKey) % mSize;
     auto it_aft_pos = mpDataTable[pos].begin();
     auto it_bef_pos = mpDataTable[pos].before_begin();
-    KeyEqual eq;
     for (; it_aft_pos != mpDataTable[pos].end(); it_aft_pos++) {
         if (eq((*it_aft_pos).mKey, _searchKey)) {
             it_aft_pos++;
@@ -116,8 +118,9 @@ bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::remove(const KeyType &_searc
 */
 template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
 bool HashTbl<KeyType, DataType, KeyHash, KeyEqual>::retrieve(const KeyType &_searchKey, DataType &_dataItem) const {
-    auto pos = _searchKey % mSize;
+    KeyHash hashFn;
     KeyEqual eq;
+    auto pos = hashFn(_searchKey) % mSize;
     for (auto it = mpDataTable[pos].begin(); it != mpDataTable[pos].end(); it++) {
         if (eq((*it).mKey, _searchKey)) {
             _dataItem = (*it).mData;
@@ -159,9 +162,9 @@ void HashTbl<KeyType, DataType, KeyHash, KeyEqual>::showStructure() const {
 
     // Traverse the list associated with the based address (idx), calculated before.
     for (auto i(0u); i < mSize; ++i) {
-        std::cout << i << ": {key = ";
+        std::cout << i << ": { key = ";
         for (auto &e : mpDataTable[i]) {
-            std::cout << hashFn(e.mKey) << "; " << e.mData;
+            std::cout << hashFn(e.mKey) << "; " << e.mData << " ";
         }
         std::cout << "}\n";
     }
@@ -169,20 +172,23 @@ void HashTbl<KeyType, DataType, KeyHash, KeyEqual>::showStructure() const {
 
 template <typename KeyType, typename DataType, typename KeyHash, typename KeyEqual>
 void HashTbl<KeyType, DataType, KeyHash, KeyEqual>::rehash(void) {
+    KeyHash hashFn;
     auto newSize = find_next_prime(mSize);
     std::unique_ptr<std::forward_list<Entry>[]> aux(new std::forward_list<Entry>[newSize]);
 
     for (auto i(0u); i < mSize; i++) {
         for (auto &e : mpDataTable[i]) {
-            auto pos = e.mKey % newSize;
+            auto pos = hashFn(e.mKey) % newSize;
             auto bef_end = aux[pos].before_begin();
-            for (auto it = aux[pos].begin(); it != aux[pos].end(); it++)
-                bef_end++;
-            aux[pos].emplace_after(bef_end, e.mKey, e.mData);
+            for (auto it = aux[pos].begin(); it != aux[pos].end(); it++, bef_end++);
+            aux[pos].insert_after(bef_end, e);
         }
     }
+    auto oldCount = mCount;
     clear();
     mpDataTable = std::move(aux);
+    mCount      = oldCount;
+    mSize       = newSize;
 }
 
 }  // namespace MyHashTable
