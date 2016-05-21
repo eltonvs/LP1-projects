@@ -27,10 +27,10 @@ using AcctKey = std::tuple<std::string, int, int, int>;
 Para compilar, você só precisa digitar:
 ```shell
 make clean
-make V=[versão a ser executada] # make V=3
+make V=[versão a ser executada] # make V=1
 ```
 
-Caso nenhuma versão seja informada, o compilador utilizará a versão 1.
+Caso nenhuma versão seja informada, o compilador utilizará a versão 3.
 
 E para executar:
 ```shell
