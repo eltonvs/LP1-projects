@@ -10,6 +10,12 @@
 #include <cmath>
 #include "HashTbl.hpp"
 
+//----------------------------------------------------------------------------------------
+//! Verifies if a number is prime.
+/*! Function to verify if a number is prime
+ *  \param _n The number to be verified.
+ *  \return True if is prime, false otherwise
+*/
 bool is_prime(int _n) {
     if (_n < 2) return false;
     for (int i = 2; i <= std::sqrt(_n); i++)
@@ -18,6 +24,12 @@ bool is_prime(int _n) {
     return true;
 }
 
+//----------------------------------------------------------------------------------------
+//! Find the next prime number.
+/*! Function to find the smaller prime number bigger than the another.
+ *  \param _n The number to be used as parameter.
+ *  \return The next prime number
+*/
 int find_next_prime(int _n) {
     while (!is_prime(++_n));
     return _n;
