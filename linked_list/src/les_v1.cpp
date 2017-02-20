@@ -124,7 +124,7 @@ bool popBack(SNPtr &_pAIL, int &_retrievedVal) {
 }
 
 SNPtr find(SNPtr _pAIL, int _targetVal) {
-    while (_pAIL != NULL and _pAIL->mpNext != NULL) {
+    while (_pAIL != NULL) {
         if (_pAIL->mpNext->miData == _targetVal)
             return _pAIL;
         _pAIL = _pAIL->mpNext;
